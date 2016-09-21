@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
+import AdvanceButton from '../../containers/AdvanceButton'
 
 class OnboardTermsAndConditions extends React.Component {
   constructor(props) {
@@ -17,14 +18,9 @@ class OnboardTermsAndConditions extends React.Component {
             <Text style={s.desc}>aesthetically appealing one-liner</Text>
           </View>
         </View>
-        <View style={s.continue}>
-          <Text
-            style={s.continueText}
-          >
-            ACCEPT
-          </Text>
-        </View>
-
+        <AdvanceButton
+          text={ "ACCEPT" }
+        />
       </View>
     );
   }

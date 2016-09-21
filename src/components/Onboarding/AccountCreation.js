@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
+import AdvanceButton from '../../containers/AdvanceButton'
 
 class OnboardAccountCreation extends React.Component {
 
@@ -91,14 +92,10 @@ class OnboardAccountCreation extends React.Component {
 
         </View>
 
-        <View style={s.continue}>
-          <Text
-            style={s.continueText}
-            onPress={this.handleAdvance}
-          >
-            CREATE ACCOUNT
-          </Text>
-        </View>
+        <AdvanceButton
+          text={ "CREATE ACCOUNT" }
+          pressAction={ Actions.termsAndConditions }
+        />
 
       </View>
     );

@@ -7,7 +7,9 @@ import configureStore from "../store/store";
 import OnboardLanding from "../components/Onboarding/Landing";
 import OnboardAccountCreation from "../containers/Onboarding/AccountCreation";
 import OnboardTermsAndConditions from "../containers/Onboarding/TermsAndConditions";
+import ProgressBar from './Onboarding/ProgressBar';
 import BackButton from '../containers/BackButton';
+
 
 const store = configureStore();
 
@@ -16,6 +18,7 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{flex:1}}>
+          <ProgressBar/>
           <Router>
             <Schema name="default" sceneConfig={Animations.FlatFloatFromRight} navBar={BackButton}/>
 

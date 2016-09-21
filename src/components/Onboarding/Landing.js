@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
+import AdvanceButton from '../../containers/AdvanceButton'
 
 class OnboardLanding extends React.Component {
 
@@ -27,14 +28,10 @@ class OnboardLanding extends React.Component {
             We’ll help you do memes and other financially sound things really easily et cetera et cetera. Dont you love memes like this?
           </Text>
         </View>
-        <View style={s.continue}>
-          <Text
-            style={s.continueText}
-            onPress={Actions.accountCreation}
-          >
-            CONTINUE
-          </Text>
-        </View>
+        <AdvanceButton
+          text={ "CONTINUE" }
+          pressAction={ Actions.accountCreation }
+        />
       </View>
     );
   }
