@@ -30,9 +30,9 @@ class BackButton extends React.Component {
 
 const s = StyleSheet.create({
   back: {
-    marginTop: 10,
+    marginTop: 15,
     marginLeft: 20,
-    height: 50,
+    height: 15,
     justifyContent: "flex-end",
     alignItems: "flex-start",
   },

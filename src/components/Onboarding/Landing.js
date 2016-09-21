@@ -71,19 +71,6 @@ const s = StyleSheet.create({
     marginLeft: 45,
     fontFamily: 'Avenir',
     textAlign: 'center'
-  },
-  continue: {
-    height: 50,
-    justifyContent: 'center',
-    alignSelf: 'stretch',
-    alignItems: 'center',
-    backgroundColor: '#0FA0EA',
-  },
-  continueText: {
-    color: 'white',
-    fontSize: 15,
-    fontWeight: 'bold',
-    fontFamily: 'Avenir'
   }
 });
 

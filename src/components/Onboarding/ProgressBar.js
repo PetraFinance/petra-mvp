@@ -10,7 +10,7 @@ class ProgressBar extends React.Component {
 
   setWidth(width) {
     return {
-      marginTop: 20,
+      marginTop: 25,
       height: 5,
       width: width,
       backgroundColor: '#0FA0EA'
