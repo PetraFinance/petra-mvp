@@ -13,6 +13,9 @@ class SearchBar extends React.Component {
   }
 
   render() {
+
+    const banner = require('../../../assets/logo.png');
+
     return (
       <View style={s.container}>
         <View style={s.imageWrapper}>
@@ -66,8 +69,8 @@ const s = StyleSheet.create({
 });
 
 SearchBar.PropTypes = {
-  handleSearchBankOnboarding: React.PropTypes.func.isRequired;
-  searchBankOnboarding: React.PropType.string.isRequired;
+  handleSearchBankOnboarding: React.PropTypes.func.isRequired,
+  searchBankOnboarding: React.PropTypes.string.isRequired,
 }
 
 export default SearchBar;

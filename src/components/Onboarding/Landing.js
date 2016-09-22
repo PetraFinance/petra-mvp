@@ -6,6 +6,8 @@ import AdvanceButton from '../../containers/AdvanceButton';
 class OnboardLanding extends React.Component {
 
   render() {
+    const banner = require('../../../assets/logo.png');
+
     return (
       <View style={s.page}>
         <View style={s.banner}>

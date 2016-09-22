@@ -70,7 +70,7 @@ const s = StyleSheet.create({
 });
 
 RadioButtonSimple.PropTypes = {
-  check: React.PropTypes.bool.isRequired;
+  check: React.PropTypes.bool.isRequired,
 }
 
 export default RadioButtonSimple;
