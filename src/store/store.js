@@ -10,7 +10,7 @@ const createStoreWithMiddleware = applyMiddleware(
   loggerMiddleware
 )(createStore);
 
-const configureStore = function (initialState: Object = {}): Function {
+const configureStore = function (initialState = {}) {
   return createStoreWithMiddleware(rootReducer, initialState);
 };
 

@@ -28,6 +28,14 @@ export function setPassword(password) {
   };
 }
 
+export const SET_ONBOARD_BANK_SEARCH = Symbol('SET_ONBOARD_BANK_SEARCH');
+export function setOnboardSearchBanks(onboardBankSearch) {
+  return {
+    type: SET_ONBOARD_BANK_SEARCH,
+    onboardBankSearch
+  };
+}
+
 export const SET_PASSWORD_CONFIRM = Symbol('SET_PASSWORD_CONFIRM');
 export function setPasswordConfirm(passwordConfirm) {
   return {

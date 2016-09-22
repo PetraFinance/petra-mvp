@@ -22,10 +22,10 @@ class App extends React.Component {
           <Router>
             <Schema name="default" sceneConfig={Animations.FlatFloatFromRight} navBar={BackButton}/>
 
-            <Route name="launch" component={OnboardLanding} hideNavBar={true} title="Launch"/>
+            <Route name="launch" component={OnboardLanding} initial={true} hideNavBar={true} title="Launch"/>
             <Route name="accountCreation" component={OnboardAccountCreation} title="Account Creation"/>
             <Route name="termsAndConditions" component={OnboardTermsAndConditions} title="Terms and Conditions"/>
-            <Route name="banking" component={OnboardBanking} initial={true} title="Banking"/>
+            <Route name="banking" component={OnboardBanking} title="Banking"/>
           </Router>
         </View>
       </Provider>

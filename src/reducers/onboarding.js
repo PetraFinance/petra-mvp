@@ -6,11 +6,10 @@ const defaultState = Immutable.fromJS({
   email: '',
   password: '',
   passwordConfirm: '',
+  onboardBankSearch: '',
 });
 
 export default function(state = defaultState, action) {
-
-  console.log(action);
 
   switch (action.type) {
     case ActionType.NEXT_OSTAGE:
@@ -24,7 +23,9 @@ export default function(state = defaultState, action) {
     case ActionType.SET_PASSWORD:
       return state.set('password', action.password);
     case ActionType.SET_PASSWORD_CONFIRM:
-      return state.set('passwordConfirm', action.passswordConfirm);
+      return state.set('passwordConfirm', action.passwordConfirm);
+    case ActionType.SET_ONBOARD_BANK_SEARCH:
+      return state.set('onboardBankSearch', action.onboardBankSearch);
     default:
       return state;
   }

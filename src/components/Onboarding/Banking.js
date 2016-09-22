@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 import AdvanceButton from '../../containers/AdvanceButton'
+import SearchBar from '../../containers/Onboarding/SearchBar';
 
 class OnboardBanking extends React.Component {
 
@@ -12,22 +13,21 @@ class OnboardBanking extends React.Component {
   render() {
     let banner = require("../../../assets/logo.png");
 
-    var SearchBar = require('react-native-search-bar');
-
     return (
       <View style={s.page}>
         <View style={s.container}>
           <View style={s.intro}>
             <Text style={s.welcome}>Link your bank</Text>
-            <Text style={s.desc}>this is how babies are made</Text>
+            <Text style={s.desc}>Some magic is about to happen.</Text>
+          </View>
+          <View style={s.searchWrapper}>
+            <SearchBar/>
+          </View>
+          <View style={s.results}>
           </View>
         </View>
-        <SearchBar
-          ref='searchBar'
-          placeholder='Search'
-        />
         <AdvanceButton
-          text={ "CONTINUE" }
+          text={ "LINK ACCOUNT" }
           pressAction={ Actions.accountCreation }
         />
       </View>
@@ -36,6 +36,9 @@ class OnboardBanking extends React.Component {
 }
 
 const s = StyleSheet.create({
+  searchBarWrapper: {
+    flex: 0.35,
+  },
   page: {
     flex: 1,
     flexDirection: 'column',
@@ -50,6 +53,10 @@ const s = StyleSheet.create({
     flex: 1,
     marginRight: 30,
     marginLeft: 30,
+  },
+  searchBar: {
+    height: 20,
+    width: 100,
   },
   intro: {
     flex: 0.5,
@@ -66,6 +73,9 @@ const s = StyleSheet.create({
     fontFamily: 'Avenir',
     textAlign: 'center',
   },
+  results: {
+    flex: 3,
+  }
 });
 
 export default OnboardBanking;

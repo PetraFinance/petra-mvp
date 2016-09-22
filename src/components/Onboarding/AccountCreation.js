@@ -25,19 +25,17 @@ class OnboardAccountCreation extends React.Component {
   }
 
   handlePasswordConfirm(passwordConfirm) {
-    console.log("Hello there");
-    console.log(passwordConfirm);
     this.props.handlePasswordConfirm(passwordConfirm);
   }
 
   // check the state
-  checkValidEmail = () => {
+  checkValidEmail() {
     const email = this.props.email;
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }
 
-  checkValidPassword = () => {
+  checkValidPassword() {
     const password = this.props.password;
     const confirm = this.props.passwordConfirm;
     let match = false;
@@ -234,7 +232,7 @@ const s = StyleSheet.create({
     paddingTop: 9,
     paddingBottom: 8,
     paddingRight: 8,
-    paddingLeft:8,
+    paddingLeft: 8,
     fontFamily: 'Avenir',
     fontSize: 12,
     borderColor: "black",
