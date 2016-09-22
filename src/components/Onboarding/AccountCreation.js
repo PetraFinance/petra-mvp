@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
-import AdvanceButton from '../../containers/AdvanceButton'
+import AdvanceButton from '../../containers/AdvanceButton';
+import RadioButtonSimple from '../RadioButtonSimple';
 
 class OnboardAccountCreation extends React.Component {
 
@@ -15,6 +16,48 @@ class OnboardAccountCreation extends React.Component {
     Actions.termsAndConditions();
   }
 
+  handleEmail(email) {
+    this.props.handleEmail(email);
+  }
+
+  handlePassword(password) {
+    this.props.handlePassword(password);
+  }
+
+  handlePasswordConfirm(passwordConfirm) {
+    console.log("Hello there");
+    console.log(passwordConfirm);
+    this.props.handlePasswordConfirm(passwordConfirm);
+  }
+
+  // check the state
+  checkValidEmail = () => {
+    const email = this.props.email;
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  checkValidPassword = () => {
+    const password = this.props.password;
+    const confirm = this.props.passwordConfirm;
+    let match = false;
+
+    var re = /[A-Z]+/;
+    const capital = re.test(password);
+
+    var re = /\d+/;
+    const number = re.test(password);
+
+    if (password === confirm && password != "")
+      match = true;
+
+    return {
+      capital: capital,
+      number: number,
+      match: match
+    }
+  }
+
   render() {
 
     let blurbImage = require("../../../assets/logo.png");
@@ -24,7 +67,7 @@ class OnboardAccountCreation extends React.Component {
         <View style={s.container}>
 
           <View style={s.intro}>
-            <Text style={s.welcome}>Create your account {this.props.stage}</Text>
+            <Text style={s.welcome}>Create your account</Text>
             <Text style={s.desc}>aesthetically appealing one-liner</Text>
           </View>
           <View style={s.fbLogin}>
@@ -38,28 +81,35 @@ class OnboardAccountCreation extends React.Component {
             <View>
               <Text style={s.label}>E-mail Address</Text>
               <TextInput
+                ref={"email"}
+                onChangeText={(email) => this.handleEmail(email)}
+                value={ this.props.email }
                 style={s.input}
                 autoCapitalize={"none"}
                 onSubmitEditing={() => {
-                  this.refs.second.focus();
+                  this.refs.password.focus();
                 }}
               />
             </View>
             <View>
               <Text style={s.label}>Password</Text>
               <TextInput
-                ref={"second"}
+                ref={"password"}
+                onChangeText={(password) => this.handlePassword(password)}
+                value={ this.props.password }
                 style={s.input}
                 secureTextEntry={true}
                 onSubmitEditing={() => {
-                  this.refs.third.focus();
+                  this.refs.passwordConfirm.focus();
                 }}
               />
             </View>
             <View>
               <Text style={s.label}>Confirm your password</Text>
               <TextInput
-                ref={"third"}
+                ref={"passwordConfirm"}
+                onChangeText={(passwordConfirm) => this.handlePasswordConfirm(passwordConfirm)}
+                value={ this.props.passwordConfirm }
                 style={s.input}
                 secureTextEntry={true}
                 autoCapitalize={"none"}
@@ -68,18 +118,22 @@ class OnboardAccountCreation extends React.Component {
           </View>
 
           <View style={s.checks}>
-            <View style={s.check}>
-              <View style={s.radioButton}></View>
-              <Text style={s.radioButtonLabel}>Valid e-mail address</Text>
-            </View>
-            <View style={s.check}>
-              <View style={s.radioButton}></View>
-              <Text style={s.radioButtonLabel}>Password has a capital letter</Text>
-            </View>
-            <View style={s.check}>
-              <View style={s.radioButton}></View>
-              <Text style={s.radioButtonLabel}>Password has a number</Text>
-            </View>
+            <RadioButtonSimple
+              check={ this.checkValidEmail() }
+              condition={"Valid e-mail Address"}
+            />
+            <RadioButtonSimple
+              check={ this.checkValidPassword().capital }
+              condition={"Password contains a capital letter"}
+            />
+            <RadioButtonSimple
+              check={ this.checkValidPassword().number }
+              condition={"Password contains a number"}
+            />
+            <RadioButtonSimple
+              check={ this.checkValidPassword().match }
+              condition={"Passwords match"}
+            />
           </View>
 
           <View style={s.blurb}>
@@ -106,7 +160,7 @@ const s = StyleSheet.create({
   blurb: {
     flex: 1,
     flexDirection: "row",
-    alignItems: "flex-start",
+    alignItems: "center",
   },
   blurbImage: {
     marginRight: 25,
@@ -130,21 +184,6 @@ const s = StyleSheet.create({
   checks: {
     flex: 0.75,
     flexDirection: "column",
-    justifyContent: 'flex-start',
-  },
-  check: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  radioButton: {
-    width: 10,
-    height: 10,
-    marginRight: 5,
-    backgroundColor: '#0FA0EA',
-  },
-  radioButtonLabel: {
-    fontFamily: 'Avenir',
-    fontSize: 12
   },
   page: {
     flex: 1,

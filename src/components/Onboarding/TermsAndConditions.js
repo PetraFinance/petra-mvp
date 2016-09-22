@@ -36,6 +36,7 @@ class OnboardTermsAndConditions extends React.Component {
         </View>
         <AdvanceButton
           text={ "ACCEPT" }
+          pressAction={ Actions.banking }
         />
       </View>
     );
