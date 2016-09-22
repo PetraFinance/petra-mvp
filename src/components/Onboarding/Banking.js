@@ -12,6 +12,8 @@ class OnboardBanking extends React.Component {
   render() {
     let banner = require("../../../assets/logo.png");
 
+    var SearchBar = require('react-native-search-bar');
+
     return (
       <View style={s.page}>
         <View style={s.container}>
@@ -20,6 +22,10 @@ class OnboardBanking extends React.Component {
             <Text style={s.desc}>this is how babies are made</Text>
           </View>
         </View>
+        <SearchBar
+          ref='searchBar'
+          placeholder='Search'
+        />
         <AdvanceButton
           text={ "CONTINUE" }
           pressAction={ Actions.accountCreation }
