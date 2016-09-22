@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
-import { Actions } from 'react-native-redux-router';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 class AdvanceButton extends React.Component {
   constructor(props) {
@@ -20,8 +19,8 @@ class AdvanceButton extends React.Component {
           style={s.continueText}
           onPress={this.handleAdvance}
         >
-          { this.props.text }
-        </Text>
+          {this.props.text}
+          </Text>
       </View>
     );
   }
@@ -39,8 +38,14 @@ const s = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold',
-    fontFamily: 'Avenir'
-  }
-})
+    fontFamily: 'Avenir',
+  },
+});
+
+AdvanceButton.propTypes = {
+  handleAdvance: React.PropTypes.func.isRequired,
+  pressAction: React.PropTypes.func.isRequired,
+  text: React.PropTypes.string.isRequired,
+};
 
 export default AdvanceButton;

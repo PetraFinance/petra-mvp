@@ -1,23 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
-import AdvanceButton from '../../containers/AdvanceButton'
+import AdvanceButton from '../../containers/AdvanceButton';
 
 class OnboardLanding extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    let banner = require("../../../assets/logo.png");
-
     return (
       <View style={s.page}>
         <View style={s.banner}>
           <Image
-             source={ banner }
-             style={s.bannerImage}
+            source={ banner }
+            style={s.bannerImage}
            />
         </View>
         <View style={s.intro}>
@@ -29,8 +23,8 @@ class OnboardLanding extends React.Component {
           </Text>
         </View>
         <AdvanceButton
-          text={ "CONTINUE" }
-          pressAction={ Actions.accountCreation }
+          text={'CONTINUE'}
+          pressAction={Actions.accountCreation}
         />
       </View>
     );
@@ -43,7 +37,7 @@ const s = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   banner: {
     flex: 2.5,
@@ -52,7 +46,7 @@ const s = StyleSheet.create({
   },
   bannerImage: {
     height: 300,
-    width: 300
+    width: 300,
   },
   intro: {
     flex: 1,
@@ -70,7 +64,7 @@ const s = StyleSheet.create({
     marginRight: 45,
     marginLeft: 45,
     fontFamily: 'Avenir',
-    textAlign: 'center'
+    textAlign: 'center',
   }
 });
 

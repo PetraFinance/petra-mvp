@@ -1,18 +1,11 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 import AdvanceButton from '../../containers/AdvanceButton'
 import SearchBar from '../../containers/Onboarding/SearchBar';
 
 class OnboardBanking extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    let banner = require("../../../assets/logo.png");
-
     return (
       <View style={s.page}>
         <View style={s.container}>
@@ -27,8 +20,8 @@ class OnboardBanking extends React.Component {
           </View>
         </View>
         <AdvanceButton
-          text={ "LINK ACCOUNT" }
-          pressAction={ Actions.accountCreation }
+          text={'LINK ACCOUNT'}
+          pressAction={Actions.accountCreation}
         />
       </View>
     );
@@ -44,7 +37,7 @@ const s = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   page: {
     flex: 1,
@@ -60,8 +53,8 @@ const s = StyleSheet.create({
   },
   intro: {
     flex: 0.5,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   welcome: {
     marginBottom: 2,
@@ -75,7 +68,7 @@ const s = StyleSheet.create({
   },
   results: {
     flex: 3,
-  }
+  },
 });
 
 export default OnboardBanking;

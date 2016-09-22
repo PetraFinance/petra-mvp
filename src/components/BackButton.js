@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 
@@ -33,12 +33,16 @@ const s = StyleSheet.create({
     marginTop: 15,
     marginLeft: 20,
     height: 15,
-    justifyContent: "flex-end",
-    alignItems: "flex-start",
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
   },
   backText: {
     fontFamily: 'Avenir',
-  }
-})
+  },
+});
+
+BackButton.propTypes = {
+  handleBack: React.PropTypes.func.isRequired,
+};
 
 export default BackButton;

@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
+import React from 'react';
+import { StyleSheet, TextInput, View, Image } from 'react-native';
 
 class SearchBar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleSearchBanks = this.handleSearchBanks.bind(this);
+    this.handleSearchBankOnboarding = this.handleSearchBankOnboarding.bind(this);
   }
 
-  handleSearchBanks() {
-    this.props.handleSearchBanks();
+  handleSearchBankOnboarding() {
+    this.props.handleSearchBankOnboarding();
   }
 
   render() {
-
-    let banner = require("../../../assets/logo.png");
-
     return (
       <View style={s.container}>
         <View style={s.imageWrapper}>
@@ -26,10 +23,10 @@ class SearchBar extends React.Component {
         </View>
         <View style={s.searchBarWrapper}>
           <TextInput
-            ref={"search"}
-            placeholder={"Search"}
-            onChangeText={(searchTerm) => this.handleSearchBanks(searchTerm)}
-            value={ this.props.onboardBankSearch }
+            ref={'search'}
+            placeholder={'Search'}
+            onChangeText={(searchTerm) => this.handleSearchBankOnboarding(searchTerm)}
+            value={this.props.searchBankOnboarding}
             style={s.searchBarText}
           />
         </View>
@@ -41,9 +38,9 @@ class SearchBar extends React.Component {
 const s = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    borderColor: "black",
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: 'black',
     borderWidth: 1
   },
   imageWrapper: {
@@ -67,5 +64,10 @@ const s = StyleSheet.create({
     fontSize: 12,
   }
 });
+
+SearchBar.PropTypes = {
+  handleSearchBankOnboarding: React.PropTypes.func.isRequired;
+  searchBankOnboarding: React.PropType.string.isRequired;
+}
 
 export default SearchBar;

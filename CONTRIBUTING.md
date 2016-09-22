@@ -10,3 +10,4 @@ You may need to run `react-native run-ios` as root. Afterwards, you should see a
 * It's possible that some changes may not show up because the application is caching files. In this case, you can run
     * `watchman watch-del-all`
     * `./node_modules/react-native/packager/packager.sh --reset-cache`
+* You can change which screen appears first in `App.js` by changing the `initial` attribute. 

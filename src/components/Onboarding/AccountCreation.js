@@ -1,20 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 import AdvanceButton from '../../containers/AdvanceButton';
 import RadioButtonSimple from '../RadioButtonSimple';
 
 class OnboardAccountCreation extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.handleAdvance = this.handleAdvance.bind(this);
-  }
-
-  handleAdvance() {
-    this.props.handleAdvance();
-    Actions.termsAndConditions();
-  }
 
   handleEmail(email) {
     this.props.handleEmail(email);
@@ -28,10 +18,9 @@ class OnboardAccountCreation extends React.Component {
     this.props.handlePasswordConfirm(passwordConfirm);
   }
 
-  // check the state
   checkValidEmail() {
     const email = this.props.email;
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var re = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }
 
@@ -40,25 +29,25 @@ class OnboardAccountCreation extends React.Component {
     const confirm = this.props.passwordConfirm;
     let match = false;
 
-    var re = /[A-Z]+/;
+    let re = /[A-Z]+/;
     const capital = re.test(password);
 
-    var re = /\d+/;
+    re = /\d+/;
     const number = re.test(password);
 
-    if (password === confirm && password != "")
+    if (password === confirm && password !== '')
       match = true;
 
     return {
-      capital: capital,
-      number: number,
-      match: match
+      capital,
+      number,
+      match,
     }
   }
 
   render() {
 
-    let blurbImage = require("../../../assets/logo.png");
+    let blurbImage = require('../../../assets/logo.png');
 
     return (
       <View style={s.page}>
@@ -79,64 +68,64 @@ class OnboardAccountCreation extends React.Component {
             <View>
               <Text style={s.label}>E-mail Address</Text>
               <TextInput
-                ref={"email"}
+                ref={'email'}
                 onChangeText={(email) => this.handleEmail(email)}
-                value={ this.props.email }
+                value={this.props.email}
                 style={s.input}
-                autoCapitalize={"none"}
+                autoCapitalize={'none'}
                 onSubmitEditing={() => {
                   this.refs.password.focus();
-                }}
+               }}
               />
             </View>
             <View>
               <Text style={s.label}>Password</Text>
               <TextInput
-                ref={"password"}
+                ref={'password'}
                 onChangeText={(password) => this.handlePassword(password)}
-                value={ this.props.password }
+                value={this.props.password}
                 style={s.input}
                 secureTextEntry={true}
                 onSubmitEditing={() => {
                   this.refs.passwordConfirm.focus();
-                }}
+               }}
               />
             </View>
             <View>
               <Text style={s.label}>Confirm your password</Text>
               <TextInput
-                ref={"passwordConfirm"}
+                ref={'passwordConfirm'}
                 onChangeText={(passwordConfirm) => this.handlePasswordConfirm(passwordConfirm)}
-                value={ this.props.passwordConfirm }
+                value={this.props.passwordConfirm}
                 style={s.input}
                 secureTextEntry={true}
-                autoCapitalize={"none"}
+                autoCapitalize={'none'}
               />
             </View>
           </View>
 
           <View style={s.checks}>
             <RadioButtonSimple
-              check={ this.checkValidEmail() }
-              condition={"Valid e-mail Address"}
+              check={this.checkValidEmail()}
+              condition={'Valid e-mail Address'}
             />
             <RadioButtonSimple
-              check={ this.checkValidPassword().capital }
-              condition={"Password contains a capital letter"}
+              check={this.checkValidPassword().capital}
+              condition={'Password contains a capital letter'}
             />
             <RadioButtonSimple
-              check={ this.checkValidPassword().number }
-              condition={"Password contains a number"}
+              check={this.checkValidPassword().number}
+              condition={'Password contains a number'}
             />
             <RadioButtonSimple
-              check={ this.checkValidPassword().match }
-              condition={"Passwords match"}
+              check={this.checkValidPassword().match}
+              condition={'Passwords match'}
             />
           </View>
 
           <View style={s.blurb}>
             <Image
-              source={ blurbImage }
+              source={blurbImage}
               style={s.blurbImage}
             />
             <Text style={s.blurbText}>So baby pull me closer in the backseat of your Rover that I know you can’t afford bite that tattoo on your shoulder</Text>
@@ -145,20 +134,20 @@ class OnboardAccountCreation extends React.Component {
         </View>
 
         <AdvanceButton
-          text={ "CREATE ACCOUNT" }
-          pressAction={ Actions.termsAndConditions }
+          text={'CREATE ACCOUNT'}
+          pressAction={Actions.termsAndConditions}
         />
 
       </View>
     );
-  }
+ }
 }
 
 const s = StyleSheet.create({
   blurb: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   blurbImage: {
     marginRight: 25,
@@ -181,7 +170,7 @@ const s = StyleSheet.create({
   },
   checks: {
     flex: 0.75,
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   page: {
     flex: 1,
@@ -190,8 +179,8 @@ const s = StyleSheet.create({
   },
   intro: {
     flex: 0.75,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   welcome: {
     marginBottom: 2,
@@ -205,8 +194,8 @@ const s = StyleSheet.create({
   },
   fbLogin: {
     height: 50,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#0FA0EA',
   },
   fbLoginText: {
@@ -215,8 +204,8 @@ const s = StyleSheet.create({
   },
   separator: {
     height: 50,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   separatorText: {
     fontFamily: 'Avenir',
@@ -235,9 +224,18 @@ const s = StyleSheet.create({
     paddingLeft: 8,
     fontFamily: 'Avenir',
     fontSize: 12,
-    borderColor: "black",
-    borderWidth: 1
-  }
+    borderColor: 'black',
+    borderWidth: 1,
+  },
 });
+
+OnboardAccountCreation.PropTypes = {
+  handleEmail: React.PropTypes.func.isRequired,
+  handlePassword: React.PropTypes.func.isRequired,
+  handlePasswordConfirm: React.PropTypes.func.isRequired,
+  email: React.PropTypes.string.isRequired,
+  password: React.PropTypes.string.isRequired,
+  passwordConfirm: React.PropTypes.string.isRequired,
+}
 
 export default OnboardAccountCreation;
