@@ -47,7 +47,7 @@ class OnboardAccountCreation extends React.Component {
 
   render() {
 
-    let blurbImage = require('../../../assets/logo.png');
+    const blurbImage = require('../../../assets/logo.png');
 
     return (
       <View style={s.page}>
@@ -86,6 +86,7 @@ class OnboardAccountCreation extends React.Component {
                 value={this.props.password}
                 style={s.input}
                 secureTextEntry={true}
+                autoCapitalize={'none'}
                 onSubmitEditing={() => {
                   this.refs.passwordConfirm.focus();
                }}
@@ -196,7 +197,7 @@ const s = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#0FA0EA',
+    backgroundColor: '#03A9F4',
   },
   fbLoginText: {
     fontFamily: 'Avenir',

@@ -26,7 +26,7 @@ class SelectBank extends React.Component {
   }
 
   handleSelectBank(bank) {
-    Actions.accountCreation();
+    Actions.setupBanking();
     this.props.handleAdvance();
     this.props.handleSelectBank(bank);
   }
@@ -55,7 +55,7 @@ class SelectBank extends React.Component {
       <View style={s.page}>
         <View style={s.container}>
           <View style={s.intro}>
-            <Text style={s.welcome}>Link your bank</Text>
+            <Text style={s.welcome}>Choose your bank</Text>
             <Text style={s.desc}>Some magic is about to happen.</Text>
           </View>
           <View style={s.searchBarWrapper}>

@@ -15,7 +15,7 @@ class AdvanceButton extends React.Component {
   render() {
     return (
       <TouchableHighlight
-        underlayColor={'#0FA0EA'}
+        underlayColor={'#03A9F4'}
         style={s.container}
         onPress={this.handleAdvance}
       >
@@ -35,7 +35,7 @@ const s = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'stretch',
     alignItems: 'center',
-    backgroundColor: '#0FA0EA',
+    backgroundColor: '#03A9F4',
   },
   continueText: {
     color: 'white',

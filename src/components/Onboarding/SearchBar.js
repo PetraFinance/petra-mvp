@@ -30,6 +30,7 @@ class SearchBar extends React.Component {
             placeholder={'Search'}
             onChangeText={(searchTerm) => this.handleSearchBankOnboarding(searchTerm)}
             value={this.props.searchBankOnboarding}
+            autoCapitalize={'none'}
             style={s.searchBarText}
           />
         </View>

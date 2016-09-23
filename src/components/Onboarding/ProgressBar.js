@@ -9,7 +9,7 @@ class ProgressBar extends React.Component {
       marginTop: 25,
       height: 5,
       width: width,
-      backgroundColor: '#0FA0EA',
+      backgroundColor: '#03A9F4',
     }
   }
 

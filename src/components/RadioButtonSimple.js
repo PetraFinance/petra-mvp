@@ -12,7 +12,7 @@ class RadioButtonSimple extends React.Component {
         borderRadius: 15,
         borderWidth: 1,
         borderColor: 'white',
-        backgroundColor: '#0FA0EA',
+        backgroundColor: '#03A9F4',
       }
     }
     return {
@@ -49,8 +49,8 @@ const s = StyleSheet.create({
     marginRight: 5,
     borderRadius: 15,
     borderWidth: 1,
-    borderColor:'#0FA0EA',
-    backgroundColor: '#0FA0EA',
+    borderColor:'#03A9F4',
+    backgroundColor: '#03A9F4',
     justifyContent: 'center',
     alignItems: 'center',
   },

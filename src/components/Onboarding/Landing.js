@@ -59,7 +59,7 @@ const s = StyleSheet.create({
     fontFamily: 'Avenir',
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#0FA0EA',
+    color: '#03A9F4',
   },
   desc: {
     marginTop: 20,

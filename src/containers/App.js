@@ -5,9 +5,11 @@ import { Provider } from 'react-redux';
 import configureStore from '../store/store';
 
 import OnboardLanding from '../components/Onboarding/Landing';
-import OnboardSelectBank from './Onboarding/SelectBank';
-import OnboardAccountCreation from './Onboarding/AccountCreation';
 import OnboardTermsAndConditions from './Onboarding/TermsAndConditions';
+import OnboardAccountCreation from './Onboarding/AccountCreation';
+import OnboardSelectBank from './Onboarding/SelectBank';
+import OnboardSetupBank from './Onboarding/SetupBank';
+
 import ProgressBar from './Onboarding/ProgressBar';
 import BackButton from './BackButton';
 
@@ -22,10 +24,11 @@ class App extends React.Component {
           <Router>
             <Schema name="default" sceneConfig={Animations.FlatFloatFromRight} navBar={BackButton}/>
 
-            <Route name="launch" component={OnboardLanding}  hideNavBar={true} title="Launch"/>
+            <Route name="onboardLaunch" component={OnboardLanding} initial={true} hideNavBar={true} title="Launch"/>
             <Route name="accountCreation" component={OnboardAccountCreation} title="Account Creation"/>
             <Route name="termsAndConditions" component={OnboardTermsAndConditions} title="Terms and Conditions"/>
-            <Route name="selectBanking" component={OnboardSelectBank} initial={true} title="Select Banking"/>
+            <Route name="selectBanking" component={OnboardSelectBank} title="Select Banking"/>
+            <Route name="setupBanking" component={OnboardSetupBank} title="Setups Banking"/>
           </Router>
         </View>
       </Provider>
