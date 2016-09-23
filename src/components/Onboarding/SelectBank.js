@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, ListView, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-redux-router';
-import AdvanceButton from '../../containers/AdvanceButton';
 import SearchBar from '../../containers/Onboarding/SearchBar';
 
 class SelectBank extends React.Component {
@@ -10,19 +9,19 @@ class SelectBank extends React.Component {
     this.handleSelectBank = this.handleSelectBank.bind(this);
     this.banks =
     [
-      "Bank of America",
-      "Wells Fargo",
-      "Capital One",
-      "Lending Club",
-      "The Empire",
-      "Uber",
-      "Airbnb",
-      "Gigster",
-      "Innovative Design",
-      "Sad bois",
-      "Dank memers",
-      "The Electoral College",
-      "Sons of Shepards",
+      'Bank of America',
+      'Wells Fargo',
+      'Capital One',
+      'Lending Club',
+      'The Empire',
+      'Uber',
+      'Airbnb',
+      'Gigster',
+      'Innovative Design',
+      'Sad bois',
+      'Dank memers',
+      'The Electoral College',
+      'Sons of Shepards',
     ]
   }
 
@@ -34,7 +33,7 @@ class SelectBank extends React.Component {
 
   render() {
 
-    let banks = this.banks.filter((item) => (item.includes(this.props.searchBankOnboarding)) )
+    const banks = this.banks.filter((item) => (item.toLowerCase().includes(this.props.searchBankOnboarding.toLowerCase())) )
 
     const rows = banks.map((bank, i) => (
       <TouchableHighlight
@@ -119,6 +118,8 @@ const s = StyleSheet.create({
 });
 
 SelectBank.PropTypes = {
+  handleAdvance: React.PropTypes.func.isRequired,
+  handleSelectBank: React.PropTypes.func.isRequired,
   bank: React.PropTypes.string.isRequired,
   searchBankOnboarding: React.PropTypes.string.isRequired,
 };
