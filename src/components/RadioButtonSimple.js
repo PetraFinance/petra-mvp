@@ -14,15 +14,14 @@ class RadioButtonSimple extends React.Component {
         borderColor: 'white',
         backgroundColor: '#0FA0EA',
       }
-    } else {
-      return {
-        width: 8,
-        height: 8,
-        borderRadius: 15,
-        borderWidth: 1,
-        borderColor: 'white',
-        backgroundColor: 'white',
-      }
+    }
+    return {
+      width: 8,
+      height: 8,
+      borderRadius: 15,
+      borderWidth: 1,
+      borderColor: 'white',
+      backgroundColor: 'white',
     }
   }
 

@@ -28,6 +28,14 @@ export function setPassword(password) {
   };
 }
 
+export const SET_PASSWORD_CONFIRM = Symbol('SET_PASSWORD_CONFIRM');
+export function setPasswordConfirm(passwordConfirm) {
+  return {
+    type: SET_PASSWORD_CONFIRM,
+    passwordConfirm,
+  };
+}
+
 export const SET_SEARCH_BANK_ONBOARDING = Symbol('SET_SEARCH_BANK_ONBOARDING');
 export function setSearchBankOnboarding(searchBankOnboarding) {
   return {
@@ -36,10 +44,10 @@ export function setSearchBankOnboarding(searchBankOnboarding) {
   };
 }
 
-export const SET_PASSWORD_CONFIRM = Symbol('SET_PASSWORD_CONFIRM');
-export function setPasswordConfirm(passwordConfirm) {
+export const SET_BANK = Symbol('SET_BANK');
+export function setBank(bank) {
   return {
-    type: SET_PASSWORD_CONFIRM,
-    passwordConfirm,
+    type: SET_BANK,
+    bank,
   };
 }

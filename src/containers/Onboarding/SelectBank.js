@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { setSearchBankOnboarding } from '../../actions/onboarding';
-import SearchBar from '../../components/Onboarding/SearchBar';
+import SelectBank from '../../components/Onboarding/SelectBank';
+import { handleAdvance, setBank } from '../../actions/onboarding';
 
 const mapStateToProps = (state) => {
   const cpState = state.onboarding.toJS();
@@ -15,9 +15,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  handleSearchBankOnboarding(searchTerm) {
-    dispatch(setSearchBankOnboarding(searchTerm));
+  handleAdvance: () => {
+    dispatch(handleAdvance());
+  },
+  handleSelectBank: (bank) => {
+    dispatch(setBank(bank));
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SelectBank);

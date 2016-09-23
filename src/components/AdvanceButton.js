@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 
 class AdvanceButton extends React.Component {
   constructor(props) {
@@ -14,20 +14,23 @@ class AdvanceButton extends React.Component {
 
   render() {
     return (
-      <View style={s.continue}>
-        <Text
-          style={s.continueText}
-          onPress={this.handleAdvance}
-        >
-          {this.props.text}
+      <TouchableHighlight
+        underlayColor={'#0FA0EA'}
+        style={s.container}
+        onPress={this.handleAdvance}
+      >
+        <View>
+          <Text style={s.continueText}>
+            {this.props.text}
           </Text>
-      </View>
+        </View>
+      </TouchableHighlight>
     );
   }
 }
 
 const s = StyleSheet.create({
-  continue: {
+  container: {
     height: 50,
     justifyContent: 'center',
     alignSelf: 'stretch',

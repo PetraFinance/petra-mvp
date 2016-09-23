@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import BackButton from '../../components/Onboarding/ProgressBar';
-import { handleBack } from '../../actions/onboarding';
+import ProgressBar from '../../components/Onboarding/ProgressBar';
 
 const mapStateToProps = (state) => {
   const cpState = state.onboarding.toJS();
@@ -9,12 +8,9 @@ const mapStateToProps = (state) => {
   return Object.assign({},
     state.onboarding.toJS(),
     {
-      stage
+      stage,
     }
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(BackButton);
+export default connect(mapStateToProps)(ProgressBar);

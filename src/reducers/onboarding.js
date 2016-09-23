@@ -7,6 +7,7 @@ const defaultState = Immutable.fromJS({
   password: '',
   passwordConfirm: '',
   searchBankOnboarding: '',
+  bank: '',
 });
 
 export default function(state = defaultState, action) {
@@ -25,6 +26,8 @@ export default function(state = defaultState, action) {
       return state.set('passwordConfirm', action.passwordConfirm);
     case ActionType.SET_SEARCH_BANK_ONBOARDING:
       return state.set('searchBankOnboarding', action.searchBankOnboarding);
+    case ActionType.SET_BANK:
+      return state.set('bank', action.bank);
     default:
       return state;
   }

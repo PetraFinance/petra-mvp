@@ -8,8 +8,8 @@ class SearchBar extends React.Component {
     this.handleSearchBankOnboarding = this.handleSearchBankOnboarding.bind(this);
   }
 
-  handleSearchBankOnboarding() {
-    this.props.handleSearchBankOnboarding();
+  handleSearchBankOnboarding(searchTerm) {
+    this.props.handleSearchBankOnboarding(searchTerm);
   }
 
   render() {
@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
       <View style={s.container}>
         <View style={s.imageWrapper}>
           <Image
-             source={ banner }
+             source={banner}
              style={s.searchBarImage}
            />
         </View>
@@ -43,12 +43,14 @@ const s = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: 'black',
-    borderWidth: 1
+    backgroundColor: '#F2F2F2',
+    borderColor: '#F2F2F2',
+    borderRadius: 5,
+    borderWidth: 1,
   },
   imageWrapper: {
     flex: 1,
-    marginLeft: 5
+    marginLeft: 5,
   },
   searchBarWrapper: {
     flex: 10,
@@ -65,7 +67,7 @@ const s = StyleSheet.create({
     paddingLeft: 10,
     fontFamily: 'Avenir',
     fontSize: 12,
-  }
+  },
 });
 
 SearchBar.PropTypes = {
