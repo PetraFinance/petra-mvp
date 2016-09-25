@@ -12,6 +12,8 @@ import OnboardSelectBank from './onboarding/SelectBank';
 import OnboardSetupBank from './onboarding/SetupBank';
 import ProgressBar from './onboarding/ProgressBar';
 
+import Landing from '../components/main/Landing';
+
 import BackButton from './partials/BackButton';
 
 const store = configureStore();
@@ -20,7 +22,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 } }>
           <ProgressBar/>
           <Router>
             <Schema name="default" sceneConfig={Animations.FlatFloatFromRight} navBar={BackButton}/>
@@ -30,6 +32,8 @@ class App extends React.Component {
             <Route name="termsAndConditions" component={OnboardTermsAndConditions} title="Terms and Conditions"/>
             <Route name="selectBanking" component={OnboardSelectBank} title="Select Banking"/>
             <Route name="setupBanking" component={OnboardSetupBank} title="Setup Banking"/>
+
+            <Route name="appLanding" component={Landing} hideNavBar={true} title="App Landing"/>
           </Router>
         </View>
       </Provider>

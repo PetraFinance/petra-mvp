@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
   return Object.assign({},
     state.onboarding.toJS(),
     {
-      stage
+      stage,
     }
   );
 };
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   handleBack: () => {
     dispatch(handleBack());
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BackButton);

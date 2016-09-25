@@ -64,7 +64,7 @@ class SetupBank extends React.Component {
         </View>
         <AdvanceButton
           text={"LINK ACCOUNT"}
-          pressAction={Actions.onboardLaunch}
+          pressAction={Actions.appLanding}
         />
       </View>
     );

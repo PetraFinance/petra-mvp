@@ -22,7 +22,7 @@ class SelectBank extends React.Component {
       'Dank memers',
       'The Electoral College',
       'Sons of Shepards',
-    ]
+    ];
   }
 
   handleSelectBank(bank) {
@@ -33,7 +33,7 @@ class SelectBank extends React.Component {
 
   render() {
 
-    const banks = this.banks.filter((item) => (item.toLowerCase().includes(this.props.searchBankOnboarding.toLowerCase())) )
+    const banks = this.banks.filter((item) => (item.toLowerCase().includes(this.props.searchBankOnboarding.toLowerCase())));
 
     const rows = banks.map((bank, i) => (
       <TouchableHighlight

@@ -13,12 +13,14 @@ const defaultState = Immutable.fromJS({
 });
 
 export default function (state = defaultState, action) {
+  let increment;
+  let decrement;
   switch (action.type) {
     case ActionType.NEXT_OSTAGE:
-      const increment = state.get('stage') + 1;
+      increment = state.get('stage') + 1;
       return state.set('stage', increment);
     case ActionType.BACK_OSTAGE:
-      const decrement = state.get('stage') - 1;
+      decrement = state.get('stage') - 1;
       return state.set('stage', decrement);
     case ActionType.SET_EMAIL:
       return state.set('email', action.email);

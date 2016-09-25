@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 import AdvanceButton from '../../containers/partials/AdvanceButton';
 import RadioButtonSimple from '../partials/RadioButtonSimple';
