@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import AdvanceButton from '../components/AdvanceButton';
-import { handleAdvance } from '../actions/onboarding';
+import AdvanceButton from '../../components/partials/AdvanceButton';
+import { handleAdvance } from '../../actions/onboarding';
 
 const mapStateToProps = (state) => {
   const cpState = state.onboarding.toJS();

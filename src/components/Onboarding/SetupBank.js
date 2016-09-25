@@ -1,12 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
-import AdvanceButton from '../../containers/AdvanceButton';
+import AdvanceButton from '../../containers/partials/AdvanceButton';
 
 class SetupBank extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleBankPassword = this.handleBankPassword.bind(this);
+    this.handleBankUsername = this.handleBankUsername.bind(this);
+  }
+
+  handleBankPassword(bankPassword) {
+    this.props.handleBankPassword(bankPassword);
+  }
+
+  handleBankUsername(bankUsername) {
+    this.props.handleBankUsername(bankUsername);
   }
 
   render() {
@@ -24,6 +34,8 @@ class SetupBank extends React.Component {
               <TextInput
                 ref={'user_id'}
                 style={s.input}
+                onChangeText={(bankUsername) => this.handleBankUsername(bankUsername)}
+                value={this.props.bankUsername}
                 autoCapitalize={'none'}
                 onSubmitEditing={() => {
                   this.refs.bank_password.focus();
@@ -35,6 +47,9 @@ class SetupBank extends React.Component {
               <TextInput
                 ref={'bank_password'}
                 style={s.input}
+                onChangeText={(bankPassword) => this.handleBankPassword(bankPassword)}
+                value={this.props.bankPassword}
+                autoCapitalize={'none'}
                 secureTextEntry={true}
               />
             </View>
@@ -118,5 +133,12 @@ const s = StyleSheet.create({
     flexWrap: 'wrap'
   },
 });
+
+SetupBank.PropTypes = {
+  handleBankPassword: React.PropTypes.func.isRequired,
+  handleBankUsername: React.PropTypes.func.isRequired,
+  bankPassword: React.PropTypes.string.isRequired,
+  bankUsername: React.PropTypes.string.isRequired,
+}
 
 export default SetupBank;

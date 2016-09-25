@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SelectBank from '../../components/Onboarding/SelectBank';
+import SelectBank from '../../components/onboarding/SelectBank';
 import { handleAdvance, setBank } from '../../actions/onboarding';
 
 const mapStateToProps = (state) => {

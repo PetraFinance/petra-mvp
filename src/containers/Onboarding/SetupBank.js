@@ -1,16 +1,28 @@
 import { connect } from 'react-redux';
-import SetupBank from '../../components/Onboarding/SetupBank';
+import SetupBank from '../../components/onboarding/SetupBank';
+import { setBankUsername, setBankPassword } from '../../actions/onboarding';
 
 const mapStateToProps = (state) => {
   const cpState = state.onboarding.toJS();
-  const bank = cpState.bank;
+  const bankUsername = cpState.bankUsername;
+  const bankPassword = cpState.bankPassword;
 
   return Object.assign({},
     state.onboarding.toJS(),
     {
-      bank,
+      bankUsername,
+      bankPassword,
     }
   );
 };
 
-export default connect(mapStateToProps)(SetupBank);
+const mapDispatchToProps = (dispatch) => ({
+  handleBankUsername: (bankUsername) => {
+    dispatch(setBankUsername(bankUsername));
+  },
+  handleBankPassword: (bankPassword) => {
+    dispatch(setBankPassword(bankPassword));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SetupBank);

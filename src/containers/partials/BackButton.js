@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import BackButton from '../components/BackButton';
-import { handleBack } from '../actions/onboarding';
+import BackButton from '../../components/partials/BackButton';
+import { handleBack } from '../../actions/onboarding';
 
 const mapStateToProps = (state) => {
   const cpState = state.onboarding.toJS();

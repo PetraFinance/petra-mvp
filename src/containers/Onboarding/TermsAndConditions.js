@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TermsAndConditions from '../../components/Onboarding/TermsAndConditions';
+import TermsAndConditions from '../../components/onboarding/TermsAndConditions';
 import { handleAdvance } from '../../actions/onboarding';
 
 const mapStateToProps = (state) => {

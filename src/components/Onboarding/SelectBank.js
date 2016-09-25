@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-redux-router';
-import SearchBar from '../../containers/Onboarding/SearchBar';
+import SearchBar from '../../containers/partials/SearchBar';
 
 class SelectBank extends React.Component {
   constructor(props) {
@@ -38,8 +38,7 @@ class SelectBank extends React.Component {
     const rows = banks.map((bank, i) => (
       <TouchableHighlight
         key={i}
-        underlayColor={'#72BEE4'}
-        activeOpacity={1}
+        underlayColor={'white'}
         style={s.bank}
         onPress={() => this.handleSelectBank(bank)}
       >

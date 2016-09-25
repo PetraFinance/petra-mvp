@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import AccountCreation from '../../components/Onboarding/AccountCreation';
+import AccountCreation from '../../components/onboarding/AccountCreation';
 import { handleAdvance, setEmail, setPassword, setPasswordConfirm } from '../../actions/onboarding';
 
 const mapStateToProps = (state) => {

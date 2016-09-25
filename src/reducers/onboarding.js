@@ -8,6 +8,8 @@ const defaultState = Immutable.fromJS({
   passwordConfirm: '',
   searchBankOnboarding: '',
   bank: '',
+  bankUsername: '',
+  bankPassword: '',
 });
 
 export default function (state = defaultState, action) {
@@ -28,6 +30,10 @@ export default function (state = defaultState, action) {
       return state.set('searchBankOnboarding', action.searchBankOnboarding);
     case ActionType.SET_BANK:
       return state.set('bank', action.bank);
+    case ActionType.SET_BANK_USERNAME:
+      return state.set('bankUsername', action.bankUsername);
+    case ActionType.SET_BANK_PASSWORD:
+      return state.set('bankPassword', action.bankPassword);
     default:
       return state;
   }

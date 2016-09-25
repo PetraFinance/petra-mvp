@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
-import AdvanceButton from '../../containers/AdvanceButton';
+import AdvanceButton from '../../containers/partials/AdvanceButton';
 
 class OnboardLanding extends React.Component {
 

@@ -51,3 +51,20 @@ export function setBank(bank) {
     bank,
   };
 }
+
+export const SET_BANK_USERNAME = Symbol('SET_BANK_USERNAME');
+export function setBankUsername(bankUsername) {
+  return {
+    type: SET_BANK_USERNAME,
+    bankUsername,
+  };
+}
+
+
+export const SET_BANK_PASSWORD = Symbol('SET_BANK_PASSWORD');
+export function setBankPassword(bankPassword) {
+  return {
+    type: SET_BANK_PASSWORD,
+    bankPassword,
+  };
+}

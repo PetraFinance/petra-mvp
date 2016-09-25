@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ProgressBar from '../../components/Onboarding/ProgressBar';
+import ProgressBar from '../../components/onboarding/ProgressBar';
 
 const mapStateToProps = (state) => {
   const cpState = state.onboarding.toJS();

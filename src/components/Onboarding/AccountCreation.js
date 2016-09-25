@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
-import AdvanceButton from '../../containers/AdvanceButton';
-import RadioButtonSimple from '../RadioButtonSimple';
+import AdvanceButton from '../../containers/partials/AdvanceButton';
+import RadioButtonSimple from '../partials/RadioButtonSimple';
 
 class OnboardAccountCreation extends React.Component {
 
@@ -123,15 +123,6 @@ class OnboardAccountCreation extends React.Component {
               condition={'Passwords match'}
             />
           </View>
-
-          <View style={s.blurb}>
-            <Image
-              source={blurbImage}
-              style={s.blurbImage}
-            />
-            <Text style={s.blurbText}>So baby pull me closer in the backseat of your Rover that I know you can’t afford bite that tattoo on your shoulder</Text>
-          </View>
-
         </View>
 
         <AdvanceButton
@@ -145,22 +136,6 @@ class OnboardAccountCreation extends React.Component {
 }
 
 const s = StyleSheet.create({
-  blurb: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  blurbImage: {
-    marginRight: 25,
-    height: 50,
-    width: 50,
-  },
-  blurbText: {
-    flex: 1,
-    fontFamily: 'Avenir',
-    fontSize: 12,
-    flexWrap: 'wrap'
-  },
   container: {
     flex: 1,
     marginLeft: 40,
@@ -170,7 +145,7 @@ const s = StyleSheet.create({
     flex: 2.2,
   },
   checks: {
-    flex: 0.75,
+    flex: 1.75,
     flexDirection: 'column',
   },
   page: {
