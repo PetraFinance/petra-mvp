@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from '../store/store';
 
 import OnboardLanding from '../components/onboarding/Landing';
+import OnboardProfileOverview from '../components/onboarding/ProfileOverview';
 import OnboardTermsAndConditions from './onboarding/TermsAndConditions';
 import OnboardAccountCreation from './onboarding/AccountCreation';
 import OnboardSelectBank from './onboarding/SelectBank';
@@ -30,14 +31,13 @@ class App extends React.Component {
             <Route
               name="appLanding"
               component={Landing}
-              initial={true}
               hideNavBar={true}
               title="App Landing"
             />
-
             <Route name="onboardLaunch"
               component={OnboardLanding}
               schema="onboarding"
+              initial={true}
               hideNavBar={true}
               title="Launch"
             />
@@ -64,6 +64,12 @@ class App extends React.Component {
               component={OnboardSetupBank}
               schema="onboarding"
               title="Setup Banking"
+            />
+            <Route
+              name="profileOverview"
+              component={OnboardProfileOverview}
+              schema="onboarding"
+              title="Profile Overview"
             />
           </Router>
         </View>
