@@ -68,3 +68,10 @@ export function setBankPassword(bankPassword) {
     bankPassword,
   };
 }
+
+export const FINISH_ONBOARDING = Symbol('FINISH_ONBOARDING');
+export function finishOnboarding() {
+  return {
+    type: FINISH_ONBOARDING,
+  };
+}

@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import configureStore from '../store/store';
 
 import OnboardLanding from '../components/onboarding/Landing';
-
 import OnboardTermsAndConditions from './onboarding/TermsAndConditions';
 import OnboardAccountCreation from './onboarding/AccountCreation';
 import OnboardSelectBank from './onboarding/SelectBank';
@@ -25,15 +24,47 @@ class App extends React.Component {
         <View style={{ flex: 1 } }>
           <ProgressBar/>
           <Router>
-            <Schema name="default" sceneConfig={Animations.FlatFloatFromRight} navBar={BackButton}/>
+            <Schema name="onboarding" sceneConfig={Animations.FlatFloatFromRight} navBar={BackButton}/>
+            <Schema name="default"/>
 
-            <Route name="onboardLaunch" component={OnboardLanding} initial={true} hideNavBar={true} title="Launch"/>
-            <Route name="accountCreation" component={OnboardAccountCreation} title="Account Creation"/>
-            <Route name="termsAndConditions" component={OnboardTermsAndConditions} title="Terms and Conditions"/>
-            <Route name="selectBanking" component={OnboardSelectBank} title="Select Banking"/>
-            <Route name="setupBanking" component={OnboardSetupBank} title="Setup Banking"/>
+            <Route
+              name="appLanding"
+              component={Landing}
+              initial={true}
+              hideNavBar={true}
+              title="App Landing"
+            />
 
-            <Route name="appLanding" component={Landing} hideNavBar={true} title="App Landing"/>
+            <Route name="onboardLaunch"
+              component={OnboardLanding}
+              schema="onboarding"
+              hideNavBar={true}
+              title="Launch"
+            />
+            <Route
+              name="accountCreation"
+              component={OnboardAccountCreation}
+              schema="onboarding"
+              title="Account Creation"
+            />
+            <Route
+              name="termsAndConditions"
+              component={OnboardTermsAndConditions}
+              schema="onboarding"
+              title="Terms and Conditions"
+            />
+            <Route
+              name="selectBanking"
+              component={OnboardSelectBank}
+              schema="onboarding"
+              title="Select Banking"
+            />
+            <Route
+              name="setupBanking"
+              component={OnboardSetupBank}
+              schema="onboarding"
+              title="Setup Banking"
+            />
           </Router>
         </View>
       </Provider>
