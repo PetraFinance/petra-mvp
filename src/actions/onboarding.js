@@ -70,7 +70,7 @@ export function setBankPassword(bankPassword) {
 }
 
 export const FINISH_ONBOARDING = Symbol('FINISH_ONBOARDING');
-export function finishOnboarding() {
+export function handleFinishOnboarding() {
   return {
     type: FINISH_ONBOARDING,
   };

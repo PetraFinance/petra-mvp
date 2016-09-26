@@ -8,6 +8,12 @@ class ProfileOverview extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleFinishOnboarding = this.handleFinishOnboarding.bind(this);
+  }
+
+  handleFinishOnboarding() {
+    this.props.handleFinishOnboarding();
+    Actions.appLanding();
   }
 
   render() {
@@ -18,6 +24,9 @@ class ProfileOverview extends React.Component {
             bounces={true}
             loop={false}
             height={500}
+            activeDot={
+              <View style={{backgroundColor: '#03A9F4', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />
+            }
           >
             <View style={s.slideView}>
               <Text style={s.slideHeader}>Budgets</Text>
@@ -33,7 +42,7 @@ class ProfileOverview extends React.Component {
         <View style={s.advanceWrapper}>
           <AdvanceButton
             text={"LET'S GO!"}
-            pressAction={Actions.appLanding}
+            pressAction={() => this.handleFinishOnboarding()}
           />
         </View>
       </View>

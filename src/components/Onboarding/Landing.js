@@ -15,6 +15,9 @@ class Landing extends React.Component {
           bounces={true}
           loop={false}
           height={575}
+          activeDot={
+            <View style={{backgroundColor: '#03A9F4', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />
+          }
         >
           <View style={s.slideView}>
             <View style={s.banner}>

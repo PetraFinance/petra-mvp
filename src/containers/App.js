@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from '../store/store';
 
 import OnboardLanding from '../components/onboarding/Landing';
-import OnboardProfileOverview from '../components/onboarding/ProfileOverview';
+import OnboardProfileOverview from './onboarding/ProfileOverview';
 import OnboardTermsAndConditions from './onboarding/TermsAndConditions';
 import OnboardAccountCreation from './onboarding/AccountCreation';
 import OnboardSelectBank from './onboarding/SelectBank';
@@ -15,6 +15,7 @@ import ProgressBar from './onboarding/ProgressBar';
 import Landing from '../components/main/Landing';
 
 import BackButton from './partials/BackButton';
+import Navigation from '../components/main/Navigation';
 
 const store = configureStore();
 
@@ -24,6 +25,7 @@ class App extends React.Component {
       <Provider store={store}>
         <View style={{ flex: 1 } }>
           <ProgressBar/>
+
           <Router>
             <Schema name="onboarding" sceneConfig={Animations.FlatFloatFromRight} navBar={BackButton}/>
             <Schema name="default"/>

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SetupBank from '../../components/onboarding/SetupBank';
-import { setBankUsername, setBankPassword } from '../../actions/onboarding';
+import { setBankUsername, setBankPassword, finishOnboarding } from '../../actions/onboarding';
 
 const mapStateToProps = (state) => {
   const cpState = state.onboarding.toJS();

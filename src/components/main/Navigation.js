@@ -7,13 +7,16 @@ class Navigation extends React.Component {
     return (
       <View style={s.bar}>
         <View style={s.navItem}>
-          <Text style={s.navText}>Home</Text>
+          <Text style={s.navText}>Feed</Text>
         </View>
         <View style={s.navItem}>
-          <Text style={s.navText}>Dank</Text>
+          <Text style={s.navText}>Funds</Text>
         </View>
         <View style={s.navItem}>
-          <Text style={s.navText}>Memes</Text>
+          <Text style={s.navText}>Overview</Text>
+        </View>
+        <View style={s.navItem}>
+          <Text style={s.navText}>Profile</Text>
         </View>
       </View>
     )
@@ -22,7 +25,7 @@ class Navigation extends React.Component {
 
 const s = StyleSheet.create({
   bar: {
-    height: 50,
+    height: 35,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
