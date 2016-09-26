@@ -18,7 +18,7 @@ class ProgressBar extends React.Component {
     const width = Dimensions.get('window').width;
     let progressWidth = 0;
     if (stage !== 0) {
-      progressWidth = width / 5 * stage;
+      progressWidth = width / 6 * stage;
     }
 
     return (

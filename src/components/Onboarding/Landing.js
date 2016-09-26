@@ -2,38 +2,74 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 import AdvanceButton from '../../containers/partials/AdvanceButton';
+import Swiper from 'react-native-swiper';
 
-class OnboardLanding extends React.Component {
+class Landing extends React.Component {
 
   render() {
     const banner = require('../../../assets/logo.png');
 
     return (
       <View style={s.page}>
-        <View style={s.banner}>
-          <Image
-            source={ banner }
-            style={s.bannerImage}
-           />
+        <Swiper
+          bounces={true}
+          loop={false}
+          height={575}
+        >
+          <View style={s.slideView}>
+            <View style={s.banner}>
+              <Image
+                source={ banner }
+                style={s.bannerImage}
+               />
+            </View>
+            <View style={s.intro}>
+              <Text style={s.welcome}>
+                Welcome to Petra!
+              </Text>
+              <Text style={s.desc}>
+                We’ll help you do memes and other financially sound things really easily et cetera et cetera. Dont you love memes like this?
+              </Text>
+            </View>
+          </View>
+          <View style={s.slideView}>
+            <Text style={s.slideHeader}>More</Text>
+          </View>
+          <View style={s.slideView}>
+            <Text style={s.slideHeader}>Information</Text>
+          </View>
+          <View style={s.slideView}>
+            <Text style={s.slideHeader}>Woo, pretty cool!</Text>
+          </View>
+        </Swiper>
+        <View style={s.advanceWrapper}>
+          <AdvanceButton
+            text={'CONTINUE'}
+            pressAction={Actions.accountCreation}
+          />
         </View>
-        <View style={s.intro}>
-          <Text style={s.welcome}>
-            Welcome to Petra!
-          </Text>
-          <Text style={s.desc}>
-            We’ll help you do memes and other financially sound things really easily et cetera et cetera. Dont you love memes like this?
-          </Text>
-        </View>
-        <AdvanceButton
-          text={'CONTINUE'}
-          pressAction={Actions.accountCreation}
-        />
       </View>
     );
   }
 }
 
 const s = StyleSheet.create({
+  slideView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  slideHeader: {
+    fontFamily: 'Avenir',
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#03A9F4',
+  },
+  advanceWrapper: {
+    flex: 0.25,
+    alignSelf: 'stretch',
+    justifyContent: 'flex-end',
+  },
   page: {
     flex: 1,
     flexDirection: 'column',
@@ -70,4 +106,4 @@ const s = StyleSheet.create({
   }
 });
 
-export default OnboardLanding;
+export default Landing;
