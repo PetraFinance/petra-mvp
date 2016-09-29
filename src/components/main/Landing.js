@@ -1,8 +1,29 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import Swiper from 'react-native-swiper';
+import Dimensions from 'Dimensions';
+
 import Navigation from './Navigation';
+import TipCard from '../partials/TipCard';
+import TransactionCard from '../partials/TransactionCard';
 
 class Landing extends React.Component {
+
+  setSwipeViewWidth() {
+    let width = Dimensions.get('window').width;
+    width = width - 30;
+    return {
+      width,
+      marginRight: 15,
+      marginLeft: 15,
+    };
+  }
+
+  setSwiperWidth() {
+    let width = Dimensions.get('window').width;
+    width = width - 30;
+    return width;
+  }
 
   render() {
     return (
@@ -10,97 +31,75 @@ class Landing extends React.Component {
         <View style={s.pageHeader}>
           <Text style={s.pageHeaderText}>Overview</Text>
         </View>
-        <ScrollView style={s.container}>
+        <ScrollView style={s.scrollContainer}>
           <View style={s.overviewPanel}>
           </View>
-          <View style={s.tipPanel}>
-            <Text style={s.tip}>Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life</Text>
-            <View style={s.tipTakeAction}>
-              <Text style={s.learnMoreText}>LEARN MORE</Text>
-              <Text style={s.adjustFundsText}>ADJUST FUNDS</Text>
+
+          <Swiper
+            bounces={true}
+            loop={false}
+            height={160}
+            activeDot={
+              <View style={{backgroundColor: '#03A9F4', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />
+            }
+          >
+
+            <View style={this.setSwipeViewWidth()}>
+              <TipCard
+                tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
+                leftText={'LEARN MORE'}
+                rightText={'ADJUST FUNDS'}
+              />
             </View>
-          </View>
-
-          <View style={s.dateEntry}>
-
-            <View style={s.dateDecoration}></View>
-            <Text style={s.date}>TODAY, SEP 19TH</Text>
-
-            <View style={s.transHistory}>
-              <View style={s.general}>
-                <Text style={s.spendingHeader}>GENERAL SPENDING</Text>
-                <View style={s.expenseEntry}>
-                  <Text style={s.expenseDesc}>Starbucks</Text>
-                  <Text style={s.expenseCost}>$9.99</Text>
-                </View>
-                <View style={s.expenseEntry}>
-                  <Text style={s.expenseDesc}>Walgreens</Text>
-                  <Text style={s.expenseCost}>$159.99</Text>
-                </View>
-                <View style={s.expenseEntry}>
-                  <Text style={s.expenseDesc}>Dank Memes</Text>
-                  <Text style={s.expenseCost}>$45.23</Text>
-                </View>
-              </View>
-              <View style={s.general}>
-                <Text style={s.spendingHeader}>RECURRING SPENDING</Text>
-                <View style={s.expenseEntry}>
-                  <Text style={s.expenseDesc}>Amazon</Text>
-                  <Text style={s.expenseCost}>$54.32</Text>
-                </View>
-                <View style={s.expenseEntry}>
-                  <Text style={s.expenseDesc}>Asian Ghetto</Text>
-                  <Text style={s.expenseCost}>$23.41</Text>
-                </View>
-              </View>
-              <View style={s.timeline}></View>
+            <View style={this.setSwipeViewWidth()}>
+              <TipCard
+                tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
+                leftText={'LEARN MORE'}
+                rightText={'ADJUST FUNDS'}
+              />
             </View>
-          </View>
+            <View style={this.setSwipeViewWidth()}>
+              <TipCard
+                tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
+                leftText={'LEARN MORE'}
+                rightText={'ADJUST FUNDS'}
+              />
+            </View>
+          </Swiper>
 
-          <View style={s.dateEntry}>
+          <View style={s.container}>
+            <View style={s.dateEntry}>
+              <View style={s.dateDecoration}></View>
+              <Text style={s.date}>TODAY, SEP 19TH</Text>
 
-            <View style={s.dateDecoration}></View>
-            <Text style={s.date}>SEP 20TH</Text>
+              <View style={s.transHistory}>
 
-            <View style={s.transHistory}>
-              <View style={s.general}>
-                <Text style={s.spendingHeader}>GENERAL SPENDING</Text>
-                <View style={s.expenseEntry}>
-                  <Text style={s.expenseDesc}>Starbucks</Text>
-                  <Text style={s.expenseCost}>$9.99</Text>
-                </View>
-                <View style={s.expenseEntry}>
-                  <Text style={s.expenseDesc}>Walgreens</Text>
-                  <Text style={s.expenseCost}>$159.99</Text>
-                </View>
-                <View style={s.expenseEntry}>
-                  <Text style={s.expenseDesc}>Dank Memes</Text>
-                  <Text style={s.expenseCost}>$45.23</Text>
-                </View>
+                <TransactionCard
+                  category={'GENERAL SPENDING'}
+                />
+
+                <View style={s.timeline}></View>
               </View>
-              <View style={s.general}>
-                <Text style={s.spendingHeader}>RECURRING SPENDING</Text>
-                <View style={s.expenseEntry}>
-                  <Text style={s.expenseDesc}>Amazon</Text>
-                  <Text style={s.expenseCost}>$54.32</Text>
-                </View>
-                <View style={s.expenseEntry}>
-                  <Text style={s.expenseDesc}>Asian Ghetto</Text>
-                  <Text style={s.expenseCost}>$23.41</Text>
-                </View>
-              </View>
-              <View style={s.timeline}></View>
             </View>
           </View>
 
         </ScrollView>
-
       </View>
     );
   }
 }
 
 const s = StyleSheet.create({
+  scrollContainer: {
+    marginTop: 15,
+  },
+  container: {
+    flex: 1,
+    marginRight: 15,
+    marginLeft: 15,
+    flexDirection: 'column',
+    backgroundColor: 'white',
+  },
   page: {
     flex: 1,
   },
@@ -112,50 +111,6 @@ const s = StyleSheet.create({
     borderColor: '#03A9F4',
     borderWidth: 2,
     borderRadius: 5,
-  },
-  spendingHeader: {
-    marginBottom: 10,
-    fontFamily: 'Avenir',
-    fontWeight: 'bold',
-  },
-  expenseEntry: {
-    flex: 1,
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-  expenseCost: {
-    flex: 1,
-    textAlign: 'right',
-    fontFamily: 'Avenir',
-  },
-  expenseDesc: {
-    fontFamily: 'Avenir',
-  },
-  tipPanel: {
-    marginBottom: 15,
-    padding: 10,
-    borderColor: '#03A9F4',
-    borderWidth: 2,
-    borderRadius: 5,
-  },
-  tip: {
-    fontFamily: 'Avenir',
-    marginBottom: 10,
-  },
-  tipTakeAction: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  adjustFundsText: {
-    flex: 1,
-    textAlign: 'right',
-    fontFamily: 'Avenir',
-    fontWeight: 'bold',
-  },
-  learnMoreText: {
-    flex: 0.5,
-    fontWeight: 'bold',
-    fontFamily: 'Avenir',
   },
   dateEntry: {
     flex: 1,
@@ -187,6 +142,8 @@ const s = StyleSheet.create({
   },
   overviewPanel: {
     height: 150,
+    marginRight: 15,
+    marginLeft: 15,
     marginBottom: 15,
     backgroundColor: '#03A9F4',
     borderRadius: 5,
@@ -201,14 +158,6 @@ const s = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#03A9F4',
-  },
-  container: {
-    flex: 1,
-    marginRight: 15,
-    marginLeft: 15,
-    marginTop: 15,
-    flexDirection: 'column',
-    backgroundColor: 'white',
   },
 });
 

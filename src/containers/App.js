@@ -33,13 +33,13 @@ class App extends React.Component {
             <Route
               name="appLanding"
               component={Landing}
+              initial={true}
               hideNavBar={true}
               title="App Landing"
             />
             <Route name="onboardLaunch"
               component={OnboardLanding}
               schema="onboarding"
-              initial={true}
               hideNavBar={true}
               title="Launch"
             />
