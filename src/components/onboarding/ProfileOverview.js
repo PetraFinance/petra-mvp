@@ -13,7 +13,7 @@ class ProfileOverview extends React.Component {
 
   handleFinishOnboarding() {
     this.props.handleFinishOnboarding();
-    Actions.appLanding();
+    Actions.overview();
   }
 
   render() {

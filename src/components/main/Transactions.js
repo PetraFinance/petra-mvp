@@ -7,7 +7,7 @@ import Navigation from './Navigation';
 import TipCard from '../partials/cards/TipCard';
 import TransactionCard from '../partials/cards/TransactionCard';
 
-class Landing extends React.Component {
+class Transactions extends React.Component {
 
   setSwipeViewWidth() {
     let width = Dimensions.get('window').width;
@@ -29,7 +29,7 @@ class Landing extends React.Component {
     return (
       <View style={s.page}>
         <View style={s.pageHeader}>
-          <Text style={s.pageHeaderText}>Overview</Text>
+          <Text style={s.pageHeaderText}>Transactions</Text>
         </View>
         <ScrollView style={s.scrollContainer}>
           <View style={s.overviewPanel}>
@@ -43,26 +43,25 @@ class Landing extends React.Component {
               <View style={{backgroundColor: '#03A9F4', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />
             }
           >
-
             <View style={this.setSwipeViewWidth()}>
               <TipCard
                 tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
-                leftText={'LEARN MORE'}
-                rightText={'ADJUST FUNDS'}
+                leftText={'Learn More'}
+                rightText={'Adjust Funds'}
               />
             </View>
             <View style={this.setSwipeViewWidth()}>
               <TipCard
                 tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
-                leftText={'LEARN MORE'}
-                rightText={'ADJUST FUNDS'}
+                leftText={'Learn More'}
+                rightText={'Adjust Funds'}
               />
             </View>
             <View style={this.setSwipeViewWidth()}>
               <TipCard
                 tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
-                leftText={'LEARN MORE'}
-                rightText={'ADJUST FUNDS'}
+                leftText={'Learn More'}
+                rightText={'Adjust Funds'}
               />
             </View>
           </Swiper>
@@ -71,24 +70,19 @@ class Landing extends React.Component {
             <View style={s.dateEntry}>
               <View style={s.dateDecoration}></View>
               <Text style={s.date}>TODAY, SEP 19TH</Text>
-
               <View style={s.transHistory}>
-
                 <TransactionCard
                   category={'GENERAL SPENDING'}
                   marginBottom={30}
                 />
-
                 <TransactionCard
                   category={'RECURRING SPENDING'}
                   marginBottom={30}
                 />
-
                 <View style={s.timeline}></View>
               </View>
             </View>
           </View>
-
         </ScrollView>
         <Navigation/>
       </View>
@@ -105,10 +99,10 @@ const s = StyleSheet.create({
     marginRight: 15,
     marginLeft: 15,
     flexDirection: 'column',
-    backgroundColor: 'white',
   },
   page: {
     flex: 1,
+    backgroundColor: '#ECEFF1',
   },
   general: {
     alignSelf: 'stretch',
@@ -159,6 +153,7 @@ const s = StyleSheet.create({
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#F9FAFC',
   },
   pageHeaderText: {
     fontFamily: 'Avenir',
@@ -168,4 +163,4 @@ const s = StyleSheet.create({
   },
 });
 
-export default Landing;
+export default Transactions;

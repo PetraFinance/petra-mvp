@@ -23,8 +23,8 @@ class TipCard extends React.Component {
   render() {
     return (
       <Card
-        borderColor={'#03A9F4'}
-        backgroundColor={'white'}
+        borderColor={'#455A64'}
+        backgroundColor={'#455A64'}
         children={this.genTipCard()}
       />
     );
@@ -41,6 +41,7 @@ const s = StyleSheet.create({
   },
   tip: {
     fontFamily: 'Avenir',
+    color: 'white',
     marginBottom: 10,
   },
   tipTakeAction: {
@@ -52,11 +53,13 @@ const s = StyleSheet.create({
     textAlign: 'right',
     fontFamily: 'Avenir',
     fontWeight: 'bold',
+    color: 'white',
   },
   leftText: {
     flex: 0.5,
-    fontWeight: 'bold',
     fontFamily: 'Avenir',
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
 

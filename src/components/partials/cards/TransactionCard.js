@@ -40,7 +40,7 @@ class TransactionCard extends React.Component {
   render() {
     return (
       <Card
-        borderColor={'#03A9F4'}
+        borderColor={'#CCD0D3'}
         backgroundColor={'white'}
         children={this.genTransactionCard()}
         marginBottom={this.props.marginBottom}
@@ -67,7 +67,12 @@ const s = StyleSheet.create({
     marginBottom: 10,
     fontFamily: 'Avenir',
     fontWeight: 'bold',
+    fontSize: 12,
   },
 });
+
+TransactionCard.PropTypes = {
+  category: React.PropTypes.string.isRequired,
+};
 
 export default TransactionCard;

@@ -1,23 +1,47 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { Actions } from 'react-native-redux-router';
 
 class Navigation extends React.Component {
 
   render() {
+
+    const categories = [
+      {
+        name: 'Overview',
+        action: Actions.overview,
+      },
+      {
+        name: 'Funds',
+        action: Actions.funds,
+      },
+      {
+        name: 'Transactions',
+        action: Actions.transactions,
+      },
+      {
+        name: 'Learn',
+        action: Actions.learn,
+      },
+      {
+        name: 'Settings',
+        action: Actions.settings,
+      },
+    ];
+    const navigation = categories.map((category, i) => (
+      <TouchableHighlight
+        key={i}
+        underlayColor={'#F8F9FA'}
+        style={s.navItem}
+        onPress={category.action}
+      >
+        <Text style={s.navText}>{category.name}</Text>
+      </TouchableHighlight>
+    ));
+
     return (
       <View style={s.bar}>
-        <View style={s.navItem}>
-          <Text style={s.navText}>Feed</Text>
-        </View>
-        <View style={s.navItem}>
-          <Text style={s.navText}>Funds</Text>
-        </View>
-        <View style={s.navItem}>
-          <Text style={s.navText}>Overview</Text>
-        </View>
-        <View style={s.navItem}>
-          <Text style={s.navText}>Profile</Text>
-        </View>
+        {navigation}
       </View>
     )
   }
@@ -29,11 +53,12 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#03A9F4',
+    backgroundColor: '#F8F9FA',
   },
   navText: {
-    color: 'white',
+    color: '#03A9F4',
     textAlign: 'center',
+    fontSize: 11,
   },
   navItem: {
     flex: 1,

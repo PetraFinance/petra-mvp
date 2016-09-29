@@ -12,7 +12,10 @@ import OnboardSelectBank from './onboarding/SelectBank';
 import OnboardSetupBank from './onboarding/SetupBank';
 import ProgressBar from './onboarding/ProgressBar';
 
-import Landing from '../components/main/Landing';
+import Overview from '../components/main/Overview';
+import Funds from '../components/main/Funds';
+import Transactions from '../components/main/Transactions';
+import Settings from '../components/main/Settings';
 
 import BackButton from './partials/BackButton';
 import Navigation from '../components/main/Navigation';
@@ -23,7 +26,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={{ flex: 1 } }>
+        <View style={{ flex: 1, backgroundColor: '#F9FAFC', }}>
           <ProgressBar/>
 
           <Router>
@@ -31,12 +34,31 @@ class App extends React.Component {
             <Schema name="default"/>
 
             <Route
-              name="appLanding"
-              component={Landing}
+              name="overview"
+              component={Overview}
               initial={true}
               hideNavBar={true}
-              title="App Landing"
+              title="Overview"
             />
+            <Route
+              name="funds"
+              component={Funds}
+              hideNavBar={true}
+              title="funds"
+            />
+            <Route
+              name="transactions"
+              component={Transactions}
+              hideNavBar={true}
+              title="Transactions"
+            />
+            <Route
+              name="settings"
+              component={Settings}
+              hideNavBar={true}
+              title="Settings"
+            />
+
             <Route name="onboardLaunch"
               component={OnboardLanding}
               schema="onboarding"
