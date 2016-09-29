@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 import AdvanceButton from '../../containers/partials/AdvanceButton';
-import RadioButtonSimple from '../partials/RadioButtonSimple';
+import RadioButtonSimple from '../partials/buttons/RadioButtonSimple';
 import Swiper from 'react-native-swiper';
 
 class OnboardAccountCreation extends React.Component {

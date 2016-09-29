@@ -1,19 +1,21 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-class Card extends React.Component {
+class BaseCard extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
   setStyle() {
-    const backgroundColor = this.props.backgroundColor;
-    const borderColor = this.props.borderColor;
+    const backgroundColor = this.props.backgroundColor || "white";
+    const borderColor = this.props.borderColor || '';
+    const marginBottom = this.props.marginBottom || 0;
 
     return {
-      backgroundColor: backgroundColor,
-      borderColor: borderColor,
+      marginBottom,
+      backgroundColor,
+      borderColor,
       alignSelf: 'stretch',
       padding: 10,
       borderWidth: 2,
@@ -30,8 +32,8 @@ class Card extends React.Component {
   }
 }
 
-Card.propTypes = {
+BaseCard.propTypes = {
 
 };
 
-export default Card;
+export default BaseCard;

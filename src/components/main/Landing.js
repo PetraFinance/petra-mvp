@@ -4,8 +4,8 @@ import Swiper from 'react-native-swiper';
 import Dimensions from 'Dimensions';
 
 import Navigation from './Navigation';
-import TipCard from '../partials/TipCard';
-import TransactionCard from '../partials/TransactionCard';
+import TipCard from '../partials/cards/TipCard';
+import TransactionCard from '../partials/cards/TransactionCard';
 
 class Landing extends React.Component {
 
@@ -76,6 +76,12 @@ class Landing extends React.Component {
 
                 <TransactionCard
                   category={'GENERAL SPENDING'}
+                  marginBottom={30}
+                />
+
+                <TransactionCard
+                  category={'RECURRING SPENDING'}
+                  marginBottom={30}
                 />
 
                 <View style={s.timeline}></View>
@@ -84,6 +90,7 @@ class Landing extends React.Component {
           </View>
 
         </ScrollView>
+        <Navigation/>
       </View>
     );
   }

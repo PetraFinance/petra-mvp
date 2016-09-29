@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import AdvanceButton from '../../components/partials/AdvanceButton';
+import AdvanceButton from '../../components/partials/buttons/AdvanceButton';
 import { handleAdvance } from '../../actions/onboarding';
 
 const mapStateToProps = (state) => {

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BackButton from '../../components/partials/BackButton';
+import BackButton from '../../components/partials/buttons/BackButton';
 import { handleBack } from '../../actions/onboarding';
 
 const mapStateToProps = (state) => {

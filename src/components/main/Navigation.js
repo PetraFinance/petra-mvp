@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 
 class Navigation extends React.Component {
 
@@ -25,14 +25,10 @@ class Navigation extends React.Component {
 
 const s = StyleSheet.create({
   bar: {
-    height: 35,
+    height: 50,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#03A9F4',
-  },
-  topPanel: {
-    height: 150,
     backgroundColor: '#03A9F4',
   },
   navText: {

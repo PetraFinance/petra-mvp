@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Card from '../partials/Card';
+import Card from './BaseCard';
 
 class TransactionCard extends React.Component {
 
@@ -43,6 +43,7 @@ class TransactionCard extends React.Component {
         borderColor={'#03A9F4'}
         backgroundColor={'white'}
         children={this.genTransactionCard()}
+        marginBottom={this.props.marginBottom}
       />
     );
   }
