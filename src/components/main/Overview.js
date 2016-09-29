@@ -32,6 +32,7 @@ class Overview extends React.Component {
       <BaseView
         title={this.props.title}
         children={genOverview()}
+        scroll={true}
       />
     );
   }

@@ -6,14 +6,31 @@ import Navigation from './Navigation';
 class BaseView extends React.Component {
 
   render() {
+
+    const viewType = (scroll) => {
+      if (scroll) {
+        return (
+          <ScrollView style={s.scrollContainer}>
+            {this.props.children}
+          </ScrollView>
+        );
+      } else {
+        return (
+          <View style={s.viewContainer}>
+            {this.props.children}
+          </View>
+        );
+      }
+    }
+
     return (
       <View style={s.page}>
         <View style={s.pageHeader}>
           <Text style={s.pageHeaderText}>{this.props.title}</Text>
         </View>
-        <ScrollView style={s.scrollContainer}>
-          {this.props.children}
-        </ScrollView>
+
+        {viewType(this.props.scroll)}
+
         <Navigation
           activeRoute={this.props.title}
         />
@@ -39,7 +56,11 @@ const s = StyleSheet.create({
     fontWeight: 'bold',
     color: '#03A9F4',
   },
+  viewContainer: {
+    flex: 1,
+  },
   scrollContainer: {
+    flex: 1,
     paddingTop: 15,
   },
 });

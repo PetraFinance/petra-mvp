@@ -15,6 +15,7 @@ import ProgressBar from './onboarding/ProgressBar';
 import Overview from '../components/main/Overview';
 import Funds from '../components/main/Funds';
 import Transactions from '../components/main/Transactions';
+import Learn from '../components/main/Learn';
 import Settings from '../components/main/Settings';
 
 import BackButton from './partials/BackButton';
@@ -51,6 +52,12 @@ class App extends React.Component {
               component={Transactions}
               hideNavBar={true}
               title="Transactions"
+            />
+            <Route
+              name="learn"
+              component={Learn}
+              hideNavBar={true}
+              title="Learn"
             />
             <Route
               name="settings"
