@@ -2,29 +2,27 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Navigation from './Navigation';
-import BaseView from './BaseView';
 
-class Settings extends React.Component {
+class BaseView extends React.Component {
 
   render() {
-
-    const genSettings = () => (
-      <View></View>
-    );
-
     return (
-      <BaseView
-        title={this.props.title}
-        children={genSettings()}
-      />
+      <View style={s.page}>
+        <View style={s.pageHeader}>
+          <Text style={s.pageHeaderText}>{this.props.title}</Text>
+        </View>
+        <ScrollView style={s.scrollContainer}>
+          {this.props.children}
+        </ScrollView>
+        <Navigation
+          activeRoute={this.props.title}
+        />
+      </View>
     );
   }
 }
 
 const s = StyleSheet.create({
-  scrollContainer: {
-    marginTop: 15,
-  },
   page: {
     flex: 1,
     backgroundColor: '#ECEFF1',
@@ -41,6 +39,9 @@ const s = StyleSheet.create({
     fontWeight: 'bold',
     color: '#03A9F4',
   },
+  scrollContainer: {
+    paddingTop: 15,
+  },
 });
 
-export default Settings;
+export default BaseView;

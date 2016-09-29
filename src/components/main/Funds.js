@@ -2,19 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Navigation from './Navigation';
+import BaseView from './BaseView';
 
 class Funds extends React.Component {
 
   render() {
+
+    const genFunds = () => (
+      <View></View>
+    );
+
     return (
-      <View style={s.page}>
-        <View style={s.pageHeader}>
-          <Text style={s.pageHeaderText}>Funds</Text>
-        </View>
-        <ScrollView style={s.scrollContainer}>
-        </ScrollView>
-        <Navigation/>
-      </View>
+      <BaseView
+        title={this.props.title}
+        children={genFunds()}
+      />
     );
   }
 }
@@ -38,12 +40,6 @@ const s = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#03A9F4',
-  },
-  container: {
-    flex: 1,
-    marginRight: 15,
-    marginLeft: 15,
-    flexDirection: 'column',
   },
 });
 

@@ -11,12 +11,12 @@ class TransactionCard extends React.Component {
   genTransactionCard() {
     const transactions = [
       {
-        "expense": "Starbucks",
-        "cost": "$14.99"
+        "expense": "Equator Coffee & Tea",
+        "cost": "$4.00"
       },
       {
-        "expense": "Starbucks",
-        "cost": "$14.99"
+        "expense": "Walgreens",
+        "cost": "$17.63"
       },
     ]
 
@@ -24,7 +24,7 @@ class TransactionCard extends React.Component {
 
     let rows = transactions.map((entry, i) => (
       <View
-        style={s.expenseEntry}
+        style={s.section}
         key={i}
       >
         <Text style={s.expenseDesc}>{entry.expense}</Text>
@@ -32,8 +32,7 @@ class TransactionCard extends React.Component {
       </View>
     ));
 
-    rows.unshift(<Text key={numTransactions + 1} style={s.spendingHeader}>{this.props.category}</Text>);
-
+    rows.unshift(<Text key={numTransactions + 1} style={s.sectionHeader}>{this.props.category}</Text>);
     return rows;
   }
 
@@ -50,7 +49,7 @@ class TransactionCard extends React.Component {
 }
 
 const s = StyleSheet.create({
-  expenseEntry: {
+  section: {
     flex: 1,
     flexDirection: 'row',
     marginBottom: 10,
@@ -63,7 +62,7 @@ const s = StyleSheet.create({
   expenseDesc: {
     fontFamily: 'Avenir',
   },
-  spendingHeader: {
+  sectionHeader: {
     marginBottom: 10,
     fontFamily: 'Avenir',
     fontWeight: 'bold',

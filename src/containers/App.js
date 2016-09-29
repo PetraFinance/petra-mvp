@@ -44,7 +44,7 @@ class App extends React.Component {
               name="funds"
               component={Funds}
               hideNavBar={true}
-              title="funds"
+              title="Funds"
             />
             <Route
               name="transactions"

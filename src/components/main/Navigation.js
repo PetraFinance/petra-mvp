@@ -5,7 +5,6 @@ import { Actions } from 'react-native-redux-router';
 class Navigation extends React.Component {
 
   render() {
-
     const categories = [
       {
         name: 'Overview',
@@ -28,6 +27,15 @@ class Navigation extends React.Component {
         action: Actions.settings,
       },
     ];
+
+    const setStyle = (route) => {
+      if (this.props.activeRoute === route) {
+        return s.navTextActive;
+      } else {
+        return s.navText;
+      }
+    };
+
     const navigation = categories.map((category, i) => (
       <TouchableHighlight
         key={i}
@@ -35,7 +43,7 @@ class Navigation extends React.Component {
         style={s.navItem}
         onPress={category.action}
       >
-        <Text style={s.navText}>{category.name}</Text>
+        <Text style={setStyle(category.name)}>{category.name}</Text>
       </TouchableHighlight>
     ));
 
@@ -56,12 +64,19 @@ const s = StyleSheet.create({
     backgroundColor: '#F8F9FA',
   },
   navText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 11,
+  },
+  navTextActive: {
     color: '#03A9F4',
     textAlign: 'center',
     fontSize: 11,
   },
   navItem: {
     flex: 1,
+    justifyContent: 'center',
+    alignSelf: 'stretch',
   },
 });
 

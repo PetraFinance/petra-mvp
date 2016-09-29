@@ -8,8 +8,8 @@ class TipCard extends React.Component {
     super(props);
   }
 
-  genTipCard() {
-    return (
+  render() {
+    const genTipCard = () => (
       <View>
         <Text style={s.tip}>{this.props.tipText}</Text>
         <View style={s.tipTakeAction}>
@@ -18,14 +18,12 @@ class TipCard extends React.Component {
         </View>
       </View>
     );
-  }
 
-  render() {
     return (
       <Card
         borderColor={'#455A64'}
         backgroundColor={'#455A64'}
-        children={this.genTipCard()}
+        children={genTipCard()}
       />
     );
   }
@@ -50,7 +48,6 @@ const s = StyleSheet.create({
   },
   rightText: {
     flex: 1,
-    textAlign: 'right',
     fontFamily: 'Avenir',
     fontWeight: 'bold',
     color: 'white',

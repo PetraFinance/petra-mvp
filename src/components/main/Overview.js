@@ -2,48 +2,69 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Navigation from './Navigation';
+import BaseView from './BaseView';
 
 class Overview extends React.Component {
 
   render() {
-    return (
-      <View style={s.page}>
-        <View style={s.pageHeader}>
-          <Text style={s.pageHeaderText}>Overview</Text>
+
+    const genOverview = () => (
+      <View>
+        <Text style={s.sectionHeader}>Bank Accounts</Text>
+        <View style={s.section}>
+          <View style={s.sectionEntry}>
+            <Text style={s.entryTitle}>Bank of America</Text>
+            <Text style={s.entryCost}>$12,456</Text>
+          </View>
+          <Text style={s.entryDesc}>Bank of America Core Checking</Text>
         </View>
-        <ScrollView style={s.scrollContainer}>
-        </ScrollView>
-        <Navigation/>
+        <View style={s.section}>
+          <View style={s.sectionEntry}>
+            <Text style={s.entryTitle}>Bank of America</Text>
+            <Text style={s.entryCost}>$9,420</Text>
+          </View>
+          <Text style={s.entryDesc}>Bank of America Core Savings</Text>
+        </View>
       </View>
+    );
+
+    return (
+      <BaseView
+        title={this.props.title}
+        children={genOverview()}
+      />
     );
   }
 }
 
 const s = StyleSheet.create({
-  scrollContainer: {
-    marginTop: 15,
+  section: {
+    backgroundColor: 'white',
+    padding: 10,
   },
-  page: {
-    flex: 1,
-    backgroundColor: '#ECEFF1',
-  },
-  pageHeader: {
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#F9FAFC',
-  },
-  pageHeaderText: {
+  sectionHeader: {
+    marginLeft: 10,
+    marginBottom: 10,
     fontFamily: 'Avenir',
-    fontSize: 20,
+    fontSize: 12,
     fontWeight: 'bold',
-    color: '#03A9F4',
   },
-  container: {
+  sectionEntry: {
+    flexDirection: 'row',
+  },
+  entryTitle: {
     flex: 1,
-    marginRight: 15,
-    marginLeft: 15,
-    flexDirection: 'column',
+    fontFamily: 'Avenir',
+  },
+  entryCost: {
+    flex: 1,
+    fontFamily: 'Avenir',
+    textAlign: 'right',
+  },
+  entryDesc: {
+    flex: 1,
+    fontFamily: 'Avenir',
+    color: '#8A8B8C',
   },
 });
 

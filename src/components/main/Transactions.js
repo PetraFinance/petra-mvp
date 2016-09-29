@@ -4,6 +4,7 @@ import Swiper from 'react-native-swiper';
 import Dimensions from 'Dimensions';
 
 import Navigation from './Navigation';
+import BaseView from './BaseView';
 import TipCard from '../partials/cards/TipCard';
 import TransactionCard from '../partials/cards/TransactionCard';
 
@@ -26,83 +27,76 @@ class Transactions extends React.Component {
   }
 
   render() {
-    return (
-      <View style={s.page}>
-        <View style={s.pageHeader}>
-          <Text style={s.pageHeaderText}>Transactions</Text>
+
+    const genTransactions = () => (
+      <View>
+        <View style={s.overviewPanel}>
         </View>
-        <ScrollView style={s.scrollContainer}>
-          <View style={s.overviewPanel}>
+        <Swiper
+          bounces={true}
+          loop={false}
+          height={160}
+          activeDot={
+            <View style={{backgroundColor: '#03A9F4', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />
+          }
+        >
+          <View style={this.setSwipeViewWidth()}>
+            <TipCard
+              tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
+              leftText={'Learn More'}
+              rightText={'Adjust Funds'}
+            />
           </View>
-
-          <Swiper
-            bounces={true}
-            loop={false}
-            height={160}
-            activeDot={
-              <View style={{backgroundColor: '#03A9F4', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />
-            }
-          >
-            <View style={this.setSwipeViewWidth()}>
-              <TipCard
-                tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
-                leftText={'Learn More'}
-                rightText={'Adjust Funds'}
+          <View style={this.setSwipeViewWidth()}>
+            <TipCard
+              tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
+              leftText={'Learn More'}
+              rightText={'Adjust Funds'}
+            />
+          </View>
+          <View style={this.setSwipeViewWidth()}>
+            <TipCard
+              tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
+              leftText={'Learn More'}
+              rightText={'Adjust Funds'}
+            />
+          </View>
+        </Swiper>
+        <View style={s.container}>
+          <View style={s.dateEntry}>
+            <View style={s.dateDecoration}></View>
+            <Text style={s.date}>TODAY, SEP 19TH</Text>
+            <View style={s.transHistory}>
+              <TransactionCard
+                category={'GENERAL SPENDING'}
+                marginBottom={30}
               />
-            </View>
-            <View style={this.setSwipeViewWidth()}>
-              <TipCard
-                tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
-                leftText={'Learn More'}
-                rightText={'Adjust Funds'}
+              <TransactionCard
+                category={'RECURRING SPENDING'}
+                marginBottom={30}
               />
-            </View>
-            <View style={this.setSwipeViewWidth()}>
-              <TipCard
-                tipText={'Oh this has gotta be the good life, oh this has gotta be the good life, feels like this city is on fire tonight, oh this has gotta be the good life'}
-                leftText={'Learn More'}
-                rightText={'Adjust Funds'}
-              />
-            </View>
-          </Swiper>
-
-          <View style={s.container}>
-            <View style={s.dateEntry}>
-              <View style={s.dateDecoration}></View>
-              <Text style={s.date}>TODAY, SEP 19TH</Text>
-              <View style={s.transHistory}>
-                <TransactionCard
-                  category={'GENERAL SPENDING'}
-                  marginBottom={30}
-                />
-                <TransactionCard
-                  category={'RECURRING SPENDING'}
-                  marginBottom={30}
-                />
-                <View style={s.timeline}></View>
-              </View>
+              <View style={s.timeline}></View>
             </View>
           </View>
-        </ScrollView>
-        <Navigation/>
+        </View>
       </View>
+    )
+
+    return (
+      <BaseView
+        title={this.props.title}
+        children={genTransactions()}
+      />
     );
   }
 }
 
 const s = StyleSheet.create({
-  scrollContainer: {
-    marginTop: 15,
-  },
   container: {
     flex: 1,
     marginRight: 15,
     marginLeft: 15,
     flexDirection: 'column',
-  },
-  page: {
-    flex: 1,
-    backgroundColor: '#ECEFF1',
   },
   general: {
     alignSelf: 'stretch',
@@ -148,18 +142,6 @@ const s = StyleSheet.create({
     marginBottom: 15,
     backgroundColor: '#03A9F4',
     borderRadius: 5,
-  },
-  pageHeader: {
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#F9FAFC',
-  },
-  pageHeaderText: {
-    fontFamily: 'Avenir',
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#03A9F4',
   },
 });
 

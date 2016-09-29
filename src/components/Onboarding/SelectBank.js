@@ -38,7 +38,7 @@ class SelectBank extends React.Component {
     const rows = banks.map((bank, i) => (
       <TouchableHighlight
         key={i}
-        underlayColor={'white'}
+        underlayColor={'#F9FAFC'}
         style={s.bank}
         onPress={() => this.handleSelectBank(bank)}
       >
@@ -82,7 +82,7 @@ const s = StyleSheet.create({
   bank: {
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: 'white',
+    borderColor: '#F9FAFC',
     height: 40,
     justifyContent: 'center',
     alignItems: 'flex-start',
