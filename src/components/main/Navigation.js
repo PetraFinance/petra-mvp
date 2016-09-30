@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 
 class Navigation extends React.Component {
@@ -7,16 +7,16 @@ class Navigation extends React.Component {
   render() {
     const categories = [
       {
-        name: 'Overview',
-        action: Actions.overview,
+        name: 'Transactions',
+        action: Actions.transactions,
       },
       {
         name: 'Funds',
         action: Actions.funds,
       },
       {
-        name: 'Transactions',
-        action: Actions.transactions,
+        name: 'Overview',
+        action: Actions.overview,
       },
       {
         name: 'Learn',
@@ -36,6 +36,13 @@ class Navigation extends React.Component {
       }
     };
 
+    const setImage = (route, i) => {
+      const module = routingStates[route.toLowerCase()][i];
+      return (
+        <Image source={module} style={s.navIcon}/>
+      );
+    }
+
     const navigation = categories.map((category, i) => (
       <TouchableHighlight
         key={i}
@@ -43,7 +50,10 @@ class Navigation extends React.Component {
         style={s.navItem}
         onPress={category.action}
       >
-        <Text style={setStyle(category.name)}>{category.name}</Text>
+        <View>
+          {setImage(this.props.activeRoute, i)}
+          <Text style={setStyle(category.name)}>{category.name}</Text>
+        </View>
       </TouchableHighlight>
     ));
 
@@ -57,7 +67,7 @@ class Navigation extends React.Component {
 
 const s = StyleSheet.create({
   bar: {
-    height: 50,
+    height: 60,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -66,18 +76,79 @@ const s = StyleSheet.create({
   navText: {
     color: 'black',
     textAlign: 'center',
-    fontSize: 11,
+    fontSize: 10,
   },
   navTextActive: {
     color: '#03A9F4',
     textAlign: 'center',
-    fontSize: 11,
+    fontSize: 10,
+  },
+  navIcon: {
+    flex: 1,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginBottom: 3,
   },
   navItem: {
     flex: 1,
     justifyContent: 'center',
-    alignSelf: 'stretch',
+    alignSelf: 'center',
   },
 });
+
+// React Native does not allow for dynamic data in require statements.
+
+const fundsIcon = require('../../../assets/navigation/funds.png');
+const fundsIconActive = require('../../../assets/navigation/fundsActive.png');
+
+const learnIcon = require('../../../assets/navigation/learn.png');
+const learnIconActive = require('../../../assets/navigation/learnActive.png');
+
+const overviewIcon = require('../../../assets/navigation/overview.png');
+const overviewIconActive = require('../../../assets/navigation/overviewActive.png');
+
+const transactionsIcon = require('../../../assets/navigation/transactions.png');
+const transactionsIconActive = require('../../../assets/navigation/transactionsActive.png');
+
+const settingsIcon = require('../../../assets/navigation/settings.png');
+const settingsIconActive = require('../../../assets/navigation/settingsActive.png');
+
+const routingStates = {
+  'transactions': [
+    transactionsIconActive,
+    fundsIcon,
+    overviewIcon,
+    learnIcon,
+    settingsIcon,
+  ],
+  'funds': [
+    transactionsIcon,
+    fundsIconActive,
+    overviewIcon,
+    learnIcon,
+    settingsIcon,
+  ],
+  'overview': [
+    transactionsIcon,
+    fundsIcon,
+    overviewIconActive,
+    learnIcon,
+    settingsIcon,
+  ],
+  'learn': [
+    transactionsIcon,
+    fundsIcon,
+    overviewIcon,
+    learnIconActive,
+    settingsIcon,
+  ],
+  'settings': [
+    transactionsIcon,
+    fundsIcon,
+    overviewIcon,
+    learnIcon,
+    settingsIconActive,
+  ],
+}
 
 export default Navigation;
