@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, StatusBar } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 import Dimensions from 'Dimensions';
 import BaseView from './BaseView';
@@ -8,6 +8,8 @@ import Divider from '../partials/Divider';
 class AddAccount extends React.Component {
 
   render() {
+
+    StatusBar.setBarStyle('light-content', false);
 
     const genAddAccount = () => (
       <View>
@@ -94,5 +96,10 @@ const s = StyleSheet.create({
     color: '#8A8B8C',
   },
 });
+
+AddAccount.PropTypes = {
+  parent: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+};
 
 export default AddAccount;

@@ -15,9 +15,9 @@ class BaseView extends React.Component {
     const getIcon = (type) => {
       switch(type) {
         case 'add':
-          return (<Image source={require('../../../assets/bluePlus.png')}/>);
+          return (<Image style={{height: 15, width: 15,}} source={require('../../../assets/bluePlus.png')}/>);
         case 'exit':
-          return (<Image source={require('../../../assets/exitIcon.png')}/>);
+          return (<Image style={{height: 15, width: 15,}} source={require('../../../assets/exitIcon.png')}/>);
         default:
           return (<View></View>);
       }

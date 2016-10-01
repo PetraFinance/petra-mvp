@@ -15,14 +15,14 @@ class Transactions extends React.Component {
     width = width - 30;
     return {
       width,
-      marginRight: 15,
-      marginLeft: 15,
+      marginRight: 14,
+      marginLeft: 14,
     };
   }
 
   setSwiperWidth() {
     let width = Dimensions.get('window').width;
-    width = width - 30;
+    width = width - 28;
     return width;
   }
 
@@ -36,8 +36,11 @@ class Transactions extends React.Component {
           bounces={true}
           loop={false}
           height={160}
+          dot={
+            <View style={{backgroundColor: 'white', width: 8, height: 8, borderRadius: 4, marginLeft: 5, marginRight: 5, marginTop: 3, marginBottom: -5,}} />
+          }
           activeDot={
-            <View style={{backgroundColor: '#03A9F4', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />
+            <View style={{backgroundColor: '#03A9F4', width: 8, height: 8, borderRadius: 4, marginLeft: 5, marginRight: 5, marginTop: 3, marginBottom: -5,}} />
           }
         >
           <View style={this.setSwipeViewWidth()}>
@@ -96,8 +99,8 @@ class Transactions extends React.Component {
 const s = StyleSheet.create({
   container: {
     flex: 1,
-    marginRight: 15,
-    marginLeft: 15,
+    marginRight: 14,
+    marginLeft: 14,
     flexDirection: 'column',
   },
   general: {
@@ -139,12 +142,17 @@ const s = StyleSheet.create({
   },
   overviewPanel: {
     height: 150,
-    marginRight: 15,
-    marginLeft: 15,
-    marginBottom: 15,
+    marginTop: 16,
+    marginRight: 14,
+    marginLeft: 14,
+    marginBottom: 16,
     backgroundColor: '#03A9F4',
-    borderRadius: 5,
   },
 });
+
+Transactions.PropTypes = {
+  parent: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+};
 
 export default Transactions;

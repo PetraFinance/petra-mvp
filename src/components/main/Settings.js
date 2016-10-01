@@ -45,4 +45,9 @@ const s = StyleSheet.create({
   },
 });
 
+Settings.PropTypes = {
+  parent: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+};
+
 export default Settings;

@@ -7,10 +7,6 @@ import Divider from '../partials/Divider';
 
 class Overview extends React.Component {
 
-  addAccount() {
-    this.props.addAccount();
-  };
-
   render() {
 
     const genOverview = () => (
@@ -89,5 +85,10 @@ const s = StyleSheet.create({
     color: '#8A8B8C',
   },
 });
+
+Overview.PropTypes = {
+  parent: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+};
 
 export default Overview;

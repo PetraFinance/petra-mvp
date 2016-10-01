@@ -39,7 +39,7 @@ class Navigation extends React.Component {
     const setImage = (route, i) => {
       const image = routingStates[route.toLowerCase()][i];
       return (
-        <Image source={image} style={s.navIcon}/>
+        <Image source={image} resizeMode={'contain'} style={s.navIcon}/>
       );
     }
 
@@ -51,7 +51,9 @@ class Navigation extends React.Component {
         onPress={category.action}
       >
         <View>
-          {setImage(this.props.parent, i)}
+          <View style={s.imageWrapper}>
+            {setImage(this.props.parent, i)}
+          </View>
           <Text style={setStyle(category.name)}>{category.name}</Text>
         </View>
       </TouchableHighlight>
@@ -84,7 +86,8 @@ const s = StyleSheet.create({
     fontSize: 10,
   },
   navIcon: {
-    flex: 1,
+    height: 30,
+    width: 30,
     justifyContent: 'center',
     alignSelf: 'center',
     marginBottom: 3,

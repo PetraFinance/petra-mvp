@@ -19,7 +19,7 @@ class Toast extends React.Component {
           </View>
         </View>
         <View style={s.exitToast}>
-          <Image source={require('../../../assets/exitIcon.png')} style={s.exitTipIcon}/>
+          <Image style={s.exitToastIcon} source={require('../../../assets/exitIcon.png')}/>
         </View>
       </View>
     );
@@ -34,6 +34,10 @@ const s = StyleSheet.create({
     paddingRight: 14,
     paddingLeft: 14,
   },
+  exitToastIcon: {
+    height: 15,
+    width: 15,
+  },
   toast: {
     marginRight: 25,
   },
@@ -41,6 +45,8 @@ const s = StyleSheet.create({
     position: 'absolute',
     top: 18,
     right: 16,
+    height: 15,
+    width: 15,
   },
   toastText: {
     fontSize: 14,
