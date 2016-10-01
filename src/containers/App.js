@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Animations, Schema } from 'react-native-redux-router';
+import { Router, Route, Animations, Schema, StatusBar } from 'react-native-redux-router';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import configureStore from '../store/store';
@@ -19,6 +19,8 @@ import Transactions from '../components/main/Transactions';
 import Learn from '../components/main/Learn';
 import Settings from '../components/main/Settings';
 
+import StatusBarLight from '../components/partials/StatusBarLight';
+import StatusBarDark from '../components/partials/StatusBarDark';
 import BackButton from './partials/BackButton';
 import Navigation from '../components/main/Navigation';
 
@@ -31,7 +33,8 @@ class App extends React.Component {
         <View style={{ flex: 1 }}>
           <Router>
             <Schema name="onboarding" sceneConfig={Animations.FlatFloatFromBottom} navBar={BackButton}/>
-            <Schema name="pop-up" sceneConfig={Animations.FlatFloatFromBottom}/>
+            <Schema name="pop-up" sceneConfig={Animations.FlatFloatFromBottom} navBar={StatusBarLight}/>
+            <Schema name="default" navBar={StatusBarDark}/>
 
             <Route
               name="overview"

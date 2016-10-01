@@ -9,8 +9,6 @@ class AddAccount extends React.Component {
 
   render() {
 
-    StatusBar.setBarStyle('light-content', false);
-
     const genAddAccount = () => (
       <View>
         <Text style={s.sectionHeader}>What type of account?</Text>
@@ -52,7 +50,7 @@ class AddAccount extends React.Component {
         headerBackgroundColor={'#455A64'}
         headerTextColor={'white'}
         scroll={false}
-        leftIcon={{type: 'exit', action: Actions.pop}}
+        leftIcon={{type: 'exit', action: Actions.pop }}
         children={genAddAccount()}
       />
     );
