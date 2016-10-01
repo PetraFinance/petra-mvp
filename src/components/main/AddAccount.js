@@ -5,24 +5,18 @@ import Dimensions from 'Dimensions';
 import BaseView from './BaseView';
 import Divider from '../partials/Divider';
 
-class Overview extends React.Component {
-
-  addAccount() {
-    this.props.addAccount();
-  };
+class AddAccount extends React.Component {
 
   render() {
 
-    const genOverview = () => (
+    const genAddAccount = () => (
       <View>
-        <Text style={s.sectionHeader}>Bank Accounts</Text>
+        <Text style={s.sectionHeader}>What type of account?</Text>
         <View style={s.sectionWrapper}>
           <View style={s.section}>
             <View style={s.sectionEntry}>
-              <Text style={s.entryTitle}>Bank of America</Text>
-              <Text style={s.entryCost}>$12,456</Text>
+              <Text style={s.entryTitle}>Bank Account</Text>
             </View>
-            <Text style={s.entryDesc}>Bank of America Core Checking</Text>
           </View>
           <Divider
             height={1}
@@ -31,10 +25,18 @@ class Overview extends React.Component {
           />
           <View style={s.section}>
             <View style={s.sectionEntry}>
-              <Text style={s.entryTitle}>Bank of America</Text>
-              <Text style={s.entryCost}>$9,420</Text>
+              <Text style={s.entryTitle}>Credit Card</Text>
             </View>
-            <Text style={s.entryDesc}>Bank of America Core Savings</Text>
+          </View>
+          <Divider
+            height={1}
+            width={Dimensions.get('window').width - 14}
+            marginLeft={14}
+          />
+          <View style={s.section}>
+            <View style={s.sectionEntry}>
+              <Text style={s.entryTitle}>Investments</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -44,9 +46,12 @@ class Overview extends React.Component {
       <BaseView
         parent={this.props.parent}
         title={this.props.title}
-        children={genOverview()}
-        scroll={true}
-        rightIcon={{type: 'add', action: Actions.addAccount}}
+        hideBottomNavBar={true}
+        headerBackgroundColor={'#455A64'}
+        headerTextColor={'white'}
+        scroll={false}
+        leftIcon={{type: 'exit', action: Actions.pop}}
+        children={genAddAccount()}
       />
     );
   }
@@ -69,7 +74,7 @@ const s = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 10,
     fontFamily: 'Avenir-Heavy',
-    fontSize: 13  ,
+    fontSize: 13,
   },
   sectionEntry: {
     flexDirection: 'row',
@@ -90,4 +95,4 @@ const s = StyleSheet.create({
   },
 });
 
-export default Overview;
+export default AddAccount;

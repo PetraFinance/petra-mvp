@@ -19,6 +19,7 @@ class Learn extends React.Component {
 
     return (
       <BaseView
+        parent={this.props.parent}
         title={this.props.title}
         children={genLearn()}
         scroll={false}

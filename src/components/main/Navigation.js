@@ -29,7 +29,7 @@ class Navigation extends React.Component {
     ];
 
     const setStyle = (route) => {
-      if (this.props.activeRoute === route) {
+      if (this.props.parent === route) {
         return s.navTextActive;
       } else {
         return s.navText;
@@ -37,9 +37,9 @@ class Navigation extends React.Component {
     };
 
     const setImage = (route, i) => {
-      const module = routingStates[route.toLowerCase()][i];
+      const image = routingStates[route.toLowerCase()][i];
       return (
-        <Image source={module} style={s.navIcon}/>
+        <Image source={image} style={s.navIcon}/>
       );
     }
 
@@ -51,7 +51,7 @@ class Navigation extends React.Component {
         onPress={category.action}
       >
         <View>
-          {setImage(this.props.activeRoute, i)}
+          {setImage(this.props.parent, i)}
           <Text style={setStyle(category.name)}>{category.name}</Text>
         </View>
       </TouchableHighlight>
@@ -91,8 +91,6 @@ const s = StyleSheet.create({
   },
   navItem: {
     flex: 1,
-    justifyContent: 'center',
-    alignSelf: 'center',
   },
 });
 
@@ -150,5 +148,9 @@ const routingStates = {
     settingsIconActive,
   ],
 }
+
+Navigation.PropTypes = {
+  parent: React.PropTypes.string.isRequired,
+};
 
 export default Navigation;

@@ -23,9 +23,10 @@ class BaseCard extends React.Component {
       backgroundColor,
       borderColor,
       alignSelf: 'stretch',
-      padding: 10,
-      borderWidth: 2,
-      borderRadius: 5,
+      paddingRight: 14,
+      paddingLeft: 14,
+      paddingTop: 16,
+      paddingBottom: 16,
     };
   }
 

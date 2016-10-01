@@ -14,6 +14,7 @@ class Settings extends React.Component {
 
     return (
       <BaseView
+        parent={this.props.parent}
         title={this.props.title}
         children={genSettings()}
         scroll={true}

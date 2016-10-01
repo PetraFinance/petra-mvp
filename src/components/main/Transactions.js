@@ -84,6 +84,7 @@ class Transactions extends React.Component {
 
     return (
       <BaseView
+        parent={this.props.parent}
         title={this.props.title}
         children={genTransactions()}
         scroll={true}

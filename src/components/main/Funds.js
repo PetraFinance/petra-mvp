@@ -14,6 +14,7 @@ class Funds extends React.Component {
 
     return (
       <BaseView
+        parent={this.props.parent}
         title={this.props.title}
         children={genFunds()}
         scroll={true}

@@ -12,7 +12,8 @@ import OnboardSelectBank from './onboarding/SelectBank';
 import OnboardSetupBank from './onboarding/SetupBank';
 import ProgressBar from './onboarding/ProgressBar';
 
-import Overview from '../components/main/Overview';
+import Overview from './main/Overview';
+import AddAccount from '../components/main/AddAccount';
 import Funds from '../components/main/Funds';
 import Transactions from '../components/main/Transactions';
 import Learn from '../components/main/Learn';
@@ -27,43 +28,49 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={{ flex: 1, backgroundColor: '#F9FAFC', }}>
-          <ProgressBar/>
-
+        <View style={{ flex: 1 }}>
           <Router>
-            <Schema name="onboarding" sceneConfig={Animations.FlatFloatFromRight} navBar={BackButton}/>
-            <Schema name="default"/>
+            <Schema name="onboarding" sceneConfig={Animations.FlatFloatFromBottom} navBar={BackButton}/>
+            <Schema name="pop-up" sceneConfig={Animations.FlatFloatFromBottom}/>
 
             <Route
               name="overview"
               component={Overview}
               initial={true}
-              hideNavBar={true}
               title="Overview"
+              parent="Overview"
+            />
+            <Route
+              name="addAccount"
+              component={AddAccount}
+              showBottomNavBar={false}
+              schema="pop-up"
+              title="Add an Account"
+              parent="Overview"
             />
             <Route
               name="funds"
               component={Funds}
-              hideNavBar={true}
               title="Funds"
+              parent="Funds"
             />
             <Route
               name="transactions"
               component={Transactions}
-              hideNavBar={true}
               title="Transactions"
+              parent="Transactions"
             />
             <Route
               name="learn"
               component={Learn}
-              hideNavBar={true}
               title="Learn"
+              parent="Learn"
             />
             <Route
               name="settings"
               component={Settings}
-              hideNavBar={true}
               title="Settings"
+              parent="Settings"
             />
 
             <Route name="onboardLaunch"
