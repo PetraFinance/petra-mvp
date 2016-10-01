@@ -42,14 +42,12 @@ const s = StyleSheet.create({
   },
   rightText: {
     flex: 1,
-    fontFamily: 'Avenir',
-    fontWeight: 'bold',
+    fontFamily: 'Avenir-Heavy',
     color: 'white',
   },
   leftText: {
     flex: 0.5,
-    fontFamily: 'Avenir',
-    fontWeight: 'bold',
+    fontFamily: 'Avenir-Heavy',
     color: 'white',
   },
 });

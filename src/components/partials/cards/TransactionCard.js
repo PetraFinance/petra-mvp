@@ -64,8 +64,7 @@ const s = StyleSheet.create({
   },
   sectionHeader: {
     marginBottom: 10,
-    fontFamily: 'Avenir',
-    fontWeight: 'bold',
+    fontFamily: 'Avenir-Heavy',
     fontSize: 12,
   },
 });

@@ -136,8 +136,7 @@ const s = StyleSheet.create({
   },
   date: {
     marginBottom: 10,
-    fontFamily: 'Avenir',
-    fontWeight: 'bold',
+    fontFamily: 'Avenir-Heavy',
     fontSize: 12,
   },
   overviewPanel: {

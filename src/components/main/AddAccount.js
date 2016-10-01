@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 import Dimensions from 'Dimensions';
 import BaseView from './BaseView';
@@ -9,38 +9,47 @@ class AddAccount extends React.Component {
 
   render() {
 
+    const genAccounts = () => {
+      const accounts = ['Bank Account', 'Credit Card', 'Investments'];
+      let i;
+      let list = [];
+      for (i = 0; i < accounts.length; i++) {
+        list.push(
+          <View key={i} style={s.sectionWrapper}>
+            <View style={s.section}>
+              <View style={s.sectionEntry}>
+                <Text style={s.entryTitle}>{accounts[i]}</Text>
+                <View style={s.iconWrapper}>
+                  <Image
+                    source={require('../../../assets/forwardArrow.png')}
+                    style={s.entryIcon}
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        );
+        if (i != accounts.length - 1) {
+          list.push(
+            <Divider
+              height={1}
+              key={(i + 1) / (accounts.length + 1)}
+              width={Dimensions.get('window').width - 14}
+              marginLeft={14}
+            />
+          )
+        }
+      }
+      return list;
+    };
+
     const genAddAccount = () => (
       <View>
         <Text style={s.sectionHeader}>What type of account?</Text>
-        <View style={s.sectionWrapper}>
-          <View style={s.section}>
-            <View style={s.sectionEntry}>
-              <Text style={s.entryTitle}>Bank Account</Text>
-            </View>
-          </View>
-          <Divider
-            height={1}
-            width={Dimensions.get('window').width - 14}
-            marginLeft={14}
-          />
-          <View style={s.section}>
-            <View style={s.sectionEntry}>
-              <Text style={s.entryTitle}>Credit Card</Text>
-            </View>
-          </View>
-          <Divider
-            height={1}
-            width={Dimensions.get('window').width - 14}
-            marginLeft={14}
-          />
-          <View style={s.section}>
-            <View style={s.sectionEntry}>
-              <Text style={s.entryTitle}>Investments</Text>
-            </View>
-          </View>
-        </View>
+        {genAccounts()}
       </View>
-    );
+    )
+
 
     return (
       <BaseView
@@ -78,20 +87,18 @@ const s = StyleSheet.create({
   },
   sectionEntry: {
     flexDirection: 'row',
+    justifyContent: 'center',
   },
   entryTitle: {
     flex: 1,
     fontFamily: 'Avenir',
   },
-  entryCost: {
-    flex: 1,
-    fontFamily: 'Avenir',
-    textAlign: 'right',
+  iconWrapper: {
+    justifyContent: 'center',
   },
-  entryDesc: {
-    flex: 1,
-    fontFamily: 'Avenir',
-    color: '#8A8B8C',
+  entryIcon: {
+    width: 10,
+    height: 10,
   },
 });
 
