@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import Card from './BaseCard';
+import Card from './Card';
 
 class TipCard extends React.Component {
 

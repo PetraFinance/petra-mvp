@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 import Dimensions from 'Dimensions';
 import BaseView from './BaseView';
-import Divider from '../partials/Divider';
+import Divider from '../partials/layout/Divider';
+import SectionHeader from '../partials/layout/SectionHeader';
 
 class AddAccount extends React.Component {
 
@@ -45,11 +46,12 @@ class AddAccount extends React.Component {
 
     const genAddAccount = () => (
       <View>
-        <Text style={s.sectionHeader}>What type of account?</Text>
+        <SectionHeader
+          header={'What type of account?'}
+        />
         {genAccounts()}
       </View>
     )
-
 
     return (
       <BaseView
@@ -76,14 +78,6 @@ const s = StyleSheet.create({
     paddingLeft: 14,
     paddingTop: 16,
     paddingBottom: 16,
-  },
-  sectionHeader: {
-    paddingRight: 14,
-    paddingLeft: 14,
-    paddingTop: 20,
-    paddingBottom: 10,
-    fontFamily: 'Avenir-Heavy',
-    fontSize: 13,
   },
   sectionEntry: {
     flexDirection: 'row',

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import Dimensions from 'Dimensions';
 
 class Divider extends React.Component {
 
@@ -9,13 +10,13 @@ class Divider extends React.Component {
 
   render() {
 
-    const height = this.props.height;
-    const width = this.props.width;
     const backgroundColor = this.props.backgroundColor || '#CCD0D3';
-    const marginBottom = this.props.marginBottom || 0;
-    const marginLeft = this.props.marginLeft || 0;
+    const marginLeft = this.props.marginLeft || 14;
     const marginRight = this.props.marginRight || 0;
     const marginTop = this.props.marginTop || 0;
+    const marginBottom = this.props.marginBottom || 0;
+    const height = this.props.height || 1;
+    const width = this.props.width || (Dimensions.get('window').width - marginLeft);
 
     const setStyle = () => {
       return {
@@ -36,8 +37,8 @@ class Divider extends React.Component {
 }
 
 Divider.PropTypes = {
-  height: React.PropTypes.number.isRequired,
-  width: React.PropTypes.number.isRequired,
+  width: React.PropTypes.number,
+  height: React.PropTypes.number,
   marginBottom: React.PropTypes.number,
   marginRight: React.PropTypes.number,
   marginLeft: React.PropTypes.number,

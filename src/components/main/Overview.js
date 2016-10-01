@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Actions } from 'react-native-redux-router';
 import Dimensions from 'Dimensions';
 import BaseView from './BaseView';
-import Divider from '../partials/Divider';
+import Divider from '../partials/layout/Divider';
+import SectionHeader from '../partials/layout/SectionHeader';
 
 class Overview extends React.Component {
 
@@ -11,7 +12,9 @@ class Overview extends React.Component {
 
     const genOverview = () => (
       <View>
-        <Text style={s.sectionHeader}>Bank Accounts</Text>
+        <SectionHeader
+          header={'Bank Accounts'}
+        />
         <View style={s.sectionWrapper}>
           <View style={s.section}>
             <View style={s.sectionEntry}>

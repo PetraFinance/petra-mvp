@@ -39,7 +39,7 @@ class App extends React.Component {
             <Route
               name="overview"
               component={Overview}
-              initial={true}
+
               title="Overview"
               parent="Overview"
             />
@@ -53,6 +53,7 @@ class App extends React.Component {
             />
             <Route
               name="funds"
+              initial={true}
               component={Funds}
               title="Funds"
               parent="Funds"

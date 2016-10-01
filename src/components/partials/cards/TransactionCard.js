@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Card from './BaseCard';
+import Card from './Card';
 
 class TransactionCard extends React.Component {
 
