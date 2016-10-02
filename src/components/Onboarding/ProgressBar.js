@@ -27,4 +27,9 @@ class ProgressBar extends React.Component {
   }
 }
 
+ProgressBar.propTypes = {
+  finishedOnboarding: React.PropTypes.bool.isRequired,
+  stage: React.PropTypes.number.isRequired,
+}
+
 export default ProgressBar;

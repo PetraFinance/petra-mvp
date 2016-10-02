@@ -3,5 +3,8 @@
     "plugins": [
         "react",
         "react-native"
-    ]
+    ],
+    "rules": {
+      "no-use-before-define": "off"
+    }
 }

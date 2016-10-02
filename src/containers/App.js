@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Animations, Schema, StatusBar } from 'react-native-redux-router';
+import { Router, Route, Animations, Schema } from 'react-native-redux-router';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import configureStore from '../store/store';
@@ -10,7 +10,6 @@ import OnboardTermsAndConditions from './onboarding/TermsAndConditions';
 import OnboardAccountCreation from './onboarding/AccountCreation';
 import OnboardSelectBank from './onboarding/SelectBank';
 import OnboardSetupBank from './onboarding/SetupBank';
-import ProgressBar from './onboarding/ProgressBar';
 
 import Overview from './main/Overview';
 import AddAccount from '../components/main/AddAccount';
@@ -22,7 +21,6 @@ import Settings from '../components/main/Settings';
 import StatusBarLight from '../components/partials/StatusBarLight';
 import StatusBarDark from '../components/partials/StatusBarDark';
 import BackButton from './partials/BackButton';
-import Navigation from '../components/main/Navigation';
 
 const store = configureStore();
 
@@ -32,14 +30,25 @@ class App extends React.Component {
       <Provider store={store}>
         <View style={{ flex: 1 }}>
           <Router>
-            <Schema name="onboarding" sceneConfig={Animations.FlatFloatFromBottom} navBar={BackButton}/>
-            <Schema name="pop-up" sceneConfig={Animations.FlatFloatFromBottom} navBar={StatusBarLight}/>
-            <Schema name="default" navBar={StatusBarDark}/>
+            <Schema
+              name="onboarding"
+              sceneConfig={Animations.FlatFloatFromBottom}
+              navBar={BackButton}
+            />
+            <Schema
+              name="pop-up"
+              sceneConfig={Animations.FlatFloatFromBottom}
+              navBar={StatusBarLight}
+            />
+            <Schema
+              name="default"
+              navBar={StatusBarDark}
+            />
 
             <Route
               name="overview"
               component={Overview}
-
+              initial
               title="Overview"
               parent="Overview"
             />
@@ -53,7 +62,6 @@ class App extends React.Component {
             />
             <Route
               name="funds"
-              initial={true}
               component={Funds}
               title="Funds"
               parent="Funds"
@@ -76,11 +84,10 @@ class App extends React.Component {
               title="Settings"
               parent="Settings"
             />
-
             <Route name="onboardLaunch"
               component={OnboardLanding}
               schema="onboarding"
-              hideNavBar={true}
+              hideNavBar
               title="Launch"
             />
             <Route

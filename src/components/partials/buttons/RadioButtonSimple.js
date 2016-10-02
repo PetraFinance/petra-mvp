@@ -13,7 +13,7 @@ class RadioButtonSimple extends React.Component {
         borderWidth: 1,
         borderColor: 'white',
         backgroundColor: '#03A9F4',
-      }
+      };
     }
     return {
       width: 8,
@@ -22,7 +22,7 @@ class RadioButtonSimple extends React.Component {
       borderWidth: 1,
       borderColor: 'white',
       backgroundColor: 'white',
-    }
+    };
   }
 
   render() {
@@ -68,8 +68,9 @@ const s = StyleSheet.create({
   },
 });
 
-RadioButtonSimple.PropTypes = {
+RadioButtonSimple.propTypes = {
   check: React.PropTypes.bool.isRequired,
-}
+  condition: React.PropTypes.func.isRequired,
+};
 
 export default RadioButtonSimple;

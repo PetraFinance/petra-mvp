@@ -1,40 +1,41 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Actions } from 'react-native-redux-router';
-import Dimensions from 'Dimensions';
+
 import BaseView from './BaseView';
-import Divider from '../partials/layout/Divider';
+import AccountsCard from '../partials/cards/AccountsCard';
 import SectionHeader from '../partials/layout/SectionHeader';
 
 class Overview extends React.Component {
 
   render() {
-
     const genOverview = () => (
       <View>
         <SectionHeader
           header={'Bank Accounts'}
         />
-        <View style={s.sectionWrapper}>
-          <View style={s.section}>
-            <View style={s.sectionEntry}>
-              <Text style={s.entryTitle}>Bank of America</Text>
-              <Text style={s.entryCost}>$12,456</Text>
-            </View>
-            <Text style={s.entryDesc}>Bank of America Core Checking</Text>
-          </View>
-          <Divider
-            height={1}
-            width={Dimensions.get('window').width - 14}
-            marginLeft={14}
+        <View style={s.container}>
+          <AccountsCard
+            accountName={'Bank of America'}
+            accountDesc={'Bank of America Checking'}
+            accountValue={'$2,421'}
+            divider={true}
           />
-          <View style={s.section}>
-            <View style={s.sectionEntry}>
-              <Text style={s.entryTitle}>Bank of America</Text>
-              <Text style={s.entryCost}>$9,420</Text>
-            </View>
-            <Text style={s.entryDesc}>Bank of America Core Savings</Text>
-          </View>
+          <AccountsCard
+            accountName={'Bank of America'}
+            accountDesc={'Bank of America Savings'}
+            accountValue={'$5,103'}
+          />
+        </View>
+        <SectionHeader
+          header={'Credit Cards'}
+        />
+        <View style={s.container}>
+          <AccountsCard
+            accountName={'Bank of America'}
+            accountDesc={'Bank of America College Card'}
+            accountValue={'$421'}
+          />
         </View>
       </View>
     );
@@ -45,14 +46,14 @@ class Overview extends React.Component {
         title={this.props.title}
         children={genOverview()}
         scroll={true}
-        rightIcon={{type: 'add', action: Actions.addAccount}}
+        rightIcon={{ type: 'add', action: Actions.addAccount }}
       />
     );
   }
 }
 
 const s = StyleSheet.create({
-  sectionWrapper: {
+  container: {
     backgroundColor: 'white',
   },
   section: {
@@ -68,7 +69,7 @@ const s = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 10,
     fontFamily: 'Avenir-Heavy',
-    fontSize: 13  ,
+    fontSize: 13,
   },
   sectionEntry: {
     flexDirection: 'row',
@@ -89,7 +90,7 @@ const s = StyleSheet.create({
   },
 });
 
-Overview.PropTypes = {
+Overview.propTypes = {
   parent: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
 };

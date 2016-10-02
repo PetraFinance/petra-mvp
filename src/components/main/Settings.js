@@ -1,15 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import Swiper from 'react-native-swiper';
-import Navigation from './Navigation';
+import { StyleSheet, View } from 'react-native';
 import BaseView from './BaseView';
 
 class Settings extends React.Component {
 
   render() {
-
     const genSettings = () => (
-      <View></View>
+      <View />
     );
 
     return (
@@ -17,7 +14,7 @@ class Settings extends React.Component {
         parent={this.props.parent}
         title={this.props.title}
         children={genSettings()}
-        scroll={true}
+        scroll
       />
     );
   }
@@ -45,7 +42,7 @@ const s = StyleSheet.create({
   },
 });
 
-Settings.PropTypes = {
+Settings.propTypes = {
   parent: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
 };

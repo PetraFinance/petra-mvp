@@ -2,17 +2,6 @@ import { connect } from 'react-redux';
 import Overview from '../../components/main/Overview';
 import { showOverviewTip, hideOverviewTip } from '../../actions/overview';
 
-const mapStateToProps = (state) => {
-  const cpState = state.onboarding.toJS();
-
-  return Object.assign({},
-    state.onboarding.toJS(),
-    {
-
-    }
-  );
-};
-
 const mapDispatchToProps = (dispatch) => ({
   showOverviewTip: () => {
     dispatch(showOverviewTip());
@@ -22,4 +11,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Overview);
+export default connect(mapDispatchToProps)(Overview);

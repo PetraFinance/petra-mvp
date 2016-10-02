@@ -116,7 +116,7 @@ const s = StyleSheet.create({
   },
 });
 
-SelectBank.PropTypes = {
+SelectBank.propTypes = {
   handleAdvance: React.PropTypes.func.isRequired,
   handleSelectBank: React.PropTypes.func.isRequired,
   bank: React.PropTypes.string.isRequired,

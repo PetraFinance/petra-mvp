@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, WebView } from 'react-native';
-import Swiper from 'react-native-swiper';
+import { StyleSheet, View, WebView } from 'react-native';
+
 import Navigation from './Navigation';
 import BaseView from './BaseView';
 
@@ -13,7 +13,7 @@ class Learn extends React.Component {
         <WebView
            source={{uri: 'https://github.com/facebook/react-native'}}
            style={s.webView}
-         />
+        />
       </View>
     );
 
@@ -22,7 +22,6 @@ class Learn extends React.Component {
         parent={this.props.parent}
         title={this.props.title}
         children={genLearn()}
-        scroll={false}
       />
     );
   }
@@ -37,5 +36,10 @@ const s = StyleSheet.create({
     alignItems: 'stretch',
   },
 });
+
+Learn.propTypes = {
+  parent: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+};
 
 export default Learn;

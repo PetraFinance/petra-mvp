@@ -8,7 +8,6 @@ class Toast extends React.Component {
   }
 
   render() {
-
     return (
       <View style={s.toastWrapper}>
         <View style={s.toast}>
@@ -19,7 +18,7 @@ class Toast extends React.Component {
           </View>
         </View>
         <View style={s.exitToast}>
-          <Image style={s.exitToastIcon} source={require('../../../assets/exitIcon.png')}/>
+          <Image style={s.exitToastIcon} source={require('../../../assets/exitIcon.png')} />
         </View>
       </View>
     );
@@ -71,5 +70,11 @@ const s = StyleSheet.create({
     color: 'white',
   },
 });
+
+Toast.propTypes = {
+  leftText: React.PropTypes.string.isRequired,
+  rightText: React.PropTypes.string.isRequired,
+  toast: React.PropTypes.string.isRequired,
+};
 
 export default Toast;

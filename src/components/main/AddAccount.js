@@ -9,11 +9,10 @@ import SectionHeader from '../partials/layout/SectionHeader';
 class AddAccount extends React.Component {
 
   render() {
-
     const genAccounts = () => {
       const accounts = ['Bank Account', 'Credit Card', 'Investments'];
+      const list = [];
       let i;
-      let list = [];
       for (i = 0; i < accounts.length; i++) {
         list.push(
           <View key={i} style={s.sectionWrapper}>
@@ -30,7 +29,7 @@ class AddAccount extends React.Component {
             </View>
           </View>
         );
-        if (i != accounts.length - 1) {
+        if (i !== accounts.length - 1) {
           list.push(
             <Divider
               height={1}
@@ -38,7 +37,7 @@ class AddAccount extends React.Component {
               width={Dimensions.get('window').width - 14}
               marginLeft={14}
             />
-          )
+          );
         }
       }
       return list;
@@ -51,17 +50,16 @@ class AddAccount extends React.Component {
         />
         {genAccounts()}
       </View>
-    )
+    );
 
     return (
       <BaseView
         parent={this.props.parent}
         title={this.props.title}
-        hideBottomNavBar={true}
+        hideBottomNavBar
         headerBackgroundColor={'#455A64'}
         headerTextColor={'white'}
-        scroll={false}
-        leftIcon={{type: 'exit', action: Actions.pop }}
+        leftIcon={{ type: 'exit', action: Actions.pop }}
         children={genAddAccount()}
       />
     );
@@ -96,7 +94,7 @@ const s = StyleSheet.create({
   },
 });
 
-AddAccount.PropTypes = {
+AddAccount.propTypes = {
   parent: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
 };

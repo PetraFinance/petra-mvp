@@ -31,9 +31,8 @@ class Navigation extends React.Component {
     const setStyle = (route) => {
       if (this.props.parent === route) {
         return s.navTextActive;
-      } else {
-        return s.navText;
       }
+      return s.navText;
     };
 
     const setImage = (route, i) => {
@@ -41,7 +40,7 @@ class Navigation extends React.Component {
       return (
         <Image source={image} resizeMode={'contain'} style={s.navIcon}/>
       );
-    }
+    };
 
     const navigation = categories.map((category, i) => (
       <TouchableHighlight
@@ -63,7 +62,7 @@ class Navigation extends React.Component {
       <View style={s.bar}>
         {navigation}
       </View>
-    )
+    );
   }
 }
 
@@ -115,44 +114,44 @@ const settingsIcon = require('../../../assets/navigation/settings.png');
 const settingsIconActive = require('../../../assets/navigation/settingsActive.png');
 
 const routingStates = {
-  'transactions': [
+  transactions: [
     transactionsIconActive,
     fundsIcon,
     overviewIcon,
     learnIcon,
     settingsIcon,
   ],
-  'funds': [
+  funds: [
     transactionsIcon,
     fundsIconActive,
     overviewIcon,
     learnIcon,
     settingsIcon,
   ],
-  'overview': [
+  overview: [
     transactionsIcon,
     fundsIcon,
     overviewIconActive,
     learnIcon,
     settingsIcon,
   ],
-  'learn': [
+  learn: [
     transactionsIcon,
     fundsIcon,
     overviewIcon,
     learnIconActive,
     settingsIcon,
   ],
-  'settings': [
+  settings: [
     transactionsIcon,
     fundsIcon,
     overviewIcon,
     learnIcon,
     settingsIconActive,
   ],
-}
+};
 
-Navigation.PropTypes = {
+Navigation.propTypes = {
   parent: React.PropTypes.string.isRequired,
 };
 

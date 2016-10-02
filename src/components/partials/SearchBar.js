@@ -18,9 +18,9 @@ class SearchBar extends React.Component {
       <View style={s.container}>
         <View style={s.imageWrapper}>
           <Image
-             source={banner}
-             style={s.searchBarImage}
-           />
+            source={banner}
+            style={s.searchBarImage}
+          />
         </View>
         <View style={s.searchBarWrapper}>
           <TextInput
@@ -69,7 +69,7 @@ const s = StyleSheet.create({
   },
 });
 
-SearchBar.PropTypes = {
+SearchBar.propTypes = {
   handleSearchBankOnboarding: React.PropTypes.func.isRequired,
   searchBankOnboarding: React.PropTypes.string.isRequired,
 };

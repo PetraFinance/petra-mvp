@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { View } from 'react-native';
 import Divider from '../layout/Divider';
 
 class Card extends React.Component {
@@ -9,7 +9,6 @@ class Card extends React.Component {
   }
 
   render() {
-
     const genCardStyle = () => {
       const backgroundColor = this.props.backgroundColor || 'white';
       const borderColor = this.props.borderColor || 'transparent';
@@ -59,7 +58,7 @@ class Card extends React.Component {
   }
 }
 
-Card.PropTypes = {
+Card.propTypes = {
   backgroundColor: React.PropTypes.string,
   borderColor: React.PropTypes.string,
   marginBottom: React.PropTypes.number,

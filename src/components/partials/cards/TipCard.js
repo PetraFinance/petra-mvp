@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import Card from './Card';
 
 class TipCard extends React.Component {
@@ -9,7 +9,6 @@ class TipCard extends React.Component {
   }
 
   render() {
-
     const genTipCard = () => (
       <View>
         <Text style={s.tipText}>{this.props.tipText}</Text>
@@ -51,5 +50,11 @@ const s = StyleSheet.create({
     color: 'white',
   },
 });
+
+TipCard.propTypes = {
+  leftText: React.PropTypes.string.isRequired,
+  rightText: React.PropTypes.string.isRequired,
+  tipText: React.PropTypes.string.isRequired,
+};
 
 export default TipCard;

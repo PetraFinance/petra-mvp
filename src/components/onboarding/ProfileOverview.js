@@ -74,7 +74,7 @@ const s = StyleSheet.create({
   },
 });
 
-ProfileOverview.PropTypes = {
+ProfileOverview.propTypes = {
 
 }
 

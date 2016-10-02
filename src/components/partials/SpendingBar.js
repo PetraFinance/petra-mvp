@@ -9,9 +9,8 @@ class SpendingBar extends React.Component {
   }
 
   render() {
-
     const genSpendingBar = () => {
-      let bar = [];
+      const bar = [];
       const goal = this.props.goal;
       const current = this.props.current;
       const fill = current / goal;
@@ -22,8 +21,8 @@ class SpendingBar extends React.Component {
 
       const backgroundColor = this.props.barColor;
 
-      bar.push(<View key={0} style={{backgroundColor, height: 5, width: fillWidth}}></View>)
-      bar.push(<View key={1} style={{backgroundColor: '#E5E5E5', height: 5, width: remainingWidth}}></View>)
+      bar.push(<View key={0} style={{ backgroundColor, height: 5, width: fillWidth }} />);
+      bar.push(<View key={1} style={{ backgroundColor: '#E5E5E5', height: 5, width: remainingWidth }} />);
 
       return bar;
     };
@@ -44,7 +43,8 @@ const s = StyleSheet.create({
   },
 });
 
-SpendingBar.PropTypes = {
+SpendingBar.propTypes = {
+  barColor: React.PropTypes.string.isRequired,
   current: React.PropTypes.number.isRequired,
   goal: React.PropTypes.number.isRequired,
 };

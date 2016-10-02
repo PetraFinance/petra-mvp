@@ -134,7 +134,7 @@ const s = StyleSheet.create({
   },
 });
 
-SetupBank.PropTypes = {
+SetupBank.propTypes = {
   handleBankPassword: React.PropTypes.func.isRequired,
   handleBankUsername: React.PropTypes.func.isRequired,
   bankPassword: React.PropTypes.string.isRequired,

@@ -9,21 +9,21 @@ class OnboardAccountCreation extends React.Component {
 
   handleEmail(email) {
     this.props.handleEmail(email);
-  }
+  };
 
   handlePassword(password) {
     this.props.handlePassword(password);
-  }
+  };
 
   handlePasswordConfirm(passwordConfirm) {
     this.props.handlePasswordConfirm(passwordConfirm);
-  }
+  };
 
   checkValidEmail() {
     const email = this.props.email;
     var re = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
-  }
+  };
 
   checkValidPassword() {
     const password = this.props.password;
@@ -43,11 +43,10 @@ class OnboardAccountCreation extends React.Component {
       capital,
       number,
       match,
-    }
-  }
+    };
+  };
 
   render() {
-
     const blurbImage = require('../../../assets/logo.png');
 
     return (
@@ -133,7 +132,7 @@ class OnboardAccountCreation extends React.Component {
 
       </View>
     );
- }
+  }
 }
 
 const s = StyleSheet.create({
@@ -206,13 +205,13 @@ const s = StyleSheet.create({
   },
 });
 
-OnboardAccountCreation.PropTypes = {
+OnboardAccountCreation.propTypes = {
   handleEmail: React.PropTypes.func.isRequired,
   handlePassword: React.PropTypes.func.isRequired,
   handlePasswordConfirm: React.PropTypes.func.isRequired,
   email: React.PropTypes.string.isRequired,
   password: React.PropTypes.string.isRequired,
   passwordConfirm: React.PropTypes.string.isRequired,
-}
+};
 
 export default OnboardAccountCreation;

@@ -149,7 +149,7 @@ const s = StyleSheet.create({
   },
 });
 
-Transactions.PropTypes = {
+Transactions.propTypes = {
   parent: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
 };

@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   handleFinishOnboarding: () => {
     dispatch(handleFinishOnboarding());
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileOverview);

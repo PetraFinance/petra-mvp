@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Dimensions from 'Dimensions';
 
 import Card from './Card';
 import SpendingBar from '../SpendingBar';
@@ -12,7 +11,6 @@ class FundsCard extends React.Component {
   }
 
   render() {
-
     let currentSpending = this.props.current;
     currentSpending = currentSpending.replace(',', '');
     const intCurrent = parseInt(currentSpending.slice(1, currentSpending.length));
@@ -40,7 +38,7 @@ class FundsCard extends React.Component {
     return (
       <Card
         children={genFundsCard()}
-        divider={true}
+        divider={this.props.divider}
       />
     );
   }
@@ -82,10 +80,12 @@ const s = StyleSheet.create({
   },
 });
 
-FundsCard.PropTypes = {
+FundsCard.propTypes = {
   category: React.PropTypes.string.isRequired,
   current: React.PropTypes.string.isRequired,
   timeToReset: React.PropTypes.string.isRequired,
+  divider: React.PropTypes.bool,
+  barColor: React.PropTypes.string.isRequired,
 };
 
 export default FundsCard;

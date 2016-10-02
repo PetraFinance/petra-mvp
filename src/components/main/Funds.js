@@ -1,9 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { Actions } from 'react-native-redux-router';
+import { StyleSheet, View } from 'react-native';
 
-import Swiper from 'react-native-swiper';
-import Navigation from './Navigation';
 import SectionHeader from '../partials/layout/SectionHeader';
 import FundsCard from '../partials/cards/FundsCard';
 import BaseView from './BaseView';
@@ -23,6 +20,7 @@ class Funds extends React.Component {
           current={'$1,420'}
           goal={2000}
           barColor={'#ED417B'}
+          divider
         />
         <FundsCard
           category={'Recurring Expenses'}
@@ -30,6 +28,7 @@ class Funds extends React.Component {
           current={'$920'}
           goal={1200}
           barColor={'#9C27B0'}
+          divider
         />
         <FundsCard
           category={'General Spending'}
@@ -49,7 +48,7 @@ class Funds extends React.Component {
         parent={this.props.parent}
         title={this.props.title}
         children={genFunds()}
-        scroll={true}
+        scroll
       />
     );
   }
@@ -77,7 +76,7 @@ const s = StyleSheet.create({
   },
 });
 
-Funds.PropTypes = {
+Funds.propTypes = {
   parent: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
 };
