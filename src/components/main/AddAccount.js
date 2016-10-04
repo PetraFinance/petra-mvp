@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-redux-router';
+
 import Dimensions from 'Dimensions';
 import BaseView from './BaseView';
 import Divider from '../partials/layout/Divider';

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { convertNumbertoDollars, convertDollarstoNumbers } from '../../../helpers/currency';
 
 import Card from './Card';
 import SpendingBar from '../SpendingBar';
@@ -11,29 +12,41 @@ class FundsCard extends React.Component {
   }
 
   render() {
-    let currentSpending = this.props.current;
-    currentSpending = currentSpending.replace(',', '');
-    const intCurrent = parseInt(currentSpending.slice(1, currentSpending.length));
+    const genSpendingDetails = () => {
+      const goal = this.props.goal;
+      const spent = this.props.goal - convertDollarstoNumbers(this.props.current);
 
-    const genFundsCard = () => (
-      <View>
-        <View style={s.container}>
-          <View style={s.leftHandSide}>
-            <Text style={s.category}>{this.props.category}</Text>
-            <Text style={s.timeToReset}>{this.props.timeToReset}</Text>
-          </View>
-          <View style={s.rightHandSide}>
-            <Text style={s.amount}>{this.props.current}</Text>
-            <Text style={s.stateOfFunds}>Remaining</Text>
-          </View>
+      return (
+        <View style={s.spendingDetails}>
+          <Text style={s.spendingDetailsLeft}>{convertNumbertoDollars(goal)}</Text>
+          <Text style={s.spendingDetailsRight}>{convertNumbertoDollars(spent) + ' Spent'}</Text>
         </View>
-        <SpendingBar
-          current={intCurrent}
-          goal={this.props.goal}
-          barColor={this.props.barColor}
-        />
-      </View>
-    );
+      );
+    };
+
+    const genFundsCard = () => {
+
+      return (
+        <View>
+          <View style={s.container}>
+            <View style={s.leftHandSide}>
+              <Text style={s.category}>{this.props.category}</Text>
+              <Text style={s.timeToReset}>{this.props.timeToReset}</Text>
+            </View>
+            <View style={s.rightHandSide}>
+              <Text style={s.amount}>{this.props.current}</Text>
+              <Text style={s.stateOfFunds}>Remaining</Text>
+            </View>
+          </View>
+          <SpendingBar
+            current={convertDollarstoNumbers(this.props.current)}
+            goal={this.props.goal}
+            barColor={this.props.barColor}
+          />
+          {genSpendingDetails()}
+        </View>
+      );
+    };
 
     return (
       <Card
@@ -78,14 +91,32 @@ const s = StyleSheet.create({
     marginTop: 15,
     marginBottom: 5,
   },
+  spendingDetails: {
+    flexDirection: 'row',
+    marginTop: 10,
+  },
+  spendingDetailsRight: {
+    flex: 0.5,
+    justifyContent: 'center',
+    textAlign: 'right',
+    fontFamily: 'Avenir',
+    color: '#263238',
+  },
+  spendingDetailsLeft: {
+    flex: 0.5,
+    justifyContent: 'center',
+    fontFamily: 'Avenir',
+    color: '#263238',
+  },
 });
 
 FundsCard.propTypes = {
   category: React.PropTypes.string.isRequired,
   current: React.PropTypes.string.isRequired,
   timeToReset: React.PropTypes.string.isRequired,
-  divider: React.PropTypes.bool,
   barColor: React.PropTypes.string.isRequired,
+  divider: React.PropTypes.bool,
+  showSpent: React.PropTypes.bool,
 };
 
 export default FundsCard;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route, Animations, Schema } from 'react-native-redux-router';
-import { View } from 'react-native';
+import { View, Navigator } from 'react-native';
 import { Provider } from 'react-redux';
 import configureStore from '../store/store';
 
@@ -13,7 +13,11 @@ import OnboardSetupBank from './onboarding/SetupBank';
 
 import Overview from './main/Overview';
 import AddAccount from '../components/main/AddAccount';
-import Funds from '../components/main/Funds';
+
+import Funds from './main/Funds';
+import FundDetails from '../components/main/FundDetails';
+import FundAdjust from '../components/main/FundAdjust';
+
 import Transactions from '../components/main/Transactions';
 import Learn from '../components/main/Learn';
 import Settings from '../components/main/Settings';
@@ -26,6 +30,10 @@ const store = configureStore();
 
 class App extends React.Component {
   render() {
+
+    var sceneConfig = Navigator.SceneConfigs.FloatFromBottom;
+    sceneConfig.gestures.pop.disabled = true;
+
     return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>
@@ -48,7 +56,7 @@ class App extends React.Component {
             <Route
               name="overview"
               component={Overview}
-              initial
+
               title="Overview"
               parent="Overview"
             />
@@ -64,7 +72,21 @@ class App extends React.Component {
               name="funds"
               component={Funds}
               title="Funds"
+              initial
               parent="Funds"
+            />
+            <Route
+              name="fundPreview"
+              component={FundDetails}
+              schema="pop-up"
+              parent="Funds"
+            />
+            <Route
+              name="fundAdjust"
+              component={FundAdjust}
+              schema="pop-up"
+              parent="Funds"
+              title="Adjust Fund"
             />
             <Route
               name="transactions"

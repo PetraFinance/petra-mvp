@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-native-redux-router';
 import onboarding from './onboarding';
-import overview from './overview';
+import funds from './funds';
 
 const rootReducer = combineReducers({
   routerReducer,
   onboarding,
-  overview,
+  funds,
 });
 
 export default rootReducer;
