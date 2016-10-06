@@ -17,8 +17,10 @@ class BaseView extends React.Component {
       switch(type) {
         case 'add':
           return (<Image style={{ height: 15, width: 15 }} source={require('../../../assets/bluePlus.png')} />);
-        case 'exit':
-          return (<Image style={{ height: 15, width: 15 }} source={require('../../../assets/exitIcon.png')} />);
+        case 'backWhite':
+          return (<Image style={{ height: 15, width: 15 }} source={require('../../../assets/WhiteBackArrow.png')} />);
+        case 'backBlue':
+          return (<Image style={{ height: 15, width: 15 }} source={require('../../../assets/BlueBackArrow.png')} />);
         default:
           return (<View />);
       }

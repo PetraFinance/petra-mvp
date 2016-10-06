@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Actions } from 'react-native-redux-router';
+import { Actions } from 'react-native-router-flux';
+
 import AdvanceButton from '../../containers/partials/AdvanceButton';
 import Swiper from 'react-native-swiper';
 
@@ -47,7 +48,7 @@ class Landing extends React.Component {
         </Swiper>
         <View style={s.advanceWrapper}>
           <AdvanceButton
-            text={'CONTINUE'}
+            text={'Login with Facebook'}
             pressAction={Actions.accountCreation}
           />
         </View>

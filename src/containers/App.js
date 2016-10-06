@@ -5,11 +5,8 @@ import { Provider, connect } from 'react-redux';
 import configureStore from '../store/store';
 
 import OnboardLanding from '../components/onboarding/Landing';
-import OnboardProfileOverview from './onboarding/ProfileOverview';
-import OnboardTermsAndConditions from './onboarding/TermsAndConditions';
 import OnboardAccountCreation from './onboarding/AccountCreation';
-import OnboardSelectBank from './onboarding/SelectBank';
-import OnboardSetupBank from './onboarding/SetupBank';
+import OnboardTermsAndConditions from './onboarding/TermsAndConditions';
 
 import Overview from './main/Overview';
 import AddAccount from '../components/main/AddAccount';
@@ -69,7 +66,6 @@ class App extends React.Component {
               component={Transactions}
               type="replace"
               hideNavBar
-              initial
             />
             <Scene
               key="learn"
@@ -86,26 +82,18 @@ class App extends React.Component {
             <Scene
               key="onboardLaunch"
               component={OnboardLanding}
+              hideNavBar
+              initial
             />
             <Scene
               key="accountCreation"
               component={OnboardAccountCreation}
+              hideNavBar
             />
             <Scene
               key="termsAndConditions"
               component={OnboardTermsAndConditions}
-            />
-            <Scene
-              key="selectBanking"
-              component={OnboardSelectBank}
-            />
-            <Scene
-              key="setupBanking"
-              component={OnboardSetupBank}
-            />
-            <Scene
-              key="profileOverview"
-              component={OnboardProfileOverview}
+              hideNavBar
             />
           </Scene>
         </Router>

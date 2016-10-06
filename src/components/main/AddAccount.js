@@ -60,7 +60,7 @@ class AddAccount extends React.Component {
         hideBottomNavBar
         headerBackgroundColor={'#455A64'}
         headerTextColor={'white'}
-        leftIcon={{ type: 'exit', action: Actions.pop }}
+        leftIcon={{ type: 'backWhite', action: Actions.pop }}
         children={genAddAccount()}
       />
     );
