@@ -6,6 +6,7 @@ import Dimensions from 'Dimensions';
 import Navigation from './Navigation';
 import BaseView from './BaseView';
 import TipCard from '../partials/cards/TipCard';
+import FundsCard from '../partials/cards/FundsCard';
 import TransactionCard from '../partials/cards/TransactionCard';
 
 class Transactions extends React.Component {
@@ -25,12 +26,36 @@ class Transactions extends React.Component {
     width = width - 28;
     return width;
   }
-
   render() {
 
     const genTransactions = () => (
       <View>
-        <View style={s.overviewPanel}>
+        <View style={s.fundsContainer}>
+          <FundsCard
+            category={'General Savings'}
+            timeToReset={'5 days until reset'}
+            current={'$1,420'}
+            goal={2000}
+            barColor={'#ED417B'}
+            barSize={this.setSwipeViewWidth()}
+            divider
+          />
+          <FundsCard
+            category={'Recurring Expenses'}
+            timeToReset={'3 days until paycheck'}
+            current={'$920'}
+            goal={1200}
+            barColor={'#9C27B0'}
+            divider
+          />
+          <FundsCard
+            category={'General Spending'}
+            timeToReset={'12 days until reset'}
+            current={'$265'}
+            goal={400}
+            barColor={'#F44336'}
+            canModify
+          />
         </View>
         <Swiper
           bounces={true}
@@ -65,6 +90,7 @@ class Transactions extends React.Component {
             />
           </View>
         </Swiper>
+
         <View style={s.container}>
           <View style={s.dateEntry}>
             <View style={s.dateDecoration}></View>
@@ -87,8 +113,8 @@ class Transactions extends React.Component {
 
     return (
       <BaseView
-        parent={this.props.parent}
-        title={this.props.title}
+        parent={'Transactions'}
+        title={'Transactions'}
         children={genTransactions()}
         scroll={true}
       />
@@ -101,7 +127,10 @@ const s = StyleSheet.create({
     flex: 1,
     marginRight: 14,
     marginLeft: 14,
-    flexDirection: 'column',
+  },
+  fundsContainer: {
+    marginTop: 16,
+    marginBottom: 16,
   },
   general: {
     alignSelf: 'stretch',
@@ -139,19 +168,7 @@ const s = StyleSheet.create({
     fontFamily: 'Avenir-Heavy',
     fontSize: 12,
   },
-  overviewPanel: {
-    height: 150,
-    marginTop: 16,
-    marginRight: 14,
-    marginLeft: 14,
-    marginBottom: 16,
-    backgroundColor: '#03A9F4',
-  },
 });
 
-Transactions.propTypes = {
-  parent: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-};
 
 export default Transactions;

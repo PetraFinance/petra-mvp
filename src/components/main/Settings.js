@@ -11,8 +11,8 @@ class Settings extends React.Component {
 
     return (
       <BaseView
-        parent={this.props.parent}
-        title={this.props.title}
+        parent={'Settings'}
+        title={'Settings'}
         children={genSettings()}
         scroll
       />
@@ -41,10 +41,5 @@ const s = StyleSheet.create({
     color: '#03A9F4',
   },
 });
-
-Settings.propTypes = {
-  parent: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-};
 
 export default Settings;

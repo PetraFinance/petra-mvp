@@ -16,12 +16,15 @@ class FundsCard extends React.Component {
       const goal = this.props.goal;
       const spent = this.props.goal - convertDollarstoNumbers(this.props.current);
 
-      return (
-        <View style={s.spendingDetails}>
-          <Text style={s.spendingDetailsLeft}>{convertNumbertoDollars(goal)}</Text>
-          <Text style={s.spendingDetailsRight}>{convertNumbertoDollars(spent) + ' Spent'}</Text>
-        </View>
-      );
+      if (this.props.showSpent) {
+        return (
+          <View style={s.spendingDetails}>
+            <Text style={s.spendingDetailsLeft}>{convertNumbertoDollars(goal)}</Text>
+            <Text style={s.spendingDetailsRight}>{convertNumbertoDollars(spent) + ' Spent'}</Text>
+          </View>
+        );
+      }
+      return (<View />);
     };
 
     const genFundsCard = () => {
@@ -117,6 +120,7 @@ FundsCard.propTypes = {
   barColor: React.PropTypes.string.isRequired,
   divider: React.PropTypes.bool,
   showSpent: React.PropTypes.bool,
+
 };
 
 export default FundsCard;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Actions } from 'react-native-redux-router';
+import { Actions } from 'react-native-router-flux';
 
 import BaseView from './BaseView';
 import AccountsCard from '../partials/cards/AccountsCard';
@@ -42,8 +42,8 @@ class Overview extends React.Component {
 
     return (
       <BaseView
-        parent={this.props.parent}
-        title={this.props.title}
+        parent={'Overview'}
+        title={'Overview'}
         children={genOverview()}
         scroll={true}
         rightIcon={{ type: 'add', action: Actions.addAccount }}
@@ -89,10 +89,5 @@ const s = StyleSheet.create({
     color: '#8A8B8C',
   },
 });
-
-Overview.propTypes = {
-  parent: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-};
 
 export default Overview;

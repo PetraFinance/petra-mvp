@@ -1,11 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, TouchableHighlight } from 'react-native';
-import { Actions } from 'react-native-redux-router';
+import { Actions } from 'react-native-router-flux';
 
 import SectionHeader from '../partials/layout/SectionHeader';
 import FundsCard from '../partials/cards/FundsCard';
 import BaseView from './BaseView';
-
 
 class Funds extends React.Component {
 
@@ -16,7 +15,7 @@ class Funds extends React.Component {
 
   handleFundPreview(fundPreviewName, canModify) {
     this.props.setFundPreviewName(fundPreviewName);
-    Actions.fundPreview({title: fundPreviewName, canModify});
+    Actions.fundPreview({canModify});
   }
 
   render() {
@@ -78,8 +77,9 @@ class Funds extends React.Component {
 
     return (
       <BaseView
-        parent={this.props.parent}
-        title={this.props.title}
+        parent={'Funds'}
+        title={'Funds'}
+        rightIcon={{ type: 'add', action: Actions.funds }}
         children={genFunds()}
         scroll
       />
@@ -108,10 +108,5 @@ const s = StyleSheet.create({
     color: '#03A9F4',
   },
 });
-
-Funds.propTypes = {
-  parent: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-};
 
 export default Funds;

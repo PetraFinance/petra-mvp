@@ -100,7 +100,9 @@ class BaseView extends React.Component {
           {genRightHeaderIcon(rightIcon, headerBackgroundColor)}
           {genLeftHeaderIcon(leftIcon, headerBackgroundColor)}
         </View>
+
         {getViewType(this.props.scroll)}
+
         {genToast()}
         {genNavBar(hideBottomNavBar)}
       </View>

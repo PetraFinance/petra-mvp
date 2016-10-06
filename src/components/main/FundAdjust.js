@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Actions } from 'react-native-redux-router';
+import { Actions } from 'react-native-router-flux';
 
 import SectionHeader from '../partials/layout/SectionHeader';
 import Card from '../partials/cards/Card';
@@ -10,18 +10,38 @@ import BaseView from './BaseView';
 
 class FundAdjust extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.handleForward = this.handleForward.bind(this);
+  }
+
+  handleForward = () => {
+    Actions.funds();
+  }
+
   render() {
+    const genFundsOverview = () => (
+      <View>
+        <Text style={s.fundingAdvice}>This is your fucking overview</Text>
+      </View>
+    );
+
+    const genFundingFrequency = () => (
+      <View style={s.rowContainer}>
+        <Text style={s.fundingAmountText}>Funding Text</Text>
+        <Text style={s.fundingAmount}>Every month</Text>
+      </View>
+    );
+
+    const genFundingAmount = () => (
+      <View style={s.rowContainer}>
+        <Text style={s.fundingAmountText}>Amount</Text>
+        <Text style={s.fundingAmount}>$1400</Text>
+      </View>
+    );
 
     const genFundingAdvice = () => (
-      <Text style={s.fundingAdvice}>Changing your fund to this amount results in a deficit of $1,001 per month which you’ll have to fund from other funds.By default, it all comes from your general savings, but you can customize how much you get from each fund. Fix this copy, it sucks.</Text>
-    );
-
-    const genFundsOverview = () => (
-      <Text style={s.fundingAdvice}>This is your fucking overview</Text>
-    );
-
-    const genFundingRule = () => (
-      <Text style={s.fundingAdvice}>Shit to handle adjusting your funding rules will go here ay fucking lmao.</Text>
+      <Text style={s.fundingAdvice}>Changing your fund to this amount results in a deficit of $1,001 per month which you’ll have to fund from other funds. By default, it all comes from your general savings, but you can customize how much you get from each fund. Fix this copy, it sucks.</Text>
     );
 
     const genFundAdjust = () => (
@@ -36,7 +56,11 @@ class FundAdjust extends React.Component {
           header={'Funding Rule'}
         />
         <Card
-          children={genFundingRule()}
+          children={genFundingFrequency()}
+          divider
+        />
+        <Card
+          children={genFundingAmount()}
         />
         <SectionHeader
           header={'Funding Advice'}
@@ -51,8 +75,8 @@ class FundAdjust extends React.Component {
       <View style={s.container}>
         <View style={s.container}>
           <BaseView
-            parent={this.props.parent}
-            title={this.props.title}
+            parent={'Funds'}
+            title={'Adjust Fund'}
             hideBottomNavBar
             headerBackgroundColor={'#455A64'}
             headerTextColor={'white'}
@@ -62,7 +86,7 @@ class FundAdjust extends React.Component {
         </View>
         <BottomButton
           text={"LOOKS GOOD!"}
-          pressAction={Actions.funds}
+          pressAction={ () => this.handleForward() }
         />
       </View>
     );
@@ -73,14 +97,23 @@ const s = StyleSheet.create({
   container: {
     flex: 1,
   },
+  rowContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
   fundingAdvice: {
     fontFamily: 'Avenir',
   },
+  fundingAmount: {
+    flex: 1,
+    fontFamily: 'Avenir',
+    textAlign: 'right',
+  },
+  fundingAmountText: {
+    flex: 1,
+    fontFamily: 'Avenir',
+    color: '#263238',
+  },
 });
-
-FundAdjust.propTypes = {
-  parent: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-};
 
 export default FundAdjust;

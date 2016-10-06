@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
-import { Actions } from 'react-native-redux-router';
+import { Actions } from 'react-native-router-flux';
 
 class Navigation extends React.Component {
 

@@ -1,14 +1,17 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Actions } from 'react-native-redux-router';
+import { Actions } from 'react-native-router-flux';
 
 import SectionHeader from '../partials/layout/SectionHeader';
 import FundsCard from '../partials/cards/FundsCard';
 import BottomButton from '../partials/buttons/BottomButton';
 import BaseView from './BaseView';
 
-
 class FundDetails extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
 
   render() {
 
@@ -32,7 +35,7 @@ class FundDetails extends React.Component {
           header={'Overview'}
         />
         <FundsCard
-          category={this.props.title}
+          category={'Funds'}
           timeToReset={'5 days until reset'}
           current={'$1,420'}
           goal={2000}
@@ -50,8 +53,8 @@ class FundDetails extends React.Component {
       <View style={s.container}>
         <View style={s.container}>
           <BaseView
-            parent={this.props.parent}
-            title={this.props.title}
+            parent={'Funds'}
+            title={this.props.fundPreviewName}
             hideBottomNavBar
             headerBackgroundColor={'#455A64'}
             headerTextColor={'white'}
@@ -72,8 +75,7 @@ const s = StyleSheet.create({
 });
 
 FundDetails.propTypes = {
-  parent: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
+  fundPreviewName: React.PropTypes.string.isRequired,
 };
 
 export default FundDetails;

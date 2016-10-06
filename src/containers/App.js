@@ -1,7 +1,7 @@
 import React from 'react';
-import { Router, Route, Animations, Schema } from 'react-native-redux-router';
 import { View, Navigator } from 'react-native';
-import { Provider } from 'react-redux';
+import { Router, Scene, Schema } from 'react-native-router-flux';
+import { Provider, connect } from 'react-redux';
 import configureStore from '../store/store';
 
 import OnboardLanding from '../components/onboarding/Landing';
@@ -15,7 +15,7 @@ import Overview from './main/Overview';
 import AddAccount from '../components/main/AddAccount';
 
 import Funds from './main/Funds';
-import FundDetails from '../components/main/FundDetails';
+import FundOverview from './main/FundOverview';
 import FundAdjust from '../components/main/FundAdjust';
 
 import Transactions from '../components/main/Transactions';
@@ -28,122 +28,87 @@ import BackButton from './partials/BackButton';
 
 const store = configureStore();
 
+// The current routing package is only used for routing
+// We use our own navigation components and tab bar
+
 class App extends React.Component {
   render() {
-
-    var sceneConfig = Navigator.SceneConfigs.FloatFromBottom;
-    sceneConfig.gestures.pop.disabled = true;
-
     return (
       <Provider store={store}>
-        <View style={{ flex: 1 }}>
-          <Router>
-            <Schema
-              name="onboarding"
-              sceneConfig={Animations.FlatFloatFromBottom}
-              navBar={BackButton}
-            />
-            <Schema
-              name="pop-up"
-              sceneConfig={Animations.FlatFloatFromBottom}
-              navBar={StatusBarLight}
-            />
-            <Schema
-              name="default"
-              navBar={StatusBarDark}
-            />
-
-            <Route
-              name="overview"
+        <Router>
+          <Scene key="Root">
+            <Scene
+              key="overview"
               component={Overview}
-
-              title="Overview"
-              parent="Overview"
-            />
-            <Route
-              name="addAccount"
-              component={AddAccount}
-              showBottomNavBar={false}
-              schema="pop-up"
-              title="Add an Account"
-              parent="Overview"
-            />
-            <Route
-              name="funds"
-              component={Funds}
-              title="Funds"
-              initial
-              parent="Funds"
-            />
-            <Route
-              name="fundPreview"
-              component={FundDetails}
-              schema="pop-up"
-              parent="Funds"
-            />
-            <Route
-              name="fundAdjust"
-              component={FundAdjust}
-              schema="pop-up"
-              parent="Funds"
-              title="Adjust Fund"
-            />
-            <Route
-              name="transactions"
-              component={Transactions}
-              title="Transactions"
-              parent="Transactions"
-            />
-            <Route
-              name="learn"
-              component={Learn}
-              title="Learn"
-              parent="Learn"
-            />
-            <Route
-              name="settings"
-              component={Settings}
-              title="Settings"
-              parent="Settings"
-            />
-            <Route name="onboardLaunch"
-              component={OnboardLanding}
-              schema="onboarding"
+              type="replace"
               hideNavBar
-              title="Launch"
             />
-            <Route
-              name="accountCreation"
+            <Scene
+              key="addAccount"
+              component={AddAccount}
+              hideNavBar
+            />
+            <Scene
+              key="funds"
+              component={Funds}
+              type="replace"
+              hideNavBar
+            />
+            <Scene
+              key="fundPreview"
+              component={FundOverview}
+              hideNavBar
+            />
+            <Scene
+              key="fundAdjust"
+              component={FundAdjust}
+              hideNavBar
+            />
+            <Scene
+              key="transactions"
+              component={Transactions}
+              type="replace"
+              hideNavBar
+              initial
+            />
+            <Scene
+              key="learn"
+              component={Learn}
+              type="replace"
+              hideNavBar
+            />
+            <Scene
+              key="settings"
+              component={Settings}
+              type="replace"
+              hideNavBar
+            />
+            <Scene
+              key="onboardLaunch"
+              component={OnboardLanding}
+            />
+            <Scene
+              key="accountCreation"
               component={OnboardAccountCreation}
-              schema="onboarding"
-              title="Account Creation"
             />
-            <Route
-              name="termsAndConditions"
+            <Scene
+              key="termsAndConditions"
               component={OnboardTermsAndConditions}
-              schema="onboarding"
-              title="Terms and Conditions"
             />
-            <Route
-              name="selectBanking"
+            <Scene
+              key="selectBanking"
               component={OnboardSelectBank}
-              schema="onboarding"
-              title="Select Banking"
             />
-            <Route
-              name="setupBanking"
+            <Scene
+              key="setupBanking"
               component={OnboardSetupBank}
-              schema="onboarding"
-              title="Setup Banking"
             />
-            <Route
-              name="profileOverview"
+            <Scene
+              key="profileOverview"
               component={OnboardProfileOverview}
-              schema="onboarding"
-              title="Profile Overview"
             />
-          </Router>
-        </View>
+          </Scene>
+        </Router>
       </Provider>
     );
   }

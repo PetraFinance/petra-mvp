@@ -19,8 +19,8 @@ class Learn extends React.Component {
 
     return (
       <BaseView
-        parent={this.props.parent}
-        title={this.props.title}
+        parent={'Learn'}
+        title={'Learn'}
         children={genLearn()}
       />
     );
@@ -36,10 +36,5 @@ const s = StyleSheet.create({
     alignItems: 'stretch',
   },
 });
-
-Learn.propTypes = {
-  parent: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-};
 
 export default Learn;

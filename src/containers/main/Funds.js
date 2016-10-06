@@ -4,7 +4,10 @@ import Funds from '../../components/main/Funds';
 
 const mapStateToProps = (state) => {
   return Object.assign({},
-    state.funds.toJS(), {}
+    state.funds.toJS(),
+    {
+
+    }
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Actions } from 'react-native-redux-router';
+import { Actions } from 'react-native-router-flux';
 
 import Dimensions from 'Dimensions';
 import BaseView from './BaseView';
@@ -55,8 +55,8 @@ class AddAccount extends React.Component {
 
     return (
       <BaseView
-        parent={this.props.parent}
-        title={this.props.title}
+        parent={'Overview'}
+        title={'Add Account'}
         hideBottomNavBar
         headerBackgroundColor={'#455A64'}
         headerTextColor={'white'}
@@ -94,10 +94,5 @@ const s = StyleSheet.create({
     height: 10,
   },
 });
-
-AddAccount.propTypes = {
-  parent: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-};
 
 export default AddAccount;
