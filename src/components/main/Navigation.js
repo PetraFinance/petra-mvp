@@ -7,20 +7,8 @@ class Navigation extends React.Component {
   render() {
     const categories = [
       {
-        name: 'Transactions',
-        action: Actions.transactions,
-      },
-      {
-        name: 'Funds',
-        action: Actions.funds,
-      },
-      {
-        name: 'Overview',
-        action: Actions.overview,
-      },
-      {
-        name: 'Learn',
-        action: Actions.learn,
+        name: 'Goals',
+        action: Actions.goals,
       },
       {
         name: 'Settings',
@@ -29,7 +17,7 @@ class Navigation extends React.Component {
     ];
 
     const setStyle = (route) => {
-      if (this.props.parent === route) {
+      if (this.props.title === route) {
         return s.navTextActive;
       }
       return s.navText;
@@ -42,7 +30,7 @@ class Navigation extends React.Component {
       );
     };
 
-    const navigation = categories.map((category, i) => (
+    const genNavigation = categories.map((category, i) => (
       <TouchableHighlight
         key={i}
         underlayColor={'#F8F9FA'}
@@ -51,7 +39,7 @@ class Navigation extends React.Component {
       >
         <View>
           <View style={s.imageWrapper}>
-            {setImage(this.props.parent, i)}
+            {setImage(this.props.title, i)}
           </View>
           <Text style={setStyle(category.name)}>{category.name}</Text>
         </View>
@@ -60,7 +48,7 @@ class Navigation extends React.Component {
 
     return (
       <View style={s.bar}>
-        {navigation}
+        {genNavigation}
       </View>
     );
   }
@@ -97,62 +85,25 @@ const s = StyleSheet.create({
 });
 
 // React Native does not allow for dynamic data in require statements.
-
-const fundsIcon = require('../../../assets/navigation/funds.png');
-const fundsIconActive = require('../../../assets/navigation/fundsActive.png');
-
-const learnIcon = require('../../../assets/navigation/learn.png');
-const learnIconActive = require('../../../assets/navigation/learnActive.png');
-
-const overviewIcon = require('../../../assets/navigation/overview.png');
-const overviewIconActive = require('../../../assets/navigation/overviewActive.png');
-
-const transactionsIcon = require('../../../assets/navigation/transactions.png');
-const transactionsIconActive = require('../../../assets/navigation/transactionsActive.png');
+const goalsIcon = require('../../../assets/navigation/goals.png');
+const goalsIconActive = require('../../../assets/navigation/goalsActive.png');
 
 const settingsIcon = require('../../../assets/navigation/settings.png');
 const settingsIconActive = require('../../../assets/navigation/settingsActive.png');
 
 const routingStates = {
-  transactions: [
-    transactionsIconActive,
-    fundsIcon,
-    overviewIcon,
-    learnIcon,
-    settingsIcon,
-  ],
-  funds: [
-    transactionsIcon,
-    fundsIconActive,
-    overviewIcon,
-    learnIcon,
-    settingsIcon,
-  ],
-  overview: [
-    transactionsIcon,
-    fundsIcon,
-    overviewIconActive,
-    learnIcon,
-    settingsIcon,
-  ],
-  learn: [
-    transactionsIcon,
-    fundsIcon,
-    overviewIcon,
-    learnIconActive,
+  goals: [
+    goalsIconActive,
     settingsIcon,
   ],
   settings: [
-    transactionsIcon,
-    fundsIcon,
-    overviewIcon,
-    learnIcon,
+    goalsIcon,
     settingsIconActive,
   ],
 };
 
 Navigation.propTypes = {
-  parent: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
 };
 
 export default Navigation;

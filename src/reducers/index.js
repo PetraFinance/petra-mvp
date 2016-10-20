@@ -1,10 +1,5 @@
 import { combineReducers } from 'redux';
-import onboarding from './onboarding';
-import funds from './funds';
 
-const rootReducer = combineReducers({
-  onboarding,
-  funds,
-});
+const rootReducer = () => ({});
 
 export default rootReducer;
