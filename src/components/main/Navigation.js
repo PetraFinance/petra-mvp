@@ -6,14 +6,8 @@ class Navigation extends React.Component {
 
   render() {
     const categories = [
-      {
-        name: 'Goals',
-        action: Actions.goals,
-      },
-      {
-        name: 'Settings',
-        action: Actions.settings,
-      },
+      { name: 'Goals', action: Actions.goals, },
+      { name: 'Settings', action: Actions.settings, },
     ];
 
     const setStyle = (route) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
 
 class Header extends React.Component {
   render() {
@@ -58,15 +58,15 @@ class Header extends React.Component {
 
     const rightIcon = this.props.rightIcon || { type: '', action: null };
     const leftIcon = this.props.leftIcon || { type: '', action: null };
-    const headerBackgroundColor = this.props.headerBackgroundColor || '#F9FAFC';
-    const headerTextColor = this.props.headerTextColor || '#37474F';
+    const backgroundColor = this.props.backgroundColor || '#F9FAFC';
+    const textColor = this.props.textColor || '#37474F';
     const title = this.props.title;
 
     return (
-      <View style={setHeaderStyle(headerBackgroundColor)}>
-        <Text style={setHeaderTextStyle(headerTextColor)}>{title}</Text>
-        {genRightHeaderIcon(rightIcon, headerBackgroundColor)}
-        {genLeftHeaderIcon(leftIcon, headerBackgroundColor)}
+      <View style={setHeaderStyle(backgroundColor)}>
+        <Text style={setHeaderTextStyle(textColor)}>{title}</Text>
+        {genRightHeaderIcon(rightIcon, backgroundColor)}
+        {genLeftHeaderIcon(leftIcon, backgroundColor)}
       </View>
     )
   }
@@ -76,12 +76,12 @@ const s = StyleSheet.create({
   rightHeaderIcon: {
     position: 'absolute',
     right: 14,
-    top: 35,
+    top: 33,
   },
   leftHeaderIcon: {
     position: 'absolute',
     left: 14,
-    top: 35,
+    top: 33,
   },
 });
 

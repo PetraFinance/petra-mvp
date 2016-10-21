@@ -1,4 +1,4 @@
-export const convertNumbertoDollars = (value) => {
+export const convertNumberstoDollars = (value) => {
   let dollars = '$' + value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').toString();
   if (dollars.split(".")[1] === "00") {
     return dollars.split(".")[0];

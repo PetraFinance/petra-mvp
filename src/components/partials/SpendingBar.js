@@ -16,10 +16,10 @@ class SpendingBar extends React.Component {
       const fill = current / goal;
       const remaining = 1 - fill;
 
-      const fillWidth = (Dimensions.get('window').width - 28) * fill;
-      const remainingWidth = (Dimensions.get('window').width - 28) * remaining;
+      const fillWidth = (Dimensions.get('window').width - 56) * fill;
+      const remainingWidth = (Dimensions.get('window').width - 56) * remaining;
 
-      const backgroundColor = this.props.barColor;
+      const backgroundColor = this.props.color;
 
       bar.push(<View key={0} style={{ backgroundColor, height: 5, width: fillWidth }} />);
       bar.push(<View key={1} style={{ backgroundColor: '#E5E5E5', height: 5, width: remainingWidth }} />);
@@ -44,7 +44,7 @@ const s = StyleSheet.create({
 });
 
 SpendingBar.propTypes = {
-  barColor: React.PropTypes.string.isRequired,
+  color: React.PropTypes.string.isRequired,
   current: React.PropTypes.number.isRequired,
   goal: React.PropTypes.number.isRequired,
 };

@@ -14,14 +14,13 @@ class MainView extends React.Component {
       <View style={s.container}>
         <Header
           title={this.props.title}
-          rightIcon={this.props.rightIcon}
+          leftIcon={this.props.leftIcon}
+          backgroundColor="#29B6F6"
+          textColor="white"
         />
         <View style={s.children}>
           {this.props.children}
         </View>
-        <Navigation
-          title={this.props.title}
-        />
       </View>
     );
   }
@@ -34,6 +33,7 @@ const s = StyleSheet.create({
   },
   children: {
     flex: 1,
+    backgroundColor: '#03A9F4',
   },
 });
 
