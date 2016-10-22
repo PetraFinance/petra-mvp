@@ -26,7 +26,7 @@ class Goals extends React.Component {
     return (
       <MainView
         title="Goals"
-        rightIcon={ {type: "add", action: Actions.goals_create } }
+        rightIcon={ {type: "add", action: Actions.goals_add } }
       >
         {genPage()}
       </MainView>

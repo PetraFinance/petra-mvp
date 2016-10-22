@@ -13,7 +13,7 @@ class GoalsCard extends React.Component {
 
   render() {
 
-    const genGoalsCard = () => {
+    const genPage = () => {
 
       const current = convertNumberstoDollars(this.props.current);
       const goal = convertNumberstoDollars(this.props.goal);
@@ -40,10 +40,8 @@ class GoalsCard extends React.Component {
     };
 
     return (
-      <Card
-        paddingRight={0}
-      >
-        {genGoalsCard()}
+      <Card>
+        {genPage()}
       </Card>
     );
   }

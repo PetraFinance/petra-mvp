@@ -11,6 +11,8 @@ class Header extends React.Component {
           return (<Image style={{ height: 15, width: 15 }} source={require('../../../assets/WhiteBackArrow.png')} />);
         case 'backBlue':
           return (<Image style={{ height: 15, width: 15 }} source={require('../../../assets/BlueBackArrow.png')} />);
+        case 'exitWhite':
+          return (<Image style={{ height: 15, width: 15 }} source={require('../../../assets/WhiteExit.png')} />);
         default:
           return (<View />);
       }

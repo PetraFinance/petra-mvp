@@ -5,7 +5,9 @@ import { Provider } from 'react-redux';
 import configureStore from '../store/store';
 
 import Goals from '../components/main/Goals';
-import GoalsCreate from '../components/main/GoalsCreate';
+import GoalsAdd from './GoalsAdd';
+
+import Settings from '../components/main/Settings';
 
 const store = configureStore();
 
@@ -19,12 +21,19 @@ class App extends React.Component {
               key="goals"
               component={Goals}
               type="replace"
+              initial
               hideNavBar
             />
             <Scene
-              key="goals_create"
-              component={GoalsCreate}
-              initial
+              key="goals_add"
+              component={GoalsAdd}
+              hideNavBar
+            />
+
+            <Scene
+              key="settings"
+              component={Settings}
+              type="replace"
               hideNavBar
             />
           </Scene>

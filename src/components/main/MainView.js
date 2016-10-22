@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import Header from './Header';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 class MainView extends React.Component {
 
@@ -10,6 +10,7 @@ class MainView extends React.Component {
   }
 
   render() {
+
     return (
       <View style={s.container}>
         <Header
