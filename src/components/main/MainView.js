@@ -11,6 +11,8 @@ class MainView extends React.Component {
 
   render() {
 
+    StatusBar.setBarStyle('default', true);
+
     return (
       <View style={s.container}>
         <Header
