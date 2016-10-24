@@ -9,20 +9,36 @@ import MainView from './MainView';
 
 class Goals extends React.Component {
   render() {
+
+    let goalsList = this.props.goalsList;
+
+    const genGoalsList = goalsList.map((goal, i) => (
+      <View
+        key={i}
+      >
+        <GoalsCard
+          category={goal.name}
+          current={goal.current}
+          goal={parseInt(goal.cost)}
+          barColor="black"
+        />
+        <SaveButton
+          saveAmount={goal.saveAmount}
+        />
+      </View>
+    ));
+
     const genPage = () => {
+      if (goalsList.length === 0) {
+        return ( <View /> );
+      }
       return (
         <View style={s.container}>
-          <GoalsCard
-            category="Memes"
-            current={420}
-            goal={1000}
-            timeToReset="5 days"
-            barColor="black"
-          />
-          <SaveButton />
+          {genGoalsList}
         </View>
       );
     }
+
     return (
       <MainView
         title="Goals"

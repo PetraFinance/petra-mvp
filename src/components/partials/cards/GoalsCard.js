@@ -102,7 +102,6 @@ const s = StyleSheet.create({
 
 GoalsCard.propTypes = {
   category: React.PropTypes.string.isRequired,
-  timeToReset: React.PropTypes.string.isRequired,
   barColor: React.PropTypes.string.isRequired,
   divider: React.PropTypes.bool,
   showSpent: React.PropTypes.bool,

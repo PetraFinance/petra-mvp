@@ -4,7 +4,7 @@ import { Router, Scene, Schema } from 'react-native-router-flux';
 import { Provider } from 'react-redux';
 import configureStore from '../store/store';
 
-import Goals from '../components/main/Goals';
+import Goals from './Goals';
 import GoalsAdd from './GoalsAdd';
 
 import Settings from '../components/main/Settings';

@@ -1,3 +1,14 @@
+export const ADD_GOAL = Symbol('ADD_GOAL');
+export function addGoal(name, date, cost, save) {
+  return {
+    type: ADD_GOAL,
+    name,
+    date,
+    cost,
+    save,
+  };
+}
+
 export const ADVANCE_GOAL_STATE = Symbol('ADVANCE_GOAL_STATE');
 export function advanceGoalState() {
   return {

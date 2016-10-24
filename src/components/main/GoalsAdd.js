@@ -16,10 +16,21 @@ class GoalsAdd extends React.Component {
       this.props.handleBackGoalState();
     }
 
+    const handleAddGoal = () => {
+      name = this.props.goalName;
+      cost = this.props.goalCost;
+      date = this.props.goalDate;
+      save = this.props.saveAmount;
+      this.props.handleAddGoal(name, date, cost, save);
+      this.props.resetGoalState();
+      Actions.pop();
+      StatusBar.setBarStyle('default', true);
+    }
+
     const resetGoalState = () => {
       this.props.resetGoalState();
-      StatusBar.setBarStyle('default', true);
       Actions.pop();
+      StatusBar.setBarStyle('default', true);
     }
 
     const genPage = () => {
@@ -53,7 +64,7 @@ class GoalsAdd extends React.Component {
       let backAction = handleBackGoalState;
       if (this.props.goalState === 3) {
         next = "Finish";
-        nextAction = resetGoalState;
+        nextAction = handleAddGoal;
       }
       if (this.props.goalState === 0) {
         backAction = resetGoalState;

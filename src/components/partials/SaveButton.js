@@ -9,7 +9,7 @@ class SaveButton extends React.Component {
   render() {
     return (
       <View style={s.button}>
-        <Text style={s.buttonText}>Save (Add $10)</Text>
+        <Text style={s.buttonText}>Save (Add {this.props.saveAmount})</Text>
       </View>
     );
   }

@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
-import { advanceGoalState, backGoalState, resetGoalState, setGoalName, setGoalCost, setGoalDate, setSaveAmount } from '../actions/goals';
+import { addGoal, advanceGoalState, backGoalState, resetGoalState, setGoalName, setGoalCost, setGoalDate, setSaveAmount } from '../actions/goals';
 import GoalsAdd from '../components/main/GoalsAdd';
 
 const mapStateToProps = (state) => {
   const cpState = state.goals.toJS();
+  const goalsList = cpState.goalsList;
   const goalState = cpState.goalState;
   const goalName = cpState.goalName;
   const goalCost = cpState.goalCost;
@@ -13,6 +14,7 @@ const mapStateToProps = (state) => {
   return Object.assign({},
     state.goals.toJS(),
     {
+      goalsList,
       goalState,
       goalName,
       goalCost,
@@ -23,6 +25,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  handleAddGoal: (name, date, cost, save) => {
+    dispatch(addGoal(name, date, cost, save));
+  },
   handleAdvanceGoalState: () => {
     dispatch(advanceGoalState());
   },

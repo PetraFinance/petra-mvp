@@ -2,6 +2,7 @@ import Immutable from 'immutable';
 import * as ActionType from '../actions/goals';
 
 const defaultState = Immutable.fromJS({
+  goalsList: [],
   goalState: 0,
   goalName: '',
   goalCost: '',
@@ -11,7 +12,19 @@ const defaultState = Immutable.fromJS({
 
 export default function (state = defaultState, action) {
   let updatedGoalState;
+  let updatedGoalsList;
+  let goalsList;
   switch (action.type) {
+    case ActionType.ADD_GOAL:
+      let newGoal = {};
+      newGoal['name'] = action.name;
+      newGoal['date'] = action.date;
+      newGoal['cost'] = action.cost;
+      newGoal['saveAmount'] = action.save;
+      newGoal['current'] = 0;
+      goals = state.get('goalsList');
+      updatedGoalsList = goals.push(newGoal);
+      return state.set('goalsList', updatedGoalsList);
     case ActionType.ADVANCE_GOAL_STATE:
       updatedGoalState = state.get('goalState') + 1;
       return state.set('goalState', updatedGoalState);
