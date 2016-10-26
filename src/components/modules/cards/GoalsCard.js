@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { convertNumberstoDollars, convertDollarstoNumbers } from '../../../helpers/currency';
+import { IntToMonetaryStr, MonetaryStrToInt } from '../../../helpers/currency';
 
 import Card from './Card';
 import SpendingBar from '../SpendingBar';
@@ -12,26 +12,22 @@ class GoalsCard extends React.Component {
   }
 
   render() {
-
     const genPage = () => {
-
-      const current = convertNumberstoDollars(this.props.current);
-      const goal = convertNumberstoDollars(this.props.goal);
-
+      const savesLeft = Math.ceil( (this.props.goal - this.props.currentSaved) / this.props.saveAmount);
       return (
         <View>
           <View style={s.container}>
             <View style={s.left}>
-              <Text style={s.category}>{this.props.category}</Text>
-              <Text style={s.timeToReset}>{current} of {goal}</Text>
+              <Text style={s.category}>{this.props.goalName}</Text>
+              <Text style={s.timeToReset}>{IntToMonetaryStr(this.props.currentSaved)} of {IntToMonetaryStr(this.props.goal)}</Text>
             </View>
             <View style={s.right}>
-              <Text style={s.amount}>23 Savings</Text>
+              <Text style={s.amount}>{savesLeft} Savings</Text>
               <Text style={s.stateOfFunds}>Until Goal</Text>
             </View>
           </View>
           <SpendingBar
-            current={this.props.current}
+            currentSaved={this.props.currentSaved}
             goal={this.props.goal}
             color={this.props.barColor}
           />
@@ -101,11 +97,11 @@ const s = StyleSheet.create({
 });
 
 GoalsCard.propTypes = {
-  category: React.PropTypes.string.isRequired,
+  goalName: React.PropTypes.string.isRequired,
   barColor: React.PropTypes.string.isRequired,
+  currentSaved: React.PropTypes.number.isRequired,
   divider: React.PropTypes.bool,
   showSpent: React.PropTypes.bool,
-  current: React.PropTypes.number.isRequired,
 };
 
 export default GoalsCard;

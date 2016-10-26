@@ -3,27 +3,27 @@ import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 
 class Navigation extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     const categories = [
       { name: 'Goals', action: Actions.goals, },
       { name: 'Settings', action: Actions.settings, },
     ];
-
     const setStyle = (route) => {
       if (this.props.title === route) {
         return s.navTextActive;
       }
       return s.navText;
     };
-
     const setImage = (route, i) => {
       const image = routingStates[route.toLowerCase()][i];
       return (
         <Image source={image} resizeMode={'contain'} style={s.navIcon}/>
       );
     };
-
     const genNavigation = categories.map((category, i) => (
       <TouchableHighlight
         key={i}
@@ -39,7 +39,6 @@ class Navigation extends React.Component {
         </View>
       </TouchableHighlight>
     ));
-
     return (
       <View style={s.bar}>
         {genNavigation}
@@ -81,10 +80,8 @@ const s = StyleSheet.create({
 // React Native does not allow for dynamic data in require statements.
 const goalsIcon = require('../../../assets/navigation/goals.png');
 const goalsIconActive = require('../../../assets/navigation/goalsActive.png');
-
 const settingsIcon = require('../../../assets/navigation/settings.png');
 const settingsIconActive = require('../../../assets/navigation/settingsActive.png');
-
 const routingStates = {
   goals: [
     goalsIconActive,

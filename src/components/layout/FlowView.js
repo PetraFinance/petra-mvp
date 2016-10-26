@@ -1,21 +1,18 @@
 import React from 'react';
 import Navigation from './Navigation';
-import Header from './Header';
+import ViewHeader from './ViewHeader';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
-class MainView extends React.Component {
-
+class FlowView extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-
-    StatusBar.setBarStyle('light-content', true);
-
     return (
       <View style={s.container}>
-        <Header
+        <ViewHeader
           title={this.props.title}
           leftIcon={this.props.leftIcon}
           backgroundColor="#29B6F6"
@@ -24,6 +21,7 @@ class MainView extends React.Component {
         <View style={s.children}>
           {this.props.children}
         </View>
+        <KeyboardSpacer />
       </View>
     );
   }
@@ -40,4 +38,11 @@ const s = StyleSheet.create({
   },
 });
 
-export default MainView;
+FlowView.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  children: React.PropTypes.any.isRequired,
+  leftIcon: React.PropTypes.object,
+  rightIcon: React.PropTypes.object,
+}
+
+export default FlowView;

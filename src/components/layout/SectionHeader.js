@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 
 class SectionHeader extends React.Component {
-
   constructor(props) {
     super(props);
   }

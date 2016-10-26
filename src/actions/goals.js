@@ -1,3 +1,20 @@
+export const SET_GOAL_COMPLETED = Symbol('SET_GOAL_COMPLETED');
+export function setGoalCompleted(id) {
+  return {
+    type: SET_GOAL_COMPLETED,
+    id,
+  };
+}
+
+export const UPDATE_SAVED_AMOUNT = Symbol('UPDATE_SAVED_AMOUNT');
+export function updateSavedAmount(id, updated) {
+  return {
+    type: UPDATE_SAVED_AMOUNT,
+    id,
+    updated,
+  };
+}
+
 export const ADD_GOAL = Symbol('ADD_GOAL');
 export function addGoal(name, date, cost, save) {
   return {
@@ -8,21 +25,6 @@ export function addGoal(name, date, cost, save) {
     save,
   };
 }
-
-export const ADVANCE_GOAL_STATE = Symbol('ADVANCE_GOAL_STATE');
-export function advanceGoalState() {
-  return {
-    type: ADVANCE_GOAL_STATE,
-  };
-}
-
-export const BACK_GOAL_STATE = Symbol('BACK_GOAL_STATE');
-export function backGoalState() {
-  return {
-    type: BACK_GOAL_STATE,
-  };
-}
-
 
 export const RESET_GOAL_STATE = Symbol('RESET_GOAL_STATE');
 export function resetGoalState() {

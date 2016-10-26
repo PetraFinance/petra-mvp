@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { IntToMonetaryStr, MonetaryStrToInt } from '../../../helpers/currency';
 
-class AdvanceFlowButton extends React.Component {
+class SaveButton extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -10,18 +11,18 @@ class AdvanceFlowButton extends React.Component {
     return (
       <View style={s.container}>
         <TouchableHighlight
-          underlayColor={'white'}
-          onPress={this.props.backAction}
-          style={s.back}
+          underlayColor={'#03A9F4'}
+          onPress={this.props.action}
+          style={s.saveButton}
         >
-          <Text style={s.buttonText}>{this.props.back}</Text>
+          <Text style={s.buttonText}>Save (Add {IntToMonetaryStr(this.props.saveAmount)})</Text>
         </TouchableHighlight>
         <TouchableHighlight
           underlayColor={'white'}
-          onPress={this.props.nextAction}
-          style={s.next}
+          onPress={this.props.action}
+          style={s.editButton}
         >
-          <Text style={s.buttonText}>{this.props.next}</Text>
+          <Text style={s.editButtonText}>Edit</Text>
         </TouchableHighlight>
       </View>
     );
@@ -30,29 +31,31 @@ class AdvanceFlowButton extends React.Component {
 
 const s = StyleSheet.create({
   container: {
-    height: 40,
     flexDirection: 'row',
-  },
-  back: {
-    flex: 1,
-    marginRight: 7,
     height: 40,
+  },
+  saveButton: {
+    flex: 1,
+    backgroundColor: '#03A9F4',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'stretch',
+  },
+  editButton: {
+    flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  next: {
-    flex: 1,
-    marginLeft: 7,
-    height: 40,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignSelf: 'stretch',
   },
   buttonText: {
+    fontFamily: 'Avenir-Heavy',
+    color: 'white',
+  },
+  editButtonText: {
     fontFamily: 'Avenir-Heavy',
     color: '#03A9F4',
   },
 });
 
-export default AdvanceFlowButton;
+export default SaveButton;

@@ -1,10 +1,10 @@
 import React from 'react';
-import Navigation from './Navigation';
-import Header from './Header';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
-class MainView extends React.Component {
+import Navigation from './Navigation';
+import ViewHeader from './ViewHeader';
 
+class MainView extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -13,7 +13,7 @@ class MainView extends React.Component {
     StatusBar.setBarStyle('default', true);
     return (
       <View style={s.container}>
-        <Header
+        <ViewHeader
           title={this.props.title}
           rightIcon={this.props.rightIcon}
         />
@@ -37,5 +37,12 @@ const s = StyleSheet.create({
     flex: 1,
   },
 });
+
+MainView.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  children: React.PropTypes.any.isRequired,
+  leftIcon: React.PropTypes.object,
+  rightIcon: React.PropTypes.object,
+}
 
 export default MainView;

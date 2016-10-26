@@ -1,9 +1,10 @@
 import Immutable from 'immutable';
 import * as ActionType from '../actions/goals';
+import { MonetaryStrToInt } from '../helpers/currency';
 
 const defaultState = Immutable.fromJS({
-  goalsList: [],
-  goalState: 0,
+  nextAvaliableId: 0,
+  goalsList: {},
   goalName: '',
   goalCost: '',
   goalDate: '',
@@ -11,28 +12,39 @@ const defaultState = Immutable.fromJS({
 });
 
 export default function (state = defaultState, action) {
-  let updatedGoalState;
-  let updatedGoalsList;
   let goalsList;
+  let goal;
+  let id;
+  let idString;
+  let updatedId;
+  let updatedGoalsList;
   switch (action.type) {
+    case ActionType.SET_GOAL_COMPLETED:
+      return state;
+    case ActionType.UPDATE_SAVED_AMOUNT:
+      return state.setIn(['goalsList', action.id, 'currentSaved'], action.updated);
     case ActionType.ADD_GOAL:
-      let newGoal = {};
-      newGoal['name'] = action.name;
-      newGoal['date'] = action.date;
-      newGoal['cost'] = action.cost;
-      newGoal['saveAmount'] = action.save;
-      newGoal['current'] = 0;
-      goals = state.get('goalsList');
-      updatedGoalsList = goals.push(newGoal);
-      return state.set('goalsList', updatedGoalsList);
-    case ActionType.ADVANCE_GOAL_STATE:
-      updatedGoalState = state.get('goalState') + 1;
-      return state.set('goalState', updatedGoalState);
-    case ActionType.BACK_GOAL_STATE:
-      updatedGoalState = state.get('goalState') - 1;
-      return state.set('goalState', updatedGoalState);
+      id = state.get('nextAvaliableId');
+      idString = id.toString();
+      updatedGoalsList = state.get('goalsList');
+      let temp = Immutable.Map({
+        'name': action.name,
+        'date': action.date,
+        'cost': MonetaryStrToInt(action.cost),
+        'saveAmount': MonetaryStrToInt(action.save),
+        'currentSaved': 0,
+        'done': false,
+      });
+      goal = Immutable.Map([[idString, temp]]);
+      updatedGoalsList = updatedGoalsList.merge(goal);
+      updatedId = id + 1;
+      return state.set('goalsList', updatedGoalsList)
+                  .set('nextAvaliableId', updatedId);
     case ActionType.RESET_GOAL_STATE:
-      return state.set('goalState', 0);
+      return state.set('goalName', '')
+                  .set('goalCost', '')
+                  .set('goalDate', '')
+                  .set('saveAmount', '');
     case ActionType.SET_GOAL_NAME:
       return state.set('goalName', action.name);
     case ActionType.SET_GOAL_COST:

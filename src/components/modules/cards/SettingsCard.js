@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { convertNumberstoDollars, convertDollarstoNumbers } from '../../../helpers/currency';
 
 import Card from './Card';
 

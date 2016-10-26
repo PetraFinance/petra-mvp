@@ -1,7 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
 
-class Header extends React.Component {
+class ViewHeader extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const getIcon = (type) => {
       switch(type) {
@@ -17,7 +21,6 @@ class Header extends React.Component {
           return (<View />);
       }
     };
-
     const genRightHeaderIcon = (icon, underlayColor) => {
       const symbol = getIcon(icon.type);
       return (
@@ -30,7 +33,6 @@ class Header extends React.Component {
         </TouchableHighlight>
       );
     };
-
     const genLeftHeaderIcon = (icon, underlayColor) => {
       const symbol = getIcon(icon.type);
       return (
@@ -43,27 +45,25 @@ class Header extends React.Component {
         </TouchableHighlight>
       );
     };
-
     const setHeaderStyle = (backgroundColor) => ({
       height: 65,
       paddingTop: 20,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor,
+      borderBottomWidth: 0.3,
+      borderBottomColor: '#828287',
     });
-
     const setHeaderTextStyle = (color) => ({
       fontFamily: 'Avenir-Heavy',
       fontSize: 17,
       color,
     });
-
     const rightIcon = this.props.rightIcon || { type: '', action: null };
     const leftIcon = this.props.leftIcon || { type: '', action: null };
     const backgroundColor = this.props.backgroundColor || '#F9FAFC';
     const textColor = this.props.textColor || '#37474F';
     const title = this.props.title;
-
     return (
       <View style={setHeaderStyle(backgroundColor)}>
         <Text style={setHeaderTextStyle(textColor)}>{title}</Text>
@@ -87,4 +87,12 @@ const s = StyleSheet.create({
   },
 });
 
-export default Header;
+ViewHeader.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  rightIcon: React.PropTypes.object,
+  leftIcon: React.PropTypes.object,
+  textColor: React.PropTypes.string,
+  backgroundColor: React.PropTypes.string,
+}
+
+export default ViewHeader;

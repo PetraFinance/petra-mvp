@@ -1,22 +1,22 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import MainView from './MainView';
-import Header from '../partials/layout/Header';
-import SettingsCard from '../partials/cards/SettingsCard';
+import MainView from '../layout/MainView';
+import SectionHeader from '../layout/SectionHeader';
+import SettingsCard from '../modules/cards/SettingsCard';
 
 class Settings extends React.Component {
 
   render() {
     const genPage = () => (
       <View>
-        <Header
+        <SectionHeader
           text="User"
         />
         <SettingsCard>
           <Text style={s.text}>David Bui</Text>
         </SettingsCard>
-        <Header
+        <SectionHeader
           text="Account"
         />
         <SettingsCard>
