@@ -20,7 +20,9 @@ export default function (state = defaultState, action) {
   let updatedGoalsList;
   switch (action.type) {
     case ActionType.SET_GOAL_COMPLETED:
-      return state;
+      return state.setIn(['goalsList', action.id, 'completed'], true);
+    case ActionType.REMOVE_GOAL:
+      return state.deleteIn(['goalsList', action.id]);
     case ActionType.UPDATE_SAVED_AMOUNT:
       return state.setIn(['goalsList', action.id, 'currentSaved'], action.updated);
     case ActionType.ADD_GOAL:

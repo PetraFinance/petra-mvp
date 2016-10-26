@@ -6,7 +6,6 @@ import Card from './Card';
 import SpendingBar from '../SpendingBar';
 
 class GoalsCard extends React.Component {
-
   constructor(props) {
     super(props);
   }
@@ -14,25 +13,40 @@ class GoalsCard extends React.Component {
   render() {
     const genPage = () => {
       const savesLeft = Math.ceil( (this.props.goal - this.props.currentSaved) / this.props.saveAmount);
-      return (
-        <View>
-          <View style={s.container}>
-            <View style={s.left}>
-              <Text style={s.category}>{this.props.goalName}</Text>
-              <Text style={s.timeToReset}>{IntToMonetaryStr(this.props.currentSaved)} of {IntToMonetaryStr(this.props.goal)}</Text>
-            </View>
-            <View style={s.right}>
-              <Text style={s.amount}>{savesLeft} Savings</Text>
-              <Text style={s.stateOfFunds}>Until Goal</Text>
+      if (this.props.completed) {
+        page = (
+          <View style={s.goalsCard}>
+            <View style={s.goalCompleted}>
+              <Text style={s.congratsText}>
+                Nice! You just finished saving for
+                <Text style={s.highlight}> {this.props.goalName}</Text>
+                . That wasn&#39;t too hard now was it?
+              </Text>
             </View>
           </View>
-          <SpendingBar
-            currentSaved={this.props.currentSaved}
-            goal={this.props.goal}
-            color={this.props.barColor}
-          />
-        </View>
-      );
+        );
+      } else {
+        page = (
+          <View style={s.goalsCard}>
+            <View style={s.container}>
+              <View style={s.left}>
+                <Text style={s.category}>{this.props.goalName}</Text>
+                <Text style={s.timeToReset}>{IntToMonetaryStr(this.props.currentSaved)} of {IntToMonetaryStr(this.props.goal)}</Text>
+              </View>
+              <View style={s.right}>
+                <Text style={s.amount}>{savesLeft} Savings</Text>
+                <Text style={s.stateOfFunds}>Until Goal</Text>
+              </View>
+            </View>
+            <SpendingBar
+              currentSaved={this.props.currentSaved}
+              goal={this.props.goal}
+              color={this.props.barColor}
+            />
+          </View>
+        );
+      }
+      return page;
     };
 
     return (
@@ -44,6 +58,21 @@ class GoalsCard extends React.Component {
 }
 
 const s = StyleSheet.create({
+  goalsCard: {
+    height: 70,
+  },
+  goalCompleted: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  congratsText: {
+    fontFamily: 'Avenir',
+  },
+  highlight: {
+    fontFamily: 'Avenir-Heavy',
+    color: '#03A9F4',
+  },
   container: {
     flex: 1,
     flexDirection: 'row',
@@ -69,28 +98,6 @@ const s = StyleSheet.create({
     color: '#03A9F4',
   },
   stateOfFunds: {
-    fontFamily: 'Avenir',
-    color: '#263238',
-  },
-  spendingBar: {
-    flexDirection: 'row',
-    marginTop: 15,
-    marginBottom: 5,
-  },
-  spendingDetails: {
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-  spendingDetailsRight: {
-    flex: 0.5,
-    justifyContent: 'center',
-    textAlign: 'right',
-    fontFamily: 'Avenir',
-    color: '#263238',
-  },
-  spendingDetailsLeft: {
-    flex: 0.5,
-    justifyContent: 'center',
     fontFamily: 'Avenir',
     color: '#263238',
   },

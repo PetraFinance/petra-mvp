@@ -25,6 +25,7 @@ const s = StyleSheet.create({
   container: {
     height: 40,
     flexDirection: 'row',
+    marginBottom: 14,
   },
   next: {
     flex: 1,

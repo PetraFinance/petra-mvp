@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 import { IntToMonetaryStr, MonetaryStrToInt } from '../../helpers/currency';
 import GoalsCard from '../modules/cards/GoalsCard';
-import SaveButton from '../modules/buttons/SaveButton';
+import GoalsButtons from '../modules/buttons/GoalsButtons';
 import MainView from '../layout/MainView';
 
 class Goals extends React.Component {
@@ -15,11 +15,17 @@ class Goals extends React.Component {
   render() {
     const updateSavedAmount = (id, currentSaved, saveAmount, cost) => {
       let updated = currentSaved + saveAmount;
-      this.props.updateSavedAmount(id, updated);
+      if (updated >= cost) {
+        this.props.setGoalCompleted(id);
+      } else {
+        this.props.updateSavedAmount(id, updated);
+      }
+    }
+    const handleRemoveGoal = (id) => {
+      this.props.handleRemoveGoal(id);
     }
     const genGoalsList = () => {
-      let goal;
-      let key;
+      let goal, key, card;
       let goals = [];
       let goalsList = this.props.goalsList;
       for (key in Object.keys(goalsList)) {
@@ -35,10 +41,13 @@ class Goals extends React.Component {
               goal={goal.cost}
               saveAmount={goal.saveAmount}
               barColor="#03A9F4"
+              completed={goal.completed}
             />
-            <SaveButton
+            <GoalsButtons
               saveAmount={goal.saveAmount}
-              action={() => updateSavedAmount(key, goal.currentSaved, goal.saveAmount, goal.cost)}
+              saveAction={() => updateSavedAmount(key, goal.currentSaved, goal.saveAmount, goal.cost)}
+              rmAction={() => handleRemoveGoal(key)}
+              completed={goal.completed}
             />
           </View>
         );

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateSavedAmount } from '../../actions/goals';
+import { updateSavedAmount, setGoalCompleted, removeGoal } from '../../actions/goals';
 import Goals from '../../components/goals/Goals';
 
 const mapStateToProps = (state) => {
@@ -17,6 +17,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   updateSavedAmount: (key, updated) => {
     dispatch(updateSavedAmount(key, updated));
+  },
+  setGoalCompleted: (key) => {
+    dispatch(setGoalCompleted(key));
+  },
+  handleRemoveGoal: (key) => {
+    dispatch(removeGoal(key));
   },
 });
 

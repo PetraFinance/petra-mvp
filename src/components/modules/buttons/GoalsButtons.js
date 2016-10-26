@@ -8,15 +8,33 @@ class SaveButton extends React.Component {
   }
 
   render() {
-    return (
-      <View style={s.container}>
+    const completed = this.props.completed;
+    let rightButton;
+    if (completed) {
+      rightButton = (
         <TouchableHighlight
           underlayColor={'#03A9F4'}
-          onPress={this.props.action}
+          onPress={this.props.rmAction}
+          style={s.saveButton}
+        >
+          <Text style={s.buttonText}>Remove</Text>
+        </TouchableHighlight>
+      );
+    } else {
+      rightButton = (
+        <TouchableHighlight
+          underlayColor={'#03A9F4'}
+          onPress={this.props.saveAction}
           style={s.saveButton}
         >
           <Text style={s.buttonText}>Save (Add {IntToMonetaryStr(this.props.saveAmount)})</Text>
         </TouchableHighlight>
+      );
+    }
+
+    return (
+      <View style={s.container}>
+        {rightButton}
         <TouchableHighlight
           underlayColor={'white'}
           onPress={this.props.action}

@@ -6,6 +6,14 @@ export function setGoalCompleted(id) {
   };
 }
 
+export const REMOVE_GOAL = Symbol('REMOVE_GOAL');
+export function removeGoal(id) {
+  return {
+    type: REMOVE_GOAL,
+    id,
+  };
+}
+
 export const UPDATE_SAVED_AMOUNT = Symbol('UPDATE_SAVED_AMOUNT');
 export function updateSavedAmount(id, updated) {
   return {
