@@ -4,12 +4,12 @@ import Goals from '../../components/goals/Goals';
 
 const mapStateToProps = (state) => {
   const cpState = state.goals.toJS();
-  const goalsList = cpState.goalsList;
+  const goalsMap = cpState.goalsMap;
 
   return Object.assign({},
     state.goals.toJS(),
     {
-      goalsList,
+      goalsMap,
     }
   );
 };

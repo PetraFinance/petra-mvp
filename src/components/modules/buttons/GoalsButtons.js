@@ -1,6 +1,7 @@
 import React from 'react';
+import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
-import { IntToMonetaryStr, MonetaryStrToInt } from '../../../helpers/currency';
+import { IntToMonetaryStr } from '../../../helpers/currency';
 
 class SaveButton extends React.Component {
   constructor(props) {
@@ -8,8 +9,8 @@ class SaveButton extends React.Component {
   }
 
   render() {
-    const completed = this.props.completed;
     let rightButton;
+    const completed = this.props.completed;
     if (completed) {
       rightButton = (
         <TouchableHighlight
@@ -37,7 +38,7 @@ class SaveButton extends React.Component {
         {rightButton}
         <TouchableHighlight
           underlayColor={'white'}
-          onPress={this.props.action}
+          onPress={Actions.goals_edit}
           style={s.editButton}
         >
           <Text style={s.editButtonText}>Edit</Text>

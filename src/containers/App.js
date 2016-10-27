@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from '../store/store';
 
 import Goals from './goals/Goals';
+import GoalsEdit from './goals/GoalsEdit';
 import AddName from './goals/AddName';
 import AddCost from './goals/AddCost';
 import AddDueDate from './goals/AddDueDate';
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Scene key="goals_cost" component={AddCost} />
             <Scene key="goals_dueDate" component={AddDueDate} />
             <Scene key="goals_saveAmount" component={AddSaveAmount} />
+            <Scene key="goals_edit" component={GoalsEdit} />
 
             <Scene
               key="settings"

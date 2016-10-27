@@ -13,6 +13,7 @@ class Goals extends React.Component {
   }
 
   render() {
+    const goalsMap = this.props.goalsMap;
     const updateSavedAmount = (id, currentSaved, saveAmount, cost) => {
       let updated = currentSaved + saveAmount;
       if (updated >= cost) {
@@ -24,12 +25,10 @@ class Goals extends React.Component {
     const handleRemoveGoal = (id) => {
       this.props.handleRemoveGoal(id);
     }
-    const genGoalsList = () => {
-      let goal, key, card;
+    const gengoalsMap = () => {
       let goals = [];
-      let goalsList = this.props.goalsList;
-      for (key in Object.keys(goalsList)) {
-        goal = goalsList[key];
+      for (const key of Object.keys(goalsMap)) {
+        const goal = goalsMap[key];
         goals.push(
           <View
             key={key}
@@ -44,10 +43,11 @@ class Goals extends React.Component {
               completed={goal.completed}
             />
             <GoalsButtons
+              completed={goal.completed}
               saveAmount={goal.saveAmount}
+              goalId={key}
               saveAction={() => updateSavedAmount(key, goal.currentSaved, goal.saveAmount, goal.cost)}
               rmAction={() => handleRemoveGoal(key)}
-              completed={goal.completed}
             />
           </View>
         );
@@ -57,7 +57,7 @@ class Goals extends React.Component {
     const genPage = () => {
       return (
         <View style={s.container}>
-          {genGoalsList()}
+          {gengoalsMap()}
         </View>
       );
     }
@@ -86,7 +86,7 @@ const s = StyleSheet.create({
 });
 
 Goals.propTypes = {
-  goalsList: React.PropTypes.object.isRequired,
+  goalsMap: React.PropTypes.object.isRequired,
   updateSavedAmount: React.PropTypes.func.isRequired,
 }
 

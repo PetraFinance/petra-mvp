@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addGoal, advanceGoalState, backGoalState, resetGoalState, setGoalName, setGoalCost, setGoalDate, setSaveAmount } from '../../actions/goals';
+import { addGoal, resetGoalState, setSaveAmount } from '../../actions/goals';
 import AddSaveAmount from '../../components/goals/AddSaveAmount';
 
 const mapStateToProps = (state) => {

@@ -2,9 +2,21 @@ import Immutable from 'immutable';
 import * as ActionType from '../actions/goals';
 import { MonetaryStrToInt } from '../helpers/currency';
 
+// goalsMap: {
+//   '0': {
+//     'id': '0',
+//     'name': 'Test',
+//     'date': 'Soon',
+//     'cost': 500,
+//     'saveAmount': 100,
+//     'currentSaved': 0,
+//     'done': false,
+//   }
+// }
+
 const defaultState = Immutable.fromJS({
-  nextAvaliableId: 0,
-  goalsList: {},
+  nextAvaliableId: 2,
+  goalsMap: {}
   goalName: '',
   goalCost: '',
   goalDate: '',
@@ -12,35 +24,35 @@ const defaultState = Immutable.fromJS({
 });
 
 export default function (state = defaultState, action) {
-  let goalsList;
+  let goalsMap;
   let goal;
   let id;
   let idString;
   let updatedId;
-  let updatedGoalsList;
+  let updatedgoalsMap;
   switch (action.type) {
+    case ActionType.UPDATE_GOAL:
+      return state
     case ActionType.SET_GOAL_COMPLETED:
-      return state.setIn(['goalsList', action.id, 'completed'], true);
+      return state.setIn(['goalsMap', action.id, 'completed'], true);
     case ActionType.REMOVE_GOAL:
-      return state.deleteIn(['goalsList', action.id]);
+      return state.deleteIn(['goalsMap', action.id]);
     case ActionType.UPDATE_SAVED_AMOUNT:
-      return state.setIn(['goalsList', action.id, 'currentSaved'], action.updated);
+      return state.setIn(['goalsMap', action.id, 'currentSaved'], action.updated);
     case ActionType.ADD_GOAL:
       id = state.get('nextAvaliableId');
       idString = id.toString();
-      updatedGoalsList = state.get('goalsList');
+      updatedId = id + 1;
       let temp = Immutable.Map({
         'name': action.name,
         'date': action.date,
         'cost': MonetaryStrToInt(action.cost),
         'saveAmount': MonetaryStrToInt(action.save),
         'currentSaved': 0,
-        'done': false,
+        'completed': false,
       });
       goal = Immutable.Map([[idString, temp]]);
-      updatedGoalsList = updatedGoalsList.merge(goal);
-      updatedId = id + 1;
-      return state.set('goalsList', updatedGoalsList)
+      return state.mergeIn(['goalsMap'], goal)
                   .set('nextAvaliableId', updatedId);
     case ActionType.RESET_GOAL_STATE:
       return state.set('goalName', '')
