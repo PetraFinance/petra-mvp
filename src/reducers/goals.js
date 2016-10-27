@@ -15,7 +15,7 @@ import { MonetaryStrToInt } from '../helpers/currency';
 // }
 
 const defaultState = Immutable.fromJS({
-  nextAvaliableId: 2,
+  nextAvaliableId: 0,
   goalsMap: {},
   goalName: '',
   goalCost: '',
