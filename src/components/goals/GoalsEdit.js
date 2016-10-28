@@ -2,9 +2,8 @@ import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View, TextInput, StatusBar } from 'react-native';
 
-import GoalsCard from '../modules/cards/GoalsCard';
-import FlowButtons from '../modules/buttons/FlowButtons';
 import SubView from '../layout/FlowView';
+import { IntToMonetaryStr, MonetaryStrToInt } from '../../helpers/currency';
 
 class GoalsEdit extends React.Component {
   constructor(props) {
@@ -12,9 +11,52 @@ class GoalsEdit extends React.Component {
   }
 
   render() {
+    const id = this.props.id;
+    const goal = this.props.goalsMap[id];
+    const name = goal.name;
+    const date = goal.date;
+    let saveAmount = goal.saveAmount;
+    saveAmount = IntToMonetaryStr(saveAmount).replace('$', '');
+    let cost = goal.cost;
+    cost = IntToMonetaryStr(cost).replace('$', '');
+
+    const handleUpdateGoal = (id, field, value) => {
+      if (field === 'cost' || field === 'saveAmount') {
+        value = MonetaryStrToInt(value);
+      }
+      this.props.handleUpdateGoal(id, field, value);
+    }
+
     const genPage = () => (
       <View style={s.container}>
-
+        <Text style={s.header}>Name</Text>
+        <TextInput
+          style={s.input}
+          maxLength={35}
+          onChangeText={(value) => handleUpdateGoal(id, 'name', value)}
+          value={name}
+        />
+        <Text style={s.header}>Cost</Text>
+        <TextInput
+          style={s.input}
+          maxLength={35}
+          onChangeText={(value) => handleUpdateGoal(id, 'cost', value)}
+          value={cost}
+        />
+        <Text style={s.header}>Due Date</Text>
+        <TextInput
+          style={s.input}
+          maxLength={35}
+          onChangeText={(value) => handleUpdateGoal(id, 'date', value)}
+          value={date}
+        />
+        <Text style={s.header}>Save Amount</Text>
+        <TextInput
+          style={s.input}
+          maxLength={35}
+          onChangeText={(value) => handleUpdateGoal(id, 'saveAmount', value)}
+          value={saveAmount}
+        />
       </View>
     );
     return (
@@ -36,28 +78,20 @@ const s = StyleSheet.create({
     marginBottom: 16,
     marginLeft: 28,
   },
-  form: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   header: {
-    textAlign: 'center',
-    fontFamily: 'Avenir',
+    fontFamily: 'Avenir-Heavy',
     color: 'white',
-    marginBottom: 5,
   },
   input: {
-    fontFamily: 'Avenir',
     height: 40,
-    textAlign: 'center',
+    marginBottom: 15,
+    fontFamily: 'Avenir',
     color: 'white',
   },
-  underline: {
-    backgroundColor: 'white',
-    height: 1,
-    alignSelf: 'stretch',
-  },
 });
+
+GoalsEdit.propTypes = {
+  id: React.PropTypes.string.isRequired,
+}
 
 export default GoalsEdit;

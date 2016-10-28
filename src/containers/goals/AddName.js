@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { resetGoalState, setGoalName } from '../../actions/goals';
+import { resetGoalAdd, setGoalName } from '../../actions/goals';
 import AddName from '../../components/goals/AddName';
 
 const mapStateToProps = (state) => {
@@ -15,13 +15,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  resetGoalState: () => {
-    dispatch(resetGoalState());
+  resetGoalAdd: () => {
+    dispatch(resetGoalAdd());
   },
   handleGoalName: (name) => {
     dispatch(setGoalName(name));
   },
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddName);

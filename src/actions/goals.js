@@ -6,6 +6,16 @@ export function setGoalCompleted(id) {
   };
 }
 
+export const UPDATE_GOAL = Symbol('UPDATE_GOAL');
+export function updateGoal(id, field, value) {
+  return {
+    type: UPDATE_GOAL,
+    id,
+    field,
+    value,
+  };
+}
+
 export const REMOVE_GOAL = Symbol('REMOVE_GOAL');
 export function removeGoal(id) {
   return {
@@ -34,10 +44,10 @@ export function addGoal(name, date, cost, save) {
   };
 }
 
-export const RESET_GOAL_STATE = Symbol('RESET_GOAL_STATE');
-export function resetGoalState() {
+export const RESET_ADD_GOAL = Symbol('RESET_ADD_GOAL');
+export function resetGoalAdd() {
   return {
-    type: RESET_GOAL_STATE,
+    type: RESET_ADD_GOAL,
   };
 }
 

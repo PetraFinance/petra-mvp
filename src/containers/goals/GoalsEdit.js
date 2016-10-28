@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
-import { updateGoal } from '../../actions/goals';
+import { updateGoal, setGoalName } from '../../actions/goals';
 import GoalsEdit from '../../components/goals/GoalsEdit';
 
 const mapStateToProps = (state) => {
   const cpState = state.goals.toJS();
-  const goalsList = cpState.goalsList;
+  const goalsMap = cpState.goalsMap;
+
   return Object.assign({},
     state.goals.toJS(),
     {
-      goalsList,
+      goalsMap,
     }
   );
 };

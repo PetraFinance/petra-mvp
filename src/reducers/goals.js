@@ -15,8 +15,25 @@ import { MonetaryStrToInt } from '../helpers/currency';
 // }
 
 const defaultState = Immutable.fromJS({
-  nextAvaliableId: 0,
-  goalsMap: {},
+  nextAvaliableId: 2,
+  goalsMap: {
+    '0': {
+      'name': 'Test',
+      'date': 'Soon',
+      'cost': 500,
+      'saveAmount': 100,
+      'currentSaved': 0,
+      'completed': false,
+    },
+    '1': {
+      'name': 'Test',
+      'date': 'Soon',
+      'cost': 500,
+      'saveAmount': 100,
+      'currentSaved': 0,
+      'completed': false,
+    },
+  },
   goalName: '',
   goalCost: '',
   goalDate: '',
@@ -32,12 +49,13 @@ export default function (state = defaultState, action) {
   let updatedgoalsMap;
   switch (action.type) {
     case ActionType.UPDATE_GOAL:
-      return state
+      return state.setIn(['goalsMap', action.id, action.field], action.value);
     case ActionType.SET_GOAL_COMPLETED:
       return state.setIn(['goalsMap', action.id, 'completed'], true);
     case ActionType.REMOVE_GOAL:
       return state.deleteIn(['goalsMap', action.id]);
     case ActionType.UPDATE_SAVED_AMOUNT:
+      let cost = state.get('goalsMap').get(action.id).get('cost');
       return state.setIn(['goalsMap', action.id, 'currentSaved'], action.updated);
     case ActionType.ADD_GOAL:
       id = state.get('nextAvaliableId');
@@ -54,7 +72,7 @@ export default function (state = defaultState, action) {
       goal = Immutable.Map([[idString, temp]]);
       return state.mergeIn(['goalsMap'], goal)
                   .set('nextAvaliableId', updatedId);
-    case ActionType.RESET_GOAL_STATE:
+    case ActionType.RESET_ADD_GOAL:
       return state.set('goalName', '')
                   .set('goalCost', '')
                   .set('goalDate', '')

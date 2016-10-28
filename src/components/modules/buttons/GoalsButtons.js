@@ -10,6 +10,7 @@ class SaveButton extends React.Component {
 
   render() {
     let rightButton;
+    const id = this.props.id;
     const completed = this.props.completed;
     if (completed) {
       rightButton = (
@@ -38,7 +39,7 @@ class SaveButton extends React.Component {
         {rightButton}
         <TouchableHighlight
           underlayColor={'white'}
-          onPress={Actions.goals_edit}
+          onPress={() => Actions.goals_edit({ id: id })}
           style={s.editButton}
         >
           <Text style={s.editButtonText}>Edit</Text>

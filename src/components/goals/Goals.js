@@ -45,7 +45,7 @@ class Goals extends React.Component {
             <GoalsButtons
               completed={goal.completed}
               saveAmount={goal.saveAmount}
-              goalId={key}
+              id={key}
               saveAction={() => updateSavedAmount(key, goal.currentSaved, goal.saveAmount, goal.cost)}
               rmAction={() => handleRemoveGoal(key)}
             />
