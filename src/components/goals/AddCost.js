@@ -97,7 +97,6 @@ const s = StyleSheet.create({
     color: 'white',
   },
   underline: {
-    width: 250,
     backgroundColor: 'white',
     height: 1,
     alignSelf: 'stretch',
