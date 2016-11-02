@@ -3,7 +3,6 @@ import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View, TextInput, StatusBar } from 'react-native';
 
 import SubView from '../layout/FlowView';
-import { IntToMonetaryStr, MonetaryStrToInt } from '../../helpers/currency';
 
 class GoalsEdit extends React.Component {
   constructor(props) {
@@ -13,17 +12,13 @@ class GoalsEdit extends React.Component {
   render() {
     const id = this.props.id;
     const goal = this.props.goalsMap[id];
+
     const name = goal.name;
     const date = goal.date;
-    let saveAmount = goal.saveAmount;
-    saveAmount = IntToMonetaryStr(saveAmount).replace('$', '');
-    let cost = goal.cost;
-    cost = IntToMonetaryStr(cost).replace('$', '');
+    const saveAmount = goal.saveAmount;
+    const cost = goal.cost;
 
     const handleUpdateGoal = (id, field, value) => {
-      if (field === 'cost' || field === 'saveAmount') {
-        value = MonetaryStrToInt(value);
-      }
       this.props.handleUpdateGoal(id, field, value);
     }
 

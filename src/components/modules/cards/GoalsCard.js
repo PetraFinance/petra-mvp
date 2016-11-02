@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { IntToMonetaryStr, MonetaryStrToInt } from '../../../helpers/currency';
+import { ToMonetaryStr } from '../../../helpers/currency';
 
 import Card from './Card';
 import SpendingBar from '../SpendingBar';
@@ -11,15 +11,28 @@ class GoalsCard extends React.Component {
   }
 
   render() {
+    const computeSavesRequired = (cost, currentSaved, saveAmount) => {
+      cost = parseInt(cost);
+      currentSaved = parseInt(currentSaved);
+      saveAmount = parseInt(saveAmount);
+      return Math.ceil((cost - currentSaved) / saveAmount);
+    };
+
     const genPage = () => {
-      const savesLeft = Math.ceil( (this.props.goal - this.props.currentSaved) / this.props.saveAmount);
+      let page;
+      const cost = ToMonetaryStr(this.props.cost);
+      const saveAmount = ToMonetaryStr(this.props.saveAmount);
+      const currentSaved = ToMonetaryStr(this.props.currentSaved);
+      const savesRequired = computeSavesRequired(this.props.cost, this.props.currentSaved, this.props.saveAmount);
+      const goalName = this.props.goalName;
+
       if (this.props.completed) {
         page = (
           <View style={s.goalsCard}>
             <View style={s.goalCompleted}>
               <Text style={s.congratsText}>
                 Nice! You just finished saving for
-                <Text style={s.highlight}> {this.props.goalName}</Text>
+                <Text style={s.highlight}> {goalName}</Text>
                 . That wasn&#39;t too hard now was it?
               </Text>
             </View>
@@ -30,17 +43,17 @@ class GoalsCard extends React.Component {
           <View style={s.goalsCard}>
             <View style={s.container}>
               <View style={s.left}>
-                <Text style={s.category}>{this.props.goalName}</Text>
-                <Text style={s.timeToReset}>{IntToMonetaryStr(this.props.currentSaved)} of {IntToMonetaryStr(this.props.goal)}</Text>
+                <Text style={s.category}>{goalName}</Text>
+                <Text style={s.timeToReset}>{currentSaved} of {cost}</Text>
               </View>
               <View style={s.right}>
-                <Text style={s.amount}>{savesLeft} Savings</Text>
+                <Text style={s.amount}>{savesRequired} Savings</Text>
                 <Text style={s.stateOfFunds}>Until Goal</Text>
               </View>
             </View>
             <SpendingBar
               currentSaved={this.props.currentSaved}
-              goal={this.props.goal}
+              cost={this.props.cost}
               color={this.props.barColor}
             />
           </View>
@@ -106,9 +119,7 @@ const s = StyleSheet.create({
 GoalsCard.propTypes = {
   goalName: React.PropTypes.string.isRequired,
   barColor: React.PropTypes.string.isRequired,
-  currentSaved: React.PropTypes.number.isRequired,
-  divider: React.PropTypes.bool,
-  showSpent: React.PropTypes.bool,
+  currentSaved: React.PropTypes.string.isRequired,
 };
 
 export default GoalsCard;

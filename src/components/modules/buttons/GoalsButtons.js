@@ -1,7 +1,7 @@
 import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
-import { IntToMonetaryStr } from '../../../helpers/currency';
+import { ToMonetaryStr } from '../../../helpers/currency';
 
 class SaveButton extends React.Component {
   constructor(props) {
@@ -9,43 +9,40 @@ class SaveButton extends React.Component {
   }
 
   render() {
-    let rightButton;
     const id = this.props.id;
     const completed = this.props.completed;
     if (completed) {
-      rightButton = (
-        <TouchableHighlight
-          underlayColor={'#03A9F4'}
-          onPress={this.props.rmAction}
-          style={s.saveButton}
-        >
-          <Text style={s.buttonText}>Remove</Text>
-        </TouchableHighlight>
+      return (
+        <View style={s.container}>
+          <TouchableHighlight
+            underlayColor={'#03A9F4'}
+            onPress={this.props.rmAction}
+            style={s.saveButton}
+          >
+            <Text style={s.buttonText}>Remove</Text>
+          </TouchableHighlight>
+        </View>
       );
     } else {
-      rightButton = (
-        <TouchableHighlight
-          underlayColor={'#03A9F4'}
-          onPress={this.props.saveAction}
-          style={s.saveButton}
-        >
-          <Text style={s.buttonText}>Save (Add {IntToMonetaryStr(this.props.saveAmount)})</Text>
-        </TouchableHighlight>
+      return (
+        <View style={s.container}>
+          <TouchableHighlight
+            underlayColor={'#03A9F4'}
+            onPress={this.props.saveAction}
+            style={s.saveButton}
+          >
+            <Text style={s.buttonText}>Save (Add {ToMonetaryStr(this.props.saveAmount)})</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            underlayColor={'white'}
+            onPress={() => Actions.goalsEdit({ id: id })}
+            style={s.editButton}
+          >
+            <Text style={s.editButtonText}>Edit</Text>
+          </TouchableHighlight>
+        </View>
       );
     }
-
-    return (
-      <View style={s.container}>
-        {rightButton}
-        <TouchableHighlight
-          underlayColor={'white'}
-          onPress={() => Actions.goals_edit({ id: id })}
-          style={s.editButton}
-        >
-          <Text style={s.editButtonText}>Edit</Text>
-        </TouchableHighlight>
-      </View>
-    );
   }
 }
 

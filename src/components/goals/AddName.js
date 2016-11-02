@@ -17,7 +17,7 @@ class AddName extends React.Component {
     }
     const goalName = this.props.goalName;
     const resetGoalState = () => {
-      this.props.resetGoalState();
+      this.props.resetGoalAdd();
       Actions.pop();
     }
     const genPage = () => (
@@ -34,7 +34,7 @@ class AddName extends React.Component {
         </View>
         <FlowButtons
           next={"Next"}
-          nextAction={Actions.goals_cost}
+          nextAction={Actions.goalsCost}
         />
       </View>
     );
@@ -83,7 +83,7 @@ const s = StyleSheet.create({
 
 AddName.propTypes = {
   handleGoalName: React.PropTypes.func.isRequired,
-  resetGoalState: React.PropTypes.func.isRequired,
+  resetGoalAdd: React.PropTypes.func.isRequired,
   goalName: React.PropTypes.string.isRequired,
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Actions } from 'react-native-router-flux';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, StatusBar } from 'react-native';
 
 import { IntToMonetaryStr, MonetaryStrToInt } from '../../helpers/currency';
 import GoalsCard from '../modules/cards/GoalsCard';
@@ -14,30 +14,37 @@ class Goals extends React.Component {
 
   render() {
     const goalsMap = this.props.goalsMap;
+
     const updateSavedAmount = (id, currentSaved, saveAmount, cost) => {
+      currentSaved = parseInt(currentSaved);
+      saveAmount = parseInt(saveAmount);
+      cost = parseInt(cost);
       let updated = currentSaved + saveAmount;
       if (updated >= cost) {
         this.props.setGoalCompleted(id);
       } else {
+        updated = updated.toString();
         this.props.updateSavedAmount(id, updated);
       }
     }
+
     const handleRemoveGoal = (id) => {
       this.props.handleRemoveGoal(id);
     }
-    const gengoalsMap = () => {
+
+    const genPage = () => {
       let goals = [];
-      for (const key of Object.keys(goalsMap)) {
-        const goal = goalsMap[key];
+      for (const id of Object.keys(goalsMap)) {
+        const goal = goalsMap[id];
         goals.push(
           <View
-            key={key}
+            key={id}
             style={s.marginBottom}
           >
             <GoalsCard
               goalName={goal.name}
               currentSaved={goal.currentSaved}
-              goal={goal.cost}
+              cost={goal.cost}
               saveAmount={goal.saveAmount}
               barColor="#03A9F4"
               completed={goal.completed}
@@ -45,28 +52,24 @@ class Goals extends React.Component {
             <GoalsButtons
               completed={goal.completed}
               saveAmount={goal.saveAmount}
-              id={key}
-              saveAction={() => updateSavedAmount(key, goal.currentSaved, goal.saveAmount, goal.cost)}
-              rmAction={() => handleRemoveGoal(key)}
+              id={id}
+              saveAction={() => updateSavedAmount(id, goal.currentSaved, goal.saveAmount, goal.cost)}
+              rmAction={() => handleRemoveGoal(id)}
             />
           </View>
         );
       }
       return goals;
     }
-    const genPage = () => {
-      return (
-        <View style={s.container}>
-          {gengoalsMap()}
-        </View>
-      );
-    }
+
     return (
       <MainView
         title="Goals"
-        rightIcon={ {type: "add", action: Actions.goals_name } }
+        rightIcon={ {type: "add", action: Actions.goalsName } }
       >
-        {genPage()}
+        <ScrollView style={s.container}>
+          {genPage()}
+        </ScrollView>
       </MainView>
     );
   }

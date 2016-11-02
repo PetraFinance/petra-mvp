@@ -27,11 +27,10 @@ class App extends React.Component {
               type="replace"
               initial
             />
-            <Scene key="goals_name" component={AddName} />
-            <Scene key="goals_cost" component={AddCost} />
-            <Scene key="goals_dueDate" component={AddDueDate} />
-            <Scene key="goals_saveAmount" component={AddSaveAmount} />
-            <Scene key="goals_edit" component={GoalsEdit} />
+            <Scene key="goalsName" component={AddName} />
+            <Scene key="goalsCost" component={AddCost} />
+            <Scene key="goalsSaveAmount" component={AddSaveAmount} />
+            <Scene key="goalsEdit" component={GoalsEdit} />
 
             <Scene
               key="settings"

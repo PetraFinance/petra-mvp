@@ -12,3 +12,8 @@ You may need to run `react-native run-ios` as root. Afterwards, you should see a
     * `./node_modules/react-native/packager/packager.sh --reset-cache`
 * You can change which screen appears first in `App.js` by changing the `initial` attribute.
 * If you notice that the device transitions started moving slower, go to Debug > Slow Animations. You might've turned it on by accident.
+
+#### Containers
+Containers map state to the props for a component. For smaller components that are used in larger components, we only map state to the props of the larger component, keeping the smaller ones more presentational (dependent on only the props provided to it). A way to visualize this would be
+
+State > Props > Large Component > Props > Smaller Component

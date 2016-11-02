@@ -6,16 +6,38 @@ import GoalsCard from '../modules/cards/GoalsCard';
 import FlowButtons from '../modules/buttons/FlowButtons';
 import SubView from '../layout/FlowView';
 
+import { isNumber } from '../../helpers/currency';
+
 class AddCost extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    const cost = this.props.goalCost;
+    const validateInput = () => {
+      return isNumber(cost);
+    }
+
     const handleGoalCost = (cost) => {
       this.props.handleGoalCost(cost);
     }
-    const goalCost = this.props.goalCost;
+
+    const advanceFlow = () => {
+      if (isNumber(cost)) {
+        Actions.goalsSaveAmount();
+      }
+    }
+
+    const genErrorMsg = () => {
+      if (!isNumber(cost)) {
+        return (
+          <Text style={s.errorMsg}>Please entry a numerical value.</Text>
+        );
+      }
+      return ( <View /> );
+    }
+
     const genPage = () => {
       return (
         <View style={s.container}>
@@ -23,15 +45,17 @@ class AddCost extends React.Component {
             <Text style={s.header}>How much will this cost?</Text>
             <TextInput
               style={s.input}
-              maxLength={35}
+              maxLength={5}
               onChangeText={(cost) => handleGoalCost(cost)}
-              value={goalCost}
+              value={cost}
+              keyboardType='numeric'
             />
             <View style={s.underline}></View>
+            {genErrorMsg()}
           </View>
           <FlowButtons
             next={"Next"}
-            nextAction={Actions.goals_dueDate}
+            nextAction={() => advanceFlow()}
           />
         </View>
       );
@@ -73,14 +97,21 @@ const s = StyleSheet.create({
     color: 'white',
   },
   underline: {
+    width: 250,
     backgroundColor: 'white',
     height: 1,
     alignSelf: 'stretch',
   },
+  errorMsg: {
+    marginTop: 25,
+    fontFamily: 'Avenir',
+    textAlign: 'center',
+    color: 'white',
+  },
 });
 
 AddCost.propTypes = {
-  goalCost: React.PropTypes.any.isRequired,
+  goalCost: React.PropTypes.string.isRequired,
   handleGoalCost: React.PropTypes.func.isRequired,
 }
 

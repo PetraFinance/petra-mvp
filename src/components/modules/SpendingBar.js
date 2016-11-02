@@ -11,8 +11,8 @@ class SpendingBar extends React.Component {
   render() {
     const genSpendingBar = () => {
       const bar = [];
-      const goal = this.props.goal;
-      const current = this.props.currentSaved;
+      const goal = parseInt(this.props.cost);
+      const current = parseInt(this.props.currentSaved);
       const fill = current / goal;
       const remaining = 1 - fill;
 
@@ -45,8 +45,8 @@ const s = StyleSheet.create({
 
 SpendingBar.propTypes = {
   color: React.PropTypes.string.isRequired,
-  currentSaved: React.PropTypes.number.isRequired,
-  goal: React.PropTypes.number.isRequired,
+  currentSaved: React.PropTypes.string.isRequired,
+  cost: React.PropTypes.string.isRequired,
 };
 
 export default SpendingBar;

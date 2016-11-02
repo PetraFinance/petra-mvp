@@ -2,9 +2,10 @@ import Immutable from 'immutable';
 import * as ActionType from '../actions/goals';
 import { MonetaryStrToInt } from '../helpers/currency';
 
+// An entry in the goalsMap represents a goal object
+// All values are strings to simplify the process for editing a goal
 // goalsMap: {
 //   '0': {
-//     'id': '0',
 //     'name': 'Test',
 //     'date': 'Soon',
 //     'cost': 500,
@@ -20,17 +21,25 @@ const defaultState = Immutable.fromJS({
     '0': {
       'name': 'Test',
       'date': 'Soon',
-      'cost': 500,
-      'saveAmount': 100,
-      'currentSaved': 0,
+      'cost': "500",
+      'saveAmount': "100",
+      'currentSaved': "0",
       'completed': false,
     },
     '1': {
       'name': 'Test',
       'date': 'Soon',
-      'cost': 500,
-      'saveAmount': 100,
-      'currentSaved': 0,
+      'cost': "500",
+      'saveAmount': "100",
+      'currentSaved': "0",
+      'completed': false,
+    },
+    '2': {
+      'name': 'Test',
+      'date': 'Soon',
+      'cost': "500",
+      'saveAmount': "100",
+      'currentSaved': "0",
       'completed': false,
     },
   },
@@ -64,9 +73,9 @@ export default function (state = defaultState, action) {
       let temp = Immutable.Map({
         'name': action.name,
         'date': action.date,
-        'cost': MonetaryStrToInt(action.cost),
-        'saveAmount': MonetaryStrToInt(action.save),
-        'currentSaved': 0,
+        'cost': action.cost,
+        'saveAmount': action.save,
+        'currentSaved': "0",
         'completed': false,
       });
       goal = Immutable.Map([[idString, temp]]);

@@ -6,38 +6,64 @@ import GoalsCard from '../modules/cards/GoalsCard';
 import FlowButtons from '../modules/buttons/FlowButtons';
 import SubView from '../layout/FlowView';
 
+import { StripMonetaryStr, isNumber } from '../../helpers/currency';
+
 class AddSaveAmount extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    const saveAmount = this.props.saveAmount;
+
     const handleAddGoal = () => {
-      name = this.props.goalName;
-      cost = this.props.goalCost;
-      date = this.props.goalDate;
-      save = this.props.saveAmount;
-      this.props.handleAddGoal(name, date, cost, save);
-      this.props.resetGoalState();
-      Actions.goals();
-      StatusBar.setBarStyle('default', true);
+      if (isNumber(saveAmount)) {
+        name = this.props.goalName;
+        cost = StripMonetaryStr(this.props.goalCost);
+        date = this.props.goalDate;
+        save = StripMonetaryStr(this.props.saveAmount);
+        this.props.handleAddGoal(name, date, cost, save);
+        this.props.resetGoalAdd();
+        Actions.goals();
+      }
     }
+
     const handleSaveAmount = (saveAmount) => {
       this.props.handleSaveAmount(saveAmount);
     }
-    const saveAmount = this.props.saveAmount;
+
+    const validateInput = () => {
+      return isNumber(saveAmount);
+    }
+
+    const handleGoalCost = (saveAmount) => {
+      this.props.handleGoalCost(saveAmount);
+    }
+
+    const genErrorMsg = () => {
+      if (!isNumber(saveAmount)) {
+        return (
+          <Text style={s.errorMsg}>Please entry a numerical value.</Text>
+        );
+      }
+      return ( <View /> );
+    }
+
+
     const genPage = () => {
       return (
         <View style={s.container}>
           <View style={s.form}>
-            <Text style={s.header}>How much could you save for this on a given day? We think $5 or $10 is a reasonable amount.</Text>
+            <Text style={s.header}>How much could you save for this on a given day? For instance, $5 or $10.</Text>
             <TextInput
               style={s.input}
-              maxLength={35}
+              maxLength={5}
               onChangeText={(saveAmount) => handleSaveAmount(saveAmount)}
               value={saveAmount}
+              keyboardType='numeric'
             />
             <View style={s.underline}></View>
+            {genErrorMsg()}
           </View>
           <FlowButtons
             next={"Finish"}
@@ -88,16 +114,22 @@ const s = StyleSheet.create({
     height: 1,
     alignSelf: 'stretch',
   },
+  errorMsg: {
+    marginTop: 25,
+    fontFamily: 'Avenir',
+    textAlign: 'center',
+    color: 'white',
+  },
 });
 
 AddSaveAmount.propTypes = {
   handleAddGoal: React.PropTypes.func.isRequired,
-  resetGoalState: React.PropTypes.func.isRequired,
+  resetGoalAdd: React.PropTypes.func.isRequired,
   handleSaveAmount: React.PropTypes.func.isRequired,
   goalName: React.PropTypes.string.isRequired,
-  goalCost: React.PropTypes.any.isRequired,
+  goalCost: React.PropTypes.string.isRequired,
   goalDate: React.PropTypes.string.isRequired,
-  saveAmount: React.PropTypes.any.isRequired,
+  saveAmount: React.PropTypes.string.isRequired,
 }
 
 export default AddSaveAmount;

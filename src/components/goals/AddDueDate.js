@@ -10,7 +10,7 @@ class AddDueDate extends React.Component {
   constructor(props) {
     super(props);
   }
-  
+
   render() {
     const handleGoalDate = (date) => {
       this.props.handleGoalDate(date);
