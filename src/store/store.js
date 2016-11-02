@@ -4,7 +4,13 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
-const loggerMiddleware = createLogger();
+// https://github.com/evgenyrodionov/redux-logger/pull/129#issuecomment-182743693
+const loggerMiddleware = createLogger({
+  actionTransformer: (action) => ({
+    ...action,
+    type: String(action.type),
+  })
+});
 
 const configureStore = function (initialState = {}) {
   const store = createStore(
