@@ -9,8 +9,11 @@ class MainView extends React.Component {
     super(props);
   }
 
-  render() {
+  componentDidMount(){
     StatusBar.setBarStyle('default', true);
+  }
+
+  render() {
     return (
       <View style={s.container}>
         <ViewHeader

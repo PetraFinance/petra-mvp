@@ -18,6 +18,7 @@ class AddName extends React.Component {
     const goalName = this.props.goalName;
     const resetGoalState = () => {
       this.props.resetGoalAdd();
+      StatusBar.setBarStyle('default', true);
       Actions.pop();
     }
     const genPage = () => (

@@ -9,62 +9,44 @@ class SaveButton extends React.Component {
   }
 
   render() {
-    const id = this.props.id;
     const completed = this.props.completed;
+
+    const setButtonStyle = () => ({
+      flex: 1,
+      height: 40,
+      backgroundColor: this.props.backgroundColor,
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignSelf: 'stretch',
+      borderBottomRightRadius: 5,
+      borderBottomLeftRadius: 5,
+    });
+
     if (completed) {
       return (
-        <View style={s.container}>
-          <TouchableHighlight
-            underlayColor={'#03A9F4'}
-            onPress={this.props.rmAction}
-            style={s.saveButton}
-          >
-            <Text style={s.buttonText}>Remove</Text>
-          </TouchableHighlight>
-        </View>
+        <TouchableHighlight
+          underlayColor={this.props.backgroundColor}
+          onPress={this.props.rmAction}
+          style={setButtonStyle()}
+        >
+          <Text style={s.buttonText}>Remove</Text>
+        </TouchableHighlight>
       );
     } else {
       return (
-        <View style={s.container}>
-          <TouchableHighlight
-            underlayColor={'#03A9F4'}
-            onPress={this.props.saveAction}
-            style={s.saveButton}
-          >
-            <Text style={s.buttonText}>Save (Add {ToMonetaryStr(this.props.saveAmount)})</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            underlayColor={'white'}
-            onPress={() => Actions.goalsEdit({ id: id })}
-            style={s.editButton}
-          >
-            <Text style={s.editButtonText}>Edit</Text>
-          </TouchableHighlight>
-        </View>
+        <TouchableHighlight
+          underlayColor={this.props.backgroundColor}
+          onPress={this.props.saveAction}
+          style={setButtonStyle()}
+        >
+          <Text style={s.buttonText}>Save (Add {ToMonetaryStr(this.props.saveAmount)})</Text>
+        </TouchableHighlight>
       );
     }
   }
 }
 
 const s = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    height: 40,
-  },
-  saveButton: {
-    flex: 1,
-    backgroundColor: '#03A9F4',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'stretch',
-  },
-  editButton: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'stretch',
-  },
   buttonText: {
     fontFamily: 'Avenir-Heavy',
     color: 'white',

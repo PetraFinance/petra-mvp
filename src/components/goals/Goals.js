@@ -15,6 +15,11 @@ class Goals extends React.Component {
   render() {
     const goalsMap = this.props.goalsMap;
 
+    const cardBackgroundColors = [
+      { top: '#E91E63', bottom: '#D81B60', fade: '#F8BBD0', },
+      { top: '#00BCD4', bottom: '#00ACC1', fade: '#B2EBF2',},
+    ];
+
     const updateSavedAmount = (id, currentSaved, saveAmount, cost) => {
       currentSaved = parseInt(currentSaved);
       saveAmount = parseInt(saveAmount);
@@ -36,6 +41,8 @@ class Goals extends React.Component {
       let goals = [];
       for (const id of Object.keys(goalsMap)) {
         const goal = goalsMap[id];
+        const colorIndex = parseInt(id) % cardBackgroundColors.length;
+        const cardColorSet = cardBackgroundColors[colorIndex]
         goals.push(
           <View
             key={id}
@@ -46,15 +53,19 @@ class Goals extends React.Component {
               currentSaved={goal.currentSaved}
               cost={goal.cost}
               saveAmount={goal.saveAmount}
-              barColor="#03A9F4"
+              barColor="white"
+              barFade={cardColorSet.fade}
+              backgroundColor={cardColorSet.top}
               completed={goal.completed}
+              id={id}
             />
             <GoalsButtons
               completed={goal.completed}
               saveAmount={goal.saveAmount}
-              id={id}
+              backgroundColor={cardColorSet.bottom}
               saveAction={() => updateSavedAmount(id, goal.currentSaved, goal.saveAmount, goal.cost)}
               rmAction={() => handleRemoveGoal(id)}
+              id={id}
             />
           </View>
         );

@@ -22,6 +22,11 @@ class GoalsEdit extends React.Component {
       this.props.handleUpdateGoal(id, field, value);
     }
 
+    const handleBack = () => {
+      StatusBar.setBarStyle('default', true);
+      Actions.pop();
+    }
+
     const genPage = () => (
       <View style={s.container}>
         <Text style={s.header}>Name</Text>
@@ -38,13 +43,6 @@ class GoalsEdit extends React.Component {
           onChangeText={(value) => handleUpdateGoal(id, 'cost', value)}
           value={cost}
         />
-        <Text style={s.header}>Due Date</Text>
-        <TextInput
-          style={s.input}
-          maxLength={35}
-          onChangeText={(value) => handleUpdateGoal(id, 'date', value)}
-          value={date}
-        />
         <Text style={s.header}>Save Amount</Text>
         <TextInput
           style={s.input}
@@ -57,7 +55,7 @@ class GoalsEdit extends React.Component {
     return (
       <SubView
         title="Edit Goal"
-        leftIcon={ {type: "backWhite", action: Actions.pop } }
+        leftIcon={ {type: "exitWhite", action: handleBack } }
       >
         {genPage()}
       </SubView>

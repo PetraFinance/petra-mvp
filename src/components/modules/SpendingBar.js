@@ -20,9 +20,10 @@ class SpendingBar extends React.Component {
       const remainingWidth = (Dimensions.get('window').width - 56) * remaining;
 
       const backgroundColor = this.props.color;
+      const fade = this.props.barFade;
 
       bar.push(<View key={0} style={{ backgroundColor, height: 5, width: fillWidth }} />);
-      bar.push(<View key={1} style={{ backgroundColor: '#E5E5E5', height: 5, width: remainingWidth }} />);
+      bar.push(<View key={1} style={{ backgroundColor: fade, height: 5, width: remainingWidth }} />);
 
       return bar;
     };
@@ -38,8 +39,7 @@ class SpendingBar extends React.Component {
 const s = StyleSheet.create({
   spendingBar: {
     flexDirection: 'row',
-    marginTop: 15,
-    marginBottom: 5,
+    marginTop: 20,
   },
 });
 

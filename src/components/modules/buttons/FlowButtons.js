@@ -29,7 +29,8 @@ const s = StyleSheet.create({
   },
   next: {
     flex: 1,
-    height: 40,
+    height: 50,
+    borderRadius: 5,
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',

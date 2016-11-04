@@ -9,6 +9,10 @@ class FlowView extends React.Component {
     super(props);
   }
 
+  componentDidMount(){
+    StatusBar.setBarStyle('light-content', true);
+  }
+
   render() {
     return (
       <View style={s.container}>

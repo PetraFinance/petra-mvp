@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 import { ToMonetaryStr } from '../../../helpers/currency';
 
 import Card from './Card';
@@ -20,6 +21,7 @@ class GoalsCard extends React.Component {
 
     const genPage = () => {
       let page;
+      const id = this.props.id;
       const cost = ToMonetaryStr(this.props.cost);
       const saveAmount = ToMonetaryStr(this.props.saveAmount);
       const currentSaved = ToMonetaryStr(this.props.currentSaved);
@@ -27,7 +29,7 @@ class GoalsCard extends React.Component {
       const goalName = this.props.goalName;
 
       if (this.props.completed) {
-        page = (
+        return (
           <View style={s.goalsCard}>
             <View style={s.goalCompleted}>
               <Text style={s.congratsText}>
@@ -39,31 +41,41 @@ class GoalsCard extends React.Component {
           </View>
         );
       } else {
-        page = (
-          <View style={s.goalsCard}>
-            <View style={s.container}>
-              <View style={s.left}>
-                <Text style={s.category}>{goalName}</Text>
-                <Text style={s.timeToReset}>{currentSaved} of {cost}</Text>
+        return (
+          <TouchableHighlight
+            underlayColor={this.props.backgroundColor}
+            onPress={() => Actions.goalsEdit({ id: id })}
+            style={s.goalsCard}
+          >
+            <View>
+              <View style={s.container}>
+                <View style={s.left}>
+                  <Text style={s.category}>{goalName}</Text>
+                  <Text style={s.timeToReset}>{currentSaved} of {cost}</Text>
+                </View>
+                <View style={s.right}>
+                  <Text style={s.amount}>{savesRequired} Savings</Text>
+                  <Text style={s.stateOfFunds}>Until Goal</Text>
+                </View>
               </View>
-              <View style={s.right}>
-                <Text style={s.amount}>{savesRequired} Savings</Text>
-                <Text style={s.stateOfFunds}>Until Goal</Text>
-              </View>
+              <SpendingBar
+                currentSaved={this.props.currentSaved}
+                cost={this.props.cost}
+                color={this.props.barColor}
+                barFade={this.props.barFade}
+              />
             </View>
-            <SpendingBar
-              currentSaved={this.props.currentSaved}
-              cost={this.props.cost}
-              color={this.props.barColor}
-            />
-          </View>
+          </TouchableHighlight>
         );
       }
-      return page;
     };
 
     return (
-      <Card>
+      <Card
+        backgroundColor={this.props.backgroundColor}
+        borderTopRightRadius={5}
+        borderTopLeftRadius={5}
+      >
         {genPage()}
       </Card>
     );
@@ -81,10 +93,11 @@ const s = StyleSheet.create({
   },
   congratsText: {
     fontFamily: 'Avenir',
+    color: 'white',
   },
   highlight: {
     fontFamily: 'Avenir-Heavy',
-    color: '#03A9F4',
+    color: 'white',
   },
   container: {
     flex: 1,
@@ -100,19 +113,20 @@ const s = StyleSheet.create({
     justifyContent: 'center',
   },
   category: {
-    fontFamily: 'Avenir-Medium',
+    fontFamily: 'Avenir-Heavy',
+    color: 'white',
   },
   timeToReset: {
     fontFamily: 'Avenir',
-    color: '#263238',
+    color: 'white',
   },
   amount: {
     fontFamily: 'Avenir-Medium',
-    color: '#03A9F4',
+    color: 'white',
   },
   stateOfFunds: {
     fontFamily: 'Avenir',
-    color: '#263238',
+    color: 'white',
   },
 });
 

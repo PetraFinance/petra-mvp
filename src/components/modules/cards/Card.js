@@ -11,6 +11,16 @@ class Card extends React.Component {
     const backgroundColor = this.props.backgroundColor || 'white';
     const borderColor = this.props.borderColor || 'transparent';
 
+    let borderTopLeftRadius = this.props.borderTopLeftRadius;
+    if (!borderTopLeftRadius) {
+      borderTopLeftRadius = 0;
+    }
+
+    let borderTopRightRadius = this.props.borderTopRightRadius;
+    if (!borderTopRightRadius) {
+      borderTopRightRadius = 0;
+    }
+
     const paddingTop = this.props.paddingTop || 16;
     const paddingRight = this.props.paddingRight || 14;
     const paddingBottom = this.props.paddingBottom || 16;
@@ -25,6 +35,8 @@ class Card extends React.Component {
         paddingRight,
         paddingBottom,
         paddingLeft,
+        borderTopLeftRadius,
+        borderTopRightRadius,
       };
     };
 

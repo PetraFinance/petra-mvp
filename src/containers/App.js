@@ -15,6 +15,8 @@ import Settings from '../components/settings/Settings';
 
 import Overview from '../components/overview/Overview';
 
+// direction="vertical" to handle scene transitions
+
 const store = configureStore();
 
 class App extends React.Component {
@@ -32,7 +34,7 @@ class App extends React.Component {
             <Scene key="goalsName" component={AddName} />
             <Scene key="goalsCost" component={AddCost} />
             <Scene key="goalsSaveAmount" component={AddSaveAmount} />
-            <Scene key="goalsEdit" component={GoalsEdit} />
+            <Scene key="goalsEdit" component={GoalsEdit} direction="vertical" />
 
             <Scene
               key="overview"
