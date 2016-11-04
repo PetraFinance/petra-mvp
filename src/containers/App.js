@@ -13,6 +13,8 @@ import AddSaveAmount from './goals/AddSaveAmount';
 
 import Settings from '../components/settings/Settings';
 
+import Overview from '../components/overview/Overview';
+
 const store = configureStore();
 
 class App extends React.Component {
@@ -31,6 +33,12 @@ class App extends React.Component {
             <Scene key="goalsCost" component={AddCost} />
             <Scene key="goalsSaveAmount" component={AddSaveAmount} />
             <Scene key="goalsEdit" component={GoalsEdit} />
+
+            <Scene
+              key="overview"
+              component={Overview}
+              type="replace"
+            />
 
             <Scene
               key="settings"

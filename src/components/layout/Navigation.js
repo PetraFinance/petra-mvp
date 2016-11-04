@@ -10,20 +10,24 @@ class Navigation extends React.Component {
   render() {
     const categories = [
       { name: 'Goals', action: Actions.goals, },
+      { name: 'Overview', action: Actions.overview, },
       { name: 'Settings', action: Actions.settings, },
     ];
+
     const setStyle = (route) => {
       if (this.props.title === route) {
         return s.navTextActive;
       }
       return s.navText;
     };
+
     const setImage = (route, i) => {
       const image = routingStates[route.toLowerCase()][i];
       return (
         <Image source={image} resizeMode={'contain'} style={s.navIcon}/>
       );
     };
+
     const genNavigation = categories.map((category, i) => (
       <TouchableHighlight
         key={i}
@@ -39,6 +43,7 @@ class Navigation extends React.Component {
         </View>
       </TouchableHighlight>
     ));
+
     return (
       <View style={s.bar}>
         {genNavigation}
@@ -80,15 +85,24 @@ const s = StyleSheet.create({
 // React Native does not allow for dynamic data in require statements.
 const goalsIcon = require('../../../assets/navigation/goals.png');
 const goalsIconActive = require('../../../assets/navigation/goalsActive.png');
+const overviewIcon = require('../../../assets/navigation/overview.png');
+const overviewIconActive = require('../../../assets/navigation/overviewActive.png');
 const settingsIcon = require('../../../assets/navigation/settings.png');
 const settingsIconActive = require('../../../assets/navigation/settingsActive.png');
 const routingStates = {
   goals: [
     goalsIconActive,
+    overviewIcon,
+    settingsIcon,
+  ],
+  overview: [
+    goalsIcon,
+    overviewIconActive,
     settingsIcon,
   ],
   settings: [
     goalsIcon,
+    overviewIcon,
     settingsIconActive,
   ],
 };
