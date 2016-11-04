@@ -21,6 +21,7 @@ class ViewHeader extends React.Component {
           return (<View />);
       }
     };
+    
     const genRightHeaderIcon = (icon, underlayColor) => {
       const symbol = getIcon(icon.type);
       return (
