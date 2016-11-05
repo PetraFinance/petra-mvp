@@ -117,7 +117,7 @@ const s = StyleSheet.create({
     color: 'white',
   },
   timeToReset: {
-    fontFamily: 'Avenir',
+    fontFamily: 'Avenir-Heavy',
     color: 'white',
   },
   amount: {
@@ -125,7 +125,7 @@ const s = StyleSheet.create({
     color: 'white',
   },
   stateOfFunds: {
-    fontFamily: 'Avenir',
+    fontFamily: 'Avenir-Medium',
     color: 'white',
   },
 });
