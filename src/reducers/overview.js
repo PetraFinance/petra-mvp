@@ -8,6 +8,11 @@ const defaultState = Immutable.fromJS({
       'balance': "12456",
       'type': 'Core Checking',
     },
+    {
+      'name': 'Bank of America',
+      'balance': "43123",
+      'type': 'Core Savings',
+    },
   ]
 });
 

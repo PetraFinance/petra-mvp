@@ -10,14 +10,28 @@ class Overview extends React.Component {
 
   render() {
     const bankList = this.props.bankList;
+
+    const setStyle = (i, length) => {
+      if (i === length - 1) {
+        return {};
+      }
+      return {
+        paddingBottom: 14,
+      };
+    }
+
     const bankCards = bankList.map((item, i) => (
-      <OverviewCard
+      <View
+        style={setStyle(i, bankList.length)}
         key={i}
-        backgroundColor={'#E53935'}
-        bank={item.name}
-        balance={item.balance}
-        type={item.type}
-      />
+      >
+        <OverviewCard
+          backgroundColor={'#E53935'}
+          bank={item.name}
+          balance={item.balance}
+          type={item.type}
+        />
+      </View>
     ));
 
     const genPage = () => (
