@@ -13,6 +13,11 @@ const defaultState = Immutable.fromJS({
       'balance': "43123",
       'type': 'Core Savings',
     },
+    {
+      'name': 'Wells Fargo',
+      'balance': "342",
+      'type': 'Meme Fund',
+    },
   ]
 });
 

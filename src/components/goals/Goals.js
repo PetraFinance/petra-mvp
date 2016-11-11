@@ -89,10 +89,10 @@ class Goals extends React.Component {
 const s = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 16,
-    marginRight: 14,
-    marginBottom: 16,
-    marginLeft: 14,
+    paddingTop: 16,
+    paddingRight: 14,
+    paddingBottom: 16,
+    paddingLeft: 14,
   },
   marginBottom: {
     marginBottom: 16,

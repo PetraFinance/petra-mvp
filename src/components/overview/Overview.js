@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 import MainView from '../layout/MainView';
@@ -10,6 +10,11 @@ class Overview extends React.Component {
 
   render() {
     const bankList = this.props.bankList;
+    const colorOptions = [
+      '#E53935',
+      '#D32F2F',
+      '#03A9F4',
+    ];
 
     const setStyle = (i, length) => {
       if (i === length - 1) {
@@ -26,7 +31,7 @@ class Overview extends React.Component {
         key={i}
       >
         <OverviewCard
-          backgroundColor={'#E53935'}
+          backgroundColor={colorOptions[i % (bankList.length)]}
           bank={item.name}
           balance={item.balance}
           type={item.type}
@@ -35,7 +40,7 @@ class Overview extends React.Component {
     ));
 
     const genPage = () => (
-      <View style={s.container}>
+      <ScrollView style={s.container}>
         <SectionHeader
           text={'Bank Accounts'}
         />
@@ -43,7 +48,7 @@ class Overview extends React.Component {
         <SectionHeader
           text={'Credit Cards'}
         />
-      </View>
+      </ScrollView>
     );
 
     return (
