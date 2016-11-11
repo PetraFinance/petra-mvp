@@ -43,7 +43,7 @@ class AddSaveAmount extends React.Component {
     const genErrorMsg = () => {
       if (!isNumber(saveAmount)) {
         return (
-          <Text style={s.errorMsg}>Please entry a numerical value.</Text>
+          <Text style={s.errorMsg}>Please enter a numerical value.</Text>
         );
       }
       return ( <View /> );

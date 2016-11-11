@@ -1,3 +1,5 @@
+import Symbol from 'es6-symbol';
+
 export const SET_GOAL_COMPLETED = Symbol('SET_GOAL_COMPLETED');
 export function setGoalCompleted(id) {
   return {

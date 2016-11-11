@@ -32,7 +32,7 @@ class AddCost extends React.Component {
     const genErrorMsg = () => {
       if (!isNumber(cost)) {
         return (
-          <Text style={s.errorMsg}>Please entry a numerical value.</Text>
+          <Text style={s.errorMsg}>Please enter a numerical value.</Text>
         );
       }
       return ( <View /> );
