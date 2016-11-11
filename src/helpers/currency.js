@@ -4,7 +4,7 @@ Converts a string to a monetary representation of the string.
 e.g. "50032" => "$50,032"
 */
 export const ToMonetaryStr = (value) => {
-  const monetary = '$' + value.replace(/(\d)(?=(\d{3})+\.)/g, '$1,').toString();
+  const monetary = '$' + String(Number(value).toFixed(2)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
   return monetary;
 }
 

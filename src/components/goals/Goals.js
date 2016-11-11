@@ -16,14 +16,14 @@ class Goals extends React.Component {
     const goalsMap = this.props.goalsMap;
 
     const cardBackgroundColors = [
-      { top: '#E91E63', bottom: '#D81B60', fade: '#F8BBD0', },
+      { top: '#E91E63', bottom: '#D81B60', fade: '#F8BBD0',},
       { top: '#00BCD4', bottom: '#00ACC1', fade: '#B2EBF2',},
     ];
 
     const updateSavedAmount = (id, currentSaved, saveAmount, cost) => {
-      currentSaved = parseInt(currentSaved);
-      saveAmount = parseInt(saveAmount);
-      cost = parseInt(cost);
+      currentSaved = parseFloat(currentSaved);
+      saveAmount = parseFloat(saveAmount);
+      cost = parseFloat(cost);
       let updated = currentSaved + saveAmount;
       if (updated >= cost) {
         this.props.setGoalCompleted(id);

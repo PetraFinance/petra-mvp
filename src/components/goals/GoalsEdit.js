@@ -39,16 +39,18 @@ class GoalsEdit extends React.Component {
         <Text style={s.header}>Cost</Text>
         <TextInput
           style={s.input}
-          maxLength={35}
+          maxLength={8}
           onChangeText={(value) => handleUpdateGoal(id, 'cost', value)}
           value={cost}
+          keyboardType='numeric'
         />
         <Text style={s.header}>Save Amount</Text>
         <TextInput
           style={s.input}
-          maxLength={35}
+          maxLength={8}
           onChangeText={(value) => handleUpdateGoal(id, 'saveAmount', value)}
           value={saveAmount}
+          keyboardType='numeric'
         />
       </View>
     );

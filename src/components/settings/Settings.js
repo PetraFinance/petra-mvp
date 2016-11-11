@@ -10,15 +10,19 @@ class Settings extends React.Component {
   render() {
     const genPage = () => (
       <View>
-        <SectionHeader
-          text="User"
-        />
+        <View style={s.paddingLeft}>
+          <SectionHeader
+            text="User"
+          />
+        </View>
         <SettingsCard>
           <Text style={s.text}>David Bui</Text>
         </SettingsCard>
-        <SectionHeader
-          text="Account"
-        />
+        <View style={s.paddingLeft}>
+          <SectionHeader
+            text="Account"
+          />
+        </View>
         <SettingsCard>
           <Text style={s.logout}>Logout</Text>
         </SettingsCard>
@@ -41,6 +45,9 @@ const s = StyleSheet.create({
   },
   text: {
     fontFamily: 'Avenir',
+  },
+  paddingLeft: {
+    paddingLeft: 14,
   },
   logout: {
     fontFamily: 'Avenir',

@@ -13,7 +13,7 @@ import AddSaveAmount from './goals/AddSaveAmount';
 
 import Settings from '../components/settings/Settings';
 
-import Overview from '../components/overview/Overview';
+import Overview from './overview/Overview';
 
 // direction="vertical" to handle scene transitions
 
@@ -29,7 +29,7 @@ class App extends React.Component {
               key="goals"
               component={Goals}
               type="replace"
-              initial
+
             />
             <Scene key="goalsName" component={AddName} />
             <Scene key="goalsCost" component={AddCost} />
@@ -40,6 +40,7 @@ class App extends React.Component {
               key="overview"
               component={Overview}
               type="replace"
+              initial
             />
 
             <Scene

@@ -4,22 +4,31 @@ import { Actions } from 'react-native-router-flux';
 
 import MainView from '../layout/MainView';
 import SectionHeader from '../layout/SectionHeader';
+import OverviewCard from '../modules/cards/OverviewCard';
 
 class Overview extends React.Component {
 
   render() {
+    const bankList = this.props.bankList;
+    const bankCards = bankList.map((item, i) => (
+      <OverviewCard
+        key={i}
+        backgroundColor={'#E53935'}
+        bank={item.name}
+        balance={item.balance}
+        type={item.type}
+      />
+    ));
+
     const genPage = () => (
-      <View>
+      <View style={s.container}>
         <SectionHeader
           text={'Bank Accounts'}
         />
-        <View style={s.container}>
-        </View>
+        {bankCards}
         <SectionHeader
           text={'Credit Cards'}
         />
-        <View style={s.container}>
-        </View>
       </View>
     );
 
@@ -35,7 +44,8 @@ class Overview extends React.Component {
 
 const s = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    paddingLeft: 14,
+    paddingRight: 14,
   },
 });
 

@@ -15,8 +15,6 @@ class SectionHeader extends React.Component {
 
 const s = StyleSheet.create({
   sectionHeader: {
-    paddingRight: 14,
-    paddingLeft: 14,
     paddingTop: 20,
     paddingBottom: 8,
     fontFamily: 'Avenir-Heavy',

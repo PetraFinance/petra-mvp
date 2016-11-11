@@ -57,7 +57,7 @@ class AddSaveAmount extends React.Component {
             <Text style={s.header}>How much could you save for this on a given day? For instance, $5 or $10.</Text>
             <TextInput
               style={s.input}
-              maxLength={5}
+              maxLength={8}
               onChangeText={(saveAmount) => handleSaveAmount(saveAmount)}
               value={saveAmount}
               keyboardType='numeric'

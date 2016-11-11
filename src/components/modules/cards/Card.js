@@ -21,6 +21,14 @@ class Card extends React.Component {
       borderTopRightRadius = 0;
     }
 
+    let borderRadius = this.props.borderRadius;
+    if (borderRadius) {
+      borderTopLeftRadius = borderRadius;
+      borderTopRightRadius = borderRadius;
+    } else {
+      borderRadius = 0;
+    }
+
     const paddingTop = this.props.paddingTop || 16;
     const paddingRight = this.props.paddingRight || 14;
     const paddingBottom = this.props.paddingBottom || 16;
@@ -28,6 +36,7 @@ class Card extends React.Component {
 
     const genCardStyle = () => {
       return {
+        borderRadius,
         backgroundColor,
         borderColor,
         alignSelf: 'stretch',

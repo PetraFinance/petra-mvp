@@ -13,9 +13,9 @@ class GoalsCard extends React.Component {
 
   render() {
     const computeSavesRequired = (cost, currentSaved, saveAmount) => {
-      cost = parseInt(cost);
-      currentSaved = parseInt(currentSaved);
-      saveAmount = parseInt(saveAmount);
+      cost = parseFloat(cost);
+      currentSaved = parseFloat(currentSaved);
+      saveAmount = parseFloat(saveAmount);
       return Math.ceil((cost - currentSaved) / saveAmount);
     };
 

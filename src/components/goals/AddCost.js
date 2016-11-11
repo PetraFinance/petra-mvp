@@ -45,7 +45,7 @@ class AddCost extends React.Component {
             <Text style={s.header}>How much will this cost?</Text>
             <TextInput
               style={s.input}
-              maxLength={5}
+              maxLength={8}
               onChangeText={(cost) => handleGoalCost(cost)}
               value={cost}
               keyboardType='numeric'
