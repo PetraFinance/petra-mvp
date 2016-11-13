@@ -3,6 +3,8 @@ import { View, Navigator } from 'react-native';
 import { Router, Scene, Schema } from 'react-native-router-flux';
 import { Provider } from 'react-redux';
 import configureStore from '../store/store';
+import { autoRehydrate, persistStore } from 'redux-persist';
+import { AsyncStorage } from 'react-native';
 
 import Goals from './goals/Goals';
 import GoalsEdit from './goals/GoalsEdit';
@@ -17,9 +19,12 @@ import Overview from './overview/Overview';
 import AddAccount from '../components/overview/AddAccount';
 
 // direction="vertical" to handle scene transitions
+// panHandlers={null} to disable swipe down to pop scene
 
 const store = configureStore();
 
+// const persistor = persistStore(store, {storage: AsyncStorage}, () => { console.log('restored'); });
+// add persistor={persistor} to Provider
 
 class App extends React.Component {
   render() {

@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TextInput, StatusBar } from 'react-native';
 
 import GoalsCard from '../modules/cards/GoalsCard';
 import FlowButtons from '../modules/buttons/FlowButtons';
-import SubView from '../layout/FlowView';
+import SubView from '../layout/SubView';
 
 class AddName extends React.Component {
   constructor(props) {

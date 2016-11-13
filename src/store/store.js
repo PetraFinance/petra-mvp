@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { autoRehydrate } from 'redux-persist';
+import { autoRehydrate, persistStore } from 'redux-persist';
+import { AsyncStorage } from 'react-native';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View, TextInput, StatusBar } from 'react-native';
 
-import SubView from '../layout/FlowView';
+import SubView from '../layout/SubView';
 
 class GoalsEdit extends React.Component {
   constructor(props) {
