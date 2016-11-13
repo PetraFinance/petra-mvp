@@ -21,7 +21,7 @@ class ViewHeader extends React.Component {
           return (<View />);
       }
     };
-    
+
     const genRightHeaderIcon = (icon, underlayColor) => {
       const symbol = getIcon(icon.type);
       return (
@@ -34,6 +34,7 @@ class ViewHeader extends React.Component {
         </TouchableHighlight>
       );
     };
+
     const genLeftHeaderIcon = (icon, underlayColor) => {
       const symbol = getIcon(icon.type);
       return (
@@ -46,7 +47,14 @@ class ViewHeader extends React.Component {
         </TouchableHighlight>
       );
     };
-    const setHeaderStyle = (backgroundColor) => ({
+
+    const rightIcon = this.props.rightIcon || { type: '', action: null };
+    const leftIcon = this.props.leftIcon || { type: '', action: null };
+    const backgroundColor = this.props.backgroundColor || '#F9FAFC';
+    const color = this.props.textColor || '#29B6F6';
+    const title = this.props.title;
+
+    const setHeaderStyle = () => ({
       height: 65,
       paddingTop: 20,
       alignItems: 'center',
@@ -55,19 +63,16 @@ class ViewHeader extends React.Component {
       borderBottomWidth: 0.3,
       borderBottomColor: '#828287',
     });
-    const setHeaderTextStyle = (color) => ({
+
+    const setHeaderTextStyle = () => ({
       fontFamily: 'Avenir-Heavy',
       fontSize: 17,
       color,
     });
-    const rightIcon = this.props.rightIcon || { type: '', action: null };
-    const leftIcon = this.props.leftIcon || { type: '', action: null };
-    const backgroundColor = this.props.backgroundColor || '#F9FAFC';
-    const textColor = this.props.textColor || '#37474F';
-    const title = this.props.title;
+
     return (
-      <View style={setHeaderStyle(backgroundColor)}>
-        <Text style={setHeaderTextStyle(textColor)}>{title}</Text>
+      <View style={setHeaderStyle()}>
+        <Text style={setHeaderTextStyle()}>{title}</Text>
         {genRightHeaderIcon(rightIcon, backgroundColor)}
         {genLeftHeaderIcon(leftIcon, backgroundColor)}
       </View>
@@ -78,15 +83,15 @@ class ViewHeader extends React.Component {
 const s = StyleSheet.create({
   rightHeaderIcon: {
     position: 'absolute',
-    height: 25,
-    width: 25,
-    right: 5,
+    height: 35,
+    width: 35,
+    right: 0,
     top: 35,
   },
   leftHeaderIcon: {
     position: 'absolute',
-    height: 25,
-    width: 25,
+    height: 35,
+    width: 35,
     left: 15,
     top: 35,
   },

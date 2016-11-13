@@ -54,6 +54,7 @@ class Overview extends React.Component {
     return (
       <MainView
         title={'Overview'}
+        rightIcon={ {type: "add", action: Actions.addAccount } }
       >
         {genPage()}
       </MainView>

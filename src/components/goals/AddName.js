@@ -42,7 +42,7 @@ class AddName extends React.Component {
     return (
       <SubView
         title="Label Your Goal"
-        leftIcon={ {type: "backWhite", action: resetGoalState } }
+        leftIcon={{ type: "backWhite", action: resetGoalState }}
       >
         {genPage()}
       </SubView>

@@ -14,10 +14,12 @@ import AddSaveAmount from './goals/AddSaveAmount';
 import Settings from '../components/settings/Settings';
 
 import Overview from './overview/Overview';
+import AddAccount from '../components/overview/AddAccount';
 
 // direction="vertical" to handle scene transitions
 
 const store = configureStore();
+
 
 class App extends React.Component {
   render() {
@@ -29,12 +31,11 @@ class App extends React.Component {
               key="goals"
               component={Goals}
               type="replace"
-
             />
             <Scene key="goalsName" component={AddName} />
             <Scene key="goalsCost" component={AddCost} />
             <Scene key="goalsSaveAmount" component={AddSaveAmount} />
-            <Scene key="goalsEdit" component={GoalsEdit} direction="vertical" />
+            <Scene key="goalsEdit" component={GoalsEdit} direction="vertical" panHandlers={null} />
 
             <Scene
               key="overview"
@@ -42,6 +43,7 @@ class App extends React.Component {
               type="replace"
               initial
             />
+            <Scene key="addAccount" component={AddAccount} direction="vertical" panHandlers={null} />
 
             <Scene
               key="settings"
