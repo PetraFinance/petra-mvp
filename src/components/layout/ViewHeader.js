@@ -83,15 +83,15 @@ class ViewHeader extends React.Component {
 const s = StyleSheet.create({
   rightHeaderIcon: {
     position: 'absolute',
-    height: 35,
-    width: 35,
-    right: 0,
+    height: 28,
+    width: 45,
+    right: -13,
     top: 35,
   },
   leftHeaderIcon: {
     position: 'absolute',
-    height: 35,
-    width: 35,
+    height: 28,
+    width: 45,
     left: 15,
     top: 35,
   },

@@ -6,6 +6,8 @@ import MainView from '../layout/MainView';
 import SectionHeader from '../layout/SectionHeader';
 import OverviewCard from '../modules/cards/OverviewCard';
 
+import { setAllButLast } from '../../helpers/layout';
+
 class Overview extends React.Component {
 
   render() {
@@ -16,28 +18,23 @@ class Overview extends React.Component {
       '#03A9F4',
     ];
 
-    const setStyle = (i, length) => {
-      if (i === length - 1) {
-        return {};
-      }
-      return {
-        paddingBottom: 14,
-      };
-    }
-
-    const bankCards = bankList.map((item, i) => (
-      <View
-        style={setStyle(i, bankList.length)}
-        key={i}
-      >
-        <OverviewCard
-          backgroundColor={colorOptions[i % (bankList.length)]}
-          bank={item.name}
-          balance={item.balance}
-          type={item.type}
-        />
-      </View>
-    ));
+    const bankCards = bankList.map((item, i) => {
+      const bankColor = colorOptions[i % (bankList.length)];
+      return (
+        <View
+          style={setAllButLast(i, bankList.length, {paddingBottom: 14})}
+          key={i}
+        >
+          <OverviewCard
+            backgroundColor={bankColor}
+            bank={item.name}
+            balance={item.balance}
+            type={item.type}
+            onPress={() => Actions.transactionsList({bankName: item.name, bankColor})}
+          />
+        </View>
+      );
+    });
 
     const genPage = () => (
       <ScrollView style={s.container}>

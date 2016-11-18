@@ -57,7 +57,7 @@ class Goals extends React.Component {
               barFade={cardColorSet.fade}
               backgroundColor={cardColorSet.top}
               completed={goal.completed}
-              id={id}
+              onPress={() => Actions.goalsEdit({ id: id })}
             />
             <GoalsButtons
               completed={goal.completed}

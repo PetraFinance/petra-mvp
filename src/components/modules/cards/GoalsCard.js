@@ -19,9 +19,8 @@ class GoalsCard extends React.Component {
       return Math.ceil((cost - currentSaved) / saveAmount);
     };
 
-    const genPage = () => {
+    const genGoalsCard = () => {
       let page;
-      const id = this.props.id;
       const cost = ToMonetaryStr(this.props.cost);
       const saveAmount = ToMonetaryStr(this.props.saveAmount);
       const currentSaved = ToMonetaryStr(this.props.currentSaved);
@@ -44,7 +43,7 @@ class GoalsCard extends React.Component {
         return (
           <TouchableHighlight
             underlayColor={this.props.backgroundColor}
-            onPress={() => Actions.goalsEdit({ id: id })}
+            onPress={this.props.onPress}
             style={s.goalsCard}
           >
             <View>
@@ -76,7 +75,7 @@ class GoalsCard extends React.Component {
         borderTopRightRadius={5}
         borderTopLeftRadius={5}
       >
-        {genPage()}
+        {genGoalsCard()}
       </Card>
     );
   }

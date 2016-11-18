@@ -11,7 +11,7 @@ class SettingsCard extends React.Component {
 
   render() {
 
-    const genPage = () => {
+    const genSettingsCard = () => {
       return (
         <View style={s.container}>
           {this.props.children}
@@ -23,7 +23,7 @@ class SettingsCard extends React.Component {
       <Card
         borderColor="#CCD0D3"
       >
-        {genPage()}
+        {genSettingsCard()}
       </Card>
     );
   }

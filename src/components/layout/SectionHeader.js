@@ -19,6 +19,7 @@ const s = StyleSheet.create({
     paddingBottom: 8,
     fontFamily: 'Avenir-Heavy',
     fontSize: 13,
+    color: '#37474F',
   },
 });
 

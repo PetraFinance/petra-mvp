@@ -1,8 +1,9 @@
 import React from 'react';
-import Navigation from './Navigation';
-import ViewHeader from './ViewHeader';
+import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View, StatusBar, Alert } from 'react-native';
 import WebViewBridge from 'react-native-webview-bridge';
+
+import ViewHeader from './ViewHeader';
 
 class CustomWebView extends React.Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class CustomWebView extends React.Component {
 
   onBridgeMessage(data) {
     if (data) {
+      Actions.pop();
+      StatusBar.setBarStyle('default', true);
       data = JSON.parse(data);
       async function getAccountData() {
         try {

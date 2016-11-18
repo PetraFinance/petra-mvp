@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { setZeroIfNull } from '../../../helpers/layout';
 
 class Card extends React.Component {
 
@@ -11,23 +12,13 @@ class Card extends React.Component {
     const backgroundColor = this.props.backgroundColor || 'white';
     const borderColor = this.props.borderColor || 'transparent';
 
-    let borderTopLeftRadius = this.props.borderTopLeftRadius;
-    if (!borderTopLeftRadius) {
-      borderTopLeftRadius = 0;
-    }
+    let borderTopLeftRadius = setZeroIfNull(this.props.borderTopLeftRadius);
+    let borderTopRightRadius = setZeroIfNull(this.props.borderTopRightRadius);
+    const borderRadius = setZeroIfNull(this.props.borderRadius);
+    borderTopLeftRadius = borderRadius;
+    borderTopRightRadius = borderRadius;
 
-    let borderTopRightRadius = this.props.borderTopRightRadius;
-    if (!borderTopRightRadius) {
-      borderTopRightRadius = 0;
-    }
-
-    let borderRadius = this.props.borderRadius;
-    if (borderRadius) {
-      borderTopLeftRadius = borderRadius;
-      borderTopRightRadius = borderRadius;
-    } else {
-      borderRadius = 0;
-    }
+    const marginBottom = setZeroIfNull(this.props.marginBottom);
 
     const paddingTop = this.props.paddingTop || 16;
     const paddingRight = this.props.paddingRight || 14;
@@ -40,6 +31,7 @@ class Card extends React.Component {
         backgroundColor,
         borderColor,
         alignSelf: 'stretch',
+        marginBottom,
         paddingTop,
         paddingRight,
         paddingBottom,
@@ -64,6 +56,9 @@ Card.propTypes = {
   marginRight: React.PropTypes.number,
   marginLeft: React.PropTypes.number,
   marginTop: React.PropTypes.number,
+  borderTopLeftRadius: React.PropTypes.number,
+  borderTopRightRadius: React.PropTypes.number,
+  borderRadius: React.PropTypes.number,
 };
 
 export default Card;
