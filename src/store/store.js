@@ -1,9 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { autoRehydrate, persistStore } from 'redux-persist';
+import immutableTransform from 'redux-persist-transform-immutable';
 import { AsyncStorage } from 'react-native';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
+import Immutable from 'immutable';
 
 // https://github.com/evgenyrodionov/redux-logger/pull/129#issuecomment-182743693
 const loggerMiddleware = createLogger({
@@ -13,13 +15,15 @@ const loggerMiddleware = createLogger({
   })
 });
 
-const configureStore = function (initialState = {}) {
+const enhancers = compose(
+  autoRehydrate(),
+  applyMiddleware(thunkMiddleware, loggerMiddleware,),
+);
+
+const configureStore = function () {
   const store = createStore(
     rootReducer,
-    compose(
-      applyMiddleware(thunkMiddleware, loggerMiddleware, ),
-      autoRehydrate(),
-    ),
+    enhancers,
   );
   return store;
 };

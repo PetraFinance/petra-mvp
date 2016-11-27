@@ -32,7 +32,7 @@ class TransactionList extends React.Component {
       <TransactionCard
         key={i}
         name={item.name}
-        amount={ToMonetaryStr(item.amount)}
+        amount={ToMonetaryStr(item.amount, true)}
         date={item.date}
       />
     ));

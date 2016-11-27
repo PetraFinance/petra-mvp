@@ -3,11 +3,23 @@
 Converts a string to a monetary representation of the string.
 e.g. "50032" => "$50,032"
 */
-export const ToMonetaryStr = (value) => {
+export const ToMonetaryStr = (value, negation = false) => {
   let monetary = String(Number(value).toFixed(2)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-  let template = `\$${monetary}`.replace('$-', '-$');
-  return template;
-}
+  if (negation) {
+    monetary = negateMonetary(monetary);
+  } else {
+    monetary = '$' + monetary;
+  }
+  return monetary;
+};
+
+const negateMonetary = (value) => {
+  if (value.includes('-')) {
+   return  value = value.replace('-', '$');
+  } else {
+    return value = '-$' + value;
+  }
+};
 
 /*
 @value, string
@@ -26,7 +38,7 @@ Checks that a user has entered a numerical value.
 */
 export const isNumber = (value) => {
   return !isNaN(parseFloat(value)) && isFinite(value);
-}
+};
 
 /*
 @value, any value
@@ -34,4 +46,4 @@ Capitalizes the first letter heh.
 */
 export const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
+};

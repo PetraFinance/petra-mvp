@@ -16,8 +16,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   handleAccountData: (data) => {
-    console.log("Made it here!!");
-    console.log("MEMES");
     dispatch(setAccountData(data));
   },
 });

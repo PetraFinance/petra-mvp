@@ -4,6 +4,7 @@ import { Router, Scene, Schema } from 'react-native-router-flux';
 import { Provider } from 'react-redux';
 import configureStore from '../store/store';
 import { autoRehydrate, persistStore } from 'redux-persist';
+import immutableTransform from 'redux-persist-transform-immutable';
 import { AsyncStorage } from 'react-native';
 
 import Goals from './goals/Goals';
@@ -23,14 +24,26 @@ import TransactionsList from './overview/TransactionsList';
 // panHandlers={null} to disable swipe down to pop scene
 
 const store = configureStore();
-
-// const persistor = persistStore(store, {storage: AsyncStorage}, () => { console.log('restored'); });
 // add persistor={persistor} to Provider
+const persistor = persistStore(store, {
+  storage: AsyncStorage,
+  transforms: [immutableTransform({
+    whitelist: ['goals', 'accounts'],
+  })]
+});
+
+// RESET IF THINGS GET OUT OF WACK
+// const persistor = persistStore(store, {
+//   storage: AsyncStorage,
+//   transforms: [immutableTransform({
+//     whitelist: ['goals', 'accounts'],
+//   })]
+// }).purge();
 
 class App extends React.Component {
   render() {
     return (
-      <Provider store={store}>
+      <Provider store={store} persistor={persistor}>
         <Router hideNavBar>
           <Scene key="Root">
             <Scene
