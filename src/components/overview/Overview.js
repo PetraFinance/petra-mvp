@@ -12,6 +12,7 @@ class Overview extends React.Component {
 
   render() {
     const bankList = this.props.bankList;
+    const creditList = this.props.creditList;
     const colorOptions = [
       '#E53935',
       '#D32F2F',
@@ -30,7 +31,25 @@ class Overview extends React.Component {
             bank={item.name}
             balance={item.balance}
             type={item.type}
-            onPress={() => Actions.transactionsList({bankName: item.name, bankColor})}
+            onPress={() => Actions.transactionsList({accountName: item.name, account_id: item.account_id, bankColor})}
+          />
+        </View>
+      );
+    });
+
+    const creditCards = creditList.map((item, i) => {
+      const bankColor = colorOptions[i % (creditList.length)];
+      return (
+        <View
+          style={setAllButLast(i, creditList.length, {paddingBottom: 14})}
+          key={i}
+        >
+          <OverviewCard
+            backgroundColor={bankColor}
+            bank={item.name}
+            balance={item.balance}
+            type={item.type}
+            onPress={() => Actions.transactionsList({accountName: item.name, account_id: item.account_id, bankColor})}
           />
         </View>
       );
@@ -45,6 +64,7 @@ class Overview extends React.Component {
         <SectionHeader
           text={'Credit Cards'}
         />
+        {creditCards}
       </ScrollView>
     );
 

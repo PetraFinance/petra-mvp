@@ -1,37 +1,122 @@
 import React from 'react';
-import { StyleSheet, View, StatusBar } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { StyleSheet, Text, View, StatusBar, Alert } from 'react-native';
+import WebViewBridge from 'react-native-webview-bridge';
 
-import CustomWebView from '../layout/CustomWebView';
+import ViewHeader from '../layout/ViewHeader';
 
-class AccountAdd extends React.Component {
+class AddAccount extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onBridgeMessage = this.onBridgeMessage.bind(this);
+  }
+
+  componentDidMount() {
+    StatusBar.setBarStyle('light-content', true);
+  }
+
+  onBridgeMessage(data) {
+    async function getBankData(public_token) {
+      try {
+        let formData;
+        let response;
+
+        formData = new FormData();
+        formData.append('public_token', 'test,bofa,connected');
+        response = await
+        fetch('https://dev.trypetra.com/fakedata/connections/new', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: formData,
+        });
+        const auth_token = await response.json();
+
+        formData = new FormData();
+        formData.append('auth_token', 'test_bofa');
+        response = await
+        fetch('https://dev.trypetra.com/fakedata/connections/data', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: formData,
+        });
+        const accountData = await response.json();
+        return accountData;
+      } catch(error) {
+        Alert.alert(error);
+      }
+    };
+
+    if (data) {
+      Actions.pop();
+      StatusBar.setBarStyle('default', true);
+      const response = JSON.parse(data);
+      const public_token = response["token"];
+      getBankData(public_token).then(accountData => {
+        this.props.handleAccountData(accountData);
+      });
+    }
+  }
 
   render() {
+    const injectScript =
+    `(function () {
+      function sendData(data) {
+        var payload = JSON.stringify(data);
+        WebViewBridge.send(payload);
+      };
+      function checkData() {
+        if (window.petra_status == 'success') {
+          sendData({
+            'token': window.petra_public_token,
+            'status': window.petra_status,
+            'metadata': window.petra_metadata,
+          });
+        } else {
+          setTimeout(checkData, 1000);
+        }
+      };
+      setTimeout(checkData, 1000);
+    }());`;
+
     const handleBack = () => {
       Actions.pop();
       StatusBar.setBarStyle('default', true);
     };
 
-    const genPage = () => (
-      <View />
-    );
-
     return (
-      <CustomWebView
-        title={'Add an Account'}
-        leftIcon={{ type: "exitWhite", action: handleBack }}
-      >
-        {genPage()}
-      </CustomWebView>
+      <View style={s.container}>
+        <ViewHeader
+          title={'Add an Account'}
+          leftIcon={{ type: "exitWhite", action: handleBack }}
+          backgroundColor="#29B6F6"
+          textColor="white"
+        />
+        <WebViewBridge
+          ref="bridge"
+          onBridgeMessage={this.onBridgeMessage}
+          injectedJavaScript={injectScript}
+          source={{ uri: "https://set8jyaswh.execute-api.us-east-1.amazonaws.com/dev/connections/plaid_link" }}
+        />
+      </View>
     );
   }
 }
 
 const s = StyleSheet.create({
   container: {
-    paddingLeft: 14,
-    paddingRight: 14,
+    flex: 1,
+    backgroundColor: '#ECEFF1',
   },
 });
 
-export default AccountAdd;
+AddAccount.propTypes = ({
+  handleAccountData: React.PropTypes.func.isRequired,
+});
+
+export default AddAccount;

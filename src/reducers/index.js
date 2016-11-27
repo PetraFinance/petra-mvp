@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import goals from './goals';
-import overview from './overview';
+import accounts from './accounts';
 
 const rootReducer = combineReducers({
   goals,
-  overview,
+  accounts,
 });
 
 export default rootReducer;

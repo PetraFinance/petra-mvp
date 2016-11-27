@@ -27,3 +27,7 @@ Checks that a user has entered a numerical value.
 export const isNumber = (value) => {
   return !isNaN(parseFloat(value)) && isFinite(value);
 }
+
+export const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

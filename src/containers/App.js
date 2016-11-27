@@ -16,8 +16,8 @@ import AddSaveAmount from './goals/AddSaveAmount';
 import Settings from '../components/settings/Settings';
 
 import Overview from './overview/Overview';
-import AddAccount from '../components/overview/AddAccount';
-import TransactionList from '../components/overview/TransactionList';
+import AddAccount from './overview/AddAccount';
+import TransactionsList from './overview/TransactionsList';
 
 // direction="vertical" to handle scene transitions
 // panHandlers={null} to disable swipe down to pop scene
@@ -50,7 +50,7 @@ class App extends React.Component {
               initial
             />
             <Scene key="addAccount" component={AddAccount} direction="vertical" panHandlers={null} />
-            <Scene key="transactionsList" component={TransactionList} direction="vertical" panHandlers={null} />
+            <Scene key="transactionsList" component={TransactionsList} direction="vertical" panHandlers={null} />
 
             <Scene
               key="settings"
