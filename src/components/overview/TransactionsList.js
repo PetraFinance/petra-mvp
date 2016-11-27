@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, ScrollView, Text, StatusBar } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { ToMonetaryStr } from '../../helpers/currency';
 
 import SubView from '../layout/SubView';
 import SectionHeader from '../layout/SectionHeader';
@@ -17,8 +18,8 @@ class TransactionList extends React.Component {
     const transactions = transactionsList.map((item, i) => (
       <TransactionCard
         key={i}
-        business={item.name}
-        expense={item.amount}
+        name={item.name}
+        amount={ToMonetaryStr(item.amount)}
         date={item.date}
       />
     ));

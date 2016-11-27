@@ -5,7 +5,7 @@ e.g. "50032" => "$50,032"
 */
 export const ToMonetaryStr = (value) => {
   let monetary = String(Number(value).toFixed(2)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-  const template = `\$${monetary}`;
+  let template = `\$${monetary}`.replace('$-', '-$');
   return template;
 }
 

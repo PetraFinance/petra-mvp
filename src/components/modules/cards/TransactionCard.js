@@ -13,8 +13,8 @@ class TransactionCard extends React.Component {
 
     const icon = require('../../../../assets/transIconTemp.png');
 
-    const business = this.props.business;
-    const expense = this.props.expense;
+    const name = this.props.name;
+    const amount = this.props.amount;
     const date = this.props.date;
 
     const genTransactionCard = () => (
@@ -28,10 +28,10 @@ class TransactionCard extends React.Component {
         <View style={s.dataWrapper}>
           <View style={s.top}>
             <View style={s.left}>
-              <Text style={s.business}>{business}</Text>
+              <Text style={s.business}>{name}</Text>
             </View>
             <View style={s.right}>
-              <Text style={s.expense}>-{expense}</Text>
+              <Text style={s.amount}>{amount}</Text>
             </View>
           </View>
           <View>
@@ -79,7 +79,7 @@ const s = StyleSheet.create({
     fontFamily: 'Avenir-Medium',
     color: '#37474F',
   },
-  expense: {
+  amount: {
     fontFamily: 'Avenir-Heavy',
     color: '#37474F',
     textAlign: 'right',
@@ -93,9 +93,9 @@ const s = StyleSheet.create({
 });
 
 TransactionCard.propTypes = {
-  business: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
   date: React.PropTypes.string.isRequired,
-  expense: React.PropTypes.string.isRequired,
+  amount: React.PropTypes.string.isRequired,
 };
 
 export default TransactionCard;
