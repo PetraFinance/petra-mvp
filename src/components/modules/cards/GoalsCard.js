@@ -1,8 +1,8 @@
 import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
-import { ToMonetaryStr } from '../../../helpers/currency';
 
+import { ToMonetaryStr } from '../../../helpers/formatting';
 import Card from './Card';
 import SpendingBar from '../SpendingBar';
 

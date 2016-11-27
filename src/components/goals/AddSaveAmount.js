@@ -6,7 +6,7 @@ import GoalsCard from '../modules/cards/GoalsCard';
 import FlowButtons from '../modules/buttons/FlowButtons';
 import SubView from '../layout/SubView';
 
-import { StripMonetaryStr, isNumber } from '../../helpers/currency';
+import { StripMonetaryStr, isNumber } from '../../helpers/formatting';
 
 class AddSaveAmount extends React.Component {
   constructor(props) {

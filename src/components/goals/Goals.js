@@ -2,7 +2,7 @@ import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View, ScrollView, StatusBar } from 'react-native';
 
-import { IntToMonetaryStr, MonetaryStrToInt } from '../../helpers/currency';
+import { IntToMonetaryStr, MonetaryStrToInt } from '../../helpers/formatting';
 import GoalsCard from '../modules/cards/GoalsCard';
 import GoalsButtons from '../modules/buttons/GoalsButtons';
 import MainView from '../layout/MainView';

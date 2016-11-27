@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, ScrollView, Text, TextInput, Image, StatusBar } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { ToMonetaryStr } from '../../helpers/currency';
 
+import { ToMonetaryStr } from '../../helpers/formatting';
 import SubView from '../layout/SubView';
 import SectionHeader from '../layout/SectionHeader';
 import TransactionCard from '../modules/cards/TransactionCard';
@@ -44,7 +44,7 @@ class TransactionList extends React.Component {
     };
 
     const handleSearchTerm = (searchTerm) => {
-      this.setState({ searchTerm });
+      this.setState({searchTerm});
     }
 
     const banner = require('../../../assets/searchIcon.png');

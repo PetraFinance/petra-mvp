@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 import * as ActionType from '../actions/accounts';
-import { capitalizeFirstLetter } from '../helpers/currency.js'
+import { capitalizeFirstLetter } from '../helpers/formatting';
 
 const defaultState = Immutable.fromJS({
   bankList: [],
@@ -32,7 +32,7 @@ export default function (state = defaultState, action) {
         const entry = Immutable.Map({
           account_id: account._id,
           name: account.meta.name,
-          balance: account.balance.available,
+          balance: account.balance.current,
           type,
         });
         creditList = creditList.push(entry);

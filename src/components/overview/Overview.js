@@ -4,9 +4,11 @@ import { Actions } from 'react-native-router-flux';
 
 import MainView from '../layout/MainView';
 import SectionHeader from '../layout/SectionHeader';
+import Card from '../modules/cards/Card';
 import OverviewCard from '../modules/cards/OverviewCard';
 
 import { setAllButLast } from '../../helpers/layout';
+import { ToMonetaryStr } from '../../helpers/formatting';
 
 class Overview extends React.Component {
 
@@ -29,7 +31,7 @@ class Overview extends React.Component {
           <OverviewCard
             backgroundColor={bankColor}
             bank={item.name}
-            balance={item.balance}
+            balance={ToMonetaryStr(item.balance)}
             type={item.type}
             onPress={() => Actions.transactionsList({accountName: item.name, account_id: item.account_id, bankColor})}
           />
@@ -47,7 +49,7 @@ class Overview extends React.Component {
           <OverviewCard
             backgroundColor={bankColor}
             bank={item.name}
-            balance={item.balance}
+            balance={ToMonetaryStr(item.balance, true)}
             type={item.type}
             onPress={() => Actions.transactionsList({accountName: item.name, account_id: item.account_id, bankColor})}
           />
@@ -57,6 +59,9 @@ class Overview extends React.Component {
 
     const genPage = () => (
       <ScrollView style={s.container}>
+        <SectionHeader
+          text={'Updates'}
+        />
         <SectionHeader
           text={'Bank Accounts'}
         />

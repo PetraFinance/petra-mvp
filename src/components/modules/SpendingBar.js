@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Dimensions from 'Dimensions';
 
+// Works by taking the dimensions of the screen and
+// then accounting for the margins of the spending bar.
+
 class SpendingBar extends React.Component {
 
   constructor(props) {

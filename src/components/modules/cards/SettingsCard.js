@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-
 import Card from './Card';
 
 class SettingsCard extends React.Component {

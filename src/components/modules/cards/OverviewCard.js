@@ -1,7 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
-import { ToMonetaryStr } from '../../../helpers/currency';
-
 import Card from './Card';
 
 class OverviewCard extends React.Component {
@@ -11,7 +9,7 @@ class OverviewCard extends React.Component {
 
   render() {
     const bank = this.props.bank;
-    const balance = ToMonetaryStr(this.props.balance);
+    const balance = this.props.balance;
     const type = this.props.type;
 
     const genOverviewCard = () => (

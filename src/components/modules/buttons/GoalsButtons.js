@@ -1,7 +1,7 @@
 import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
-import { ToMonetaryStr } from '../../../helpers/currency';
+import { ToMonetaryStr } from '../../../helpers/formatting';
 
 class SaveButton extends React.Component {
   constructor(props) {

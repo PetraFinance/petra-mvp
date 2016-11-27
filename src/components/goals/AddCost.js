@@ -6,7 +6,7 @@ import GoalsCard from '../modules/cards/GoalsCard';
 import FlowButtons from '../modules/buttons/FlowButtons';
 import SubView from '../layout/SubView';
 
-import { isNumber } from '../../helpers/currency';
+import { isNumber } from '../../helpers/formatting';
 
 class AddCost extends React.Component {
   constructor(props) {

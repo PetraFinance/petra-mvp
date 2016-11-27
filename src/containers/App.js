@@ -23,15 +23,6 @@ import TransactionsList from './overview/TransactionsList';
 // direction="vertical" to handle scene transitions
 // panHandlers={null} to disable swipe down to pop scene
 
-const store = configureStore();
-// add persistor={persistor} to Provider
-const persistor = persistStore(store, {
-  storage: AsyncStorage,
-  transforms: [immutableTransform({
-    whitelist: ['goals', 'accounts'],
-  })]
-});
-
 // RESET IF THINGS GET OUT OF WACK
 // const persistor = persistStore(store, {
 //   storage: AsyncStorage,
@@ -39,6 +30,14 @@ const persistor = persistStore(store, {
 //     whitelist: ['goals', 'accounts'],
 //   })]
 // }).purge();
+
+const store = configureStore();
+const persistor = persistStore(store, {
+  storage: AsyncStorage,
+  transforms: [immutableTransform({
+    whitelist: ['goals', 'accounts'],
+  })]
+});
 
 class App extends React.Component {
   render() {

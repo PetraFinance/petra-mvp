@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import { ToMonetaryStr } from '../../../helpers/currency';
-
+import { ToMonetaryStr } from '../../../helpers/formatting';
 import Card from './Card';
 
 class TransactionCard extends React.Component {
