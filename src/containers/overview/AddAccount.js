@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AddAccount from '../../components/overview/AddAccount';
-import { setAccountData } from '../../actions/accounts';
+import { setAccountData, setAuthToken } from '../../actions/accounts';
 
 const mapStateToProps = (state) => {
   const cpState = state.accounts.toJS();
@@ -17,6 +17,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   handleAccountData: (data) => {
     dispatch(setAccountData(data));
+  },
+  handleAuthToken: (token) => {
+    dispatch(setAuthToken(token));
   },
 });
 

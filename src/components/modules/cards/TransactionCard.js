@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import { ToMonetaryStr } from '../../../helpers/formatting';
+import { ToMonetaryStr, formatDate } from '../../../helpers/formatting';
 import Card from './Card';
 
 class TransactionCard extends React.Component {
@@ -34,7 +34,7 @@ class TransactionCard extends React.Component {
             </View>
           </View>
           <View>
-            <Text style={s.date}>{date}</Text>
+            <Text style={s.date}>{formatDate(date)}</Text>
           </View>
         </View>
       </View>

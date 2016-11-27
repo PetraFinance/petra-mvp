@@ -7,10 +7,14 @@ const defaultState = Immutable.fromJS({
   creditList: [],
   accountData: {},
   transactionsList: [],
+  authToken: '',
 });
 
 export default function (state = defaultState, action) {
   switch (action.type) {
+    case ActionType.SET_AUTH_TOKEN:
+      console.log("OH HELLO THERE");
+      return state.set('authToken', action.token);
     case ActionType.SET_ACCOUNT_DATA:
       const transactionsList = Immutable.List(action.data["data"]["transactions"]);
       let bankList = Immutable.List();

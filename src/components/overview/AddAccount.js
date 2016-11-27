@@ -32,7 +32,8 @@ class AddAccount extends React.Component {
           },
           body: formData,
         });
-        const auth_token = await response.json();
+        const auth_data = await response.json();
+        const auth_token = auth_data.data.auth_token;
 
         formData = new FormData();
         formData.append('auth_token', 'test_bofa');
@@ -46,7 +47,7 @@ class AddAccount extends React.Component {
           body: formData,
         });
         const accountData = await response.json();
-        return accountData;
+        return [accountData, auth_token];
       } catch(error) {
         Alert.alert(error);
       }
@@ -57,8 +58,9 @@ class AddAccount extends React.Component {
       StatusBar.setBarStyle('default', true);
       const response = JSON.parse(data);
       const public_token = response["token"];
-      getBankData(public_token).then(accountData => {
-        this.props.handleAccountData(accountData);
+      getBankData(public_token).then(data => {
+        this.props.handleAccountData(data[0]);
+        this.props.handleAuthToken(data[1]);
       });
     }
   }
@@ -117,6 +119,7 @@ const s = StyleSheet.create({
 
 AddAccount.propTypes = ({
   handleAccountData: React.PropTypes.func.isRequired,
+  handleAuthToken: React.PropTypes.func.isRequired,
 });
 
 export default AddAccount;
