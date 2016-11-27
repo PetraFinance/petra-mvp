@@ -28,6 +28,10 @@ export const isNumber = (value) => {
   return !isNaN(parseFloat(value)) && isFinite(value);
 }
 
+/*
+@value, any value
+Capitalizes the first letter heh.
+*/
 export const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
