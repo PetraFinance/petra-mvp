@@ -1,5 +1,5 @@
 export const setAllButLast = (i, length, style) => {
-  if (i === length - 1)
+  if (i === length - 1 && length != 1)
     return {};
   return style;
 }

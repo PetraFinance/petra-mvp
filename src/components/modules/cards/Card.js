@@ -21,7 +21,6 @@ class Card extends React.Component {
     }
 
     const marginBottom = setZeroIfNull(this.props.marginBottom);
-
     const paddingTop = this.props.paddingTop || 16;
     const paddingRight = this.props.paddingRight || 14;
     const paddingBottom = this.props.paddingBottom || 16;

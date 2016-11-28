@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 import MainView from '../layout/MainView';
@@ -20,6 +20,17 @@ class Overview extends React.Component {
       '#D32F2F',
       '#03A9F4',
     ];
+
+    const updatesCard = () => {
+      return (
+        <Card
+          borderRadius={5}
+        >
+          <Text style={s.recTitle}>RECOMMENDATIONS</Text>
+          <Text style={s.recText}>You only have $150.68 avaliable on your credit card. Consider paying your bill soon.</Text>
+        </Card>
+      );
+    }
 
     const bankCards = bankList.map((item, i) => {
       const bankColor = colorOptions[i % (bankList.length)];
@@ -62,6 +73,7 @@ class Overview extends React.Component {
         <SectionHeader
           text={'Updates'}
         />
+        {updatesCard()}
         <SectionHeader
           text={'Bank Accounts'}
         />
@@ -89,6 +101,15 @@ const s = StyleSheet.create({
     paddingLeft: 14,
     paddingRight: 14,
   },
+  recTitle: {
+    color: '#03A9F4',
+    fontFamily: 'Avenir-Heavy',
+    fontSize: 12,
+    marginBottom: 5,
+  },
+  recText: {
+    fontFamily: 'Avenir',
+  }
 });
 
 export default Overview;
