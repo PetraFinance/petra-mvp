@@ -15,8 +15,10 @@ class Card extends React.Component {
     let borderTopLeftRadius = setZeroIfNull(this.props.borderTopLeftRadius);
     let borderTopRightRadius = setZeroIfNull(this.props.borderTopRightRadius);
     const borderRadius = setZeroIfNull(this.props.borderRadius);
-    borderTopLeftRadius = borderRadius;
-    borderTopRightRadius = borderRadius;
+    if (borderRadius !== 0) {
+      borderTopLeftRadius = borderRadius;
+      borderTopRightRadius = borderRadius;
+    }
 
     const marginBottom = setZeroIfNull(this.props.marginBottom);
 
