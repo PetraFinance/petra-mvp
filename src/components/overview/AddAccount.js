@@ -20,9 +20,10 @@ class AddAccount extends React.Component {
       try {
         let formData;
         let response;
-
+        // use to test on dev, choose BOFA
+        // public_token = 'test,bofa,connected'
         formData = new FormData();
-        formData.append('public_token', 'test,bofa,connected');
+        formData.append('public_token', public_token);
         response = await
         fetch('https://dev.trypetra.com/fakedata/connections/new', {
           method: 'POST',
@@ -36,7 +37,8 @@ class AddAccount extends React.Component {
         const auth_token = auth_data.data.auth_token;
 
         formData = new FormData();
-        formData.append('auth_token', 'test_bofa');
+        // auth_token = 'test_bofa'
+        formData.append('auth_token', auth_token);
         response = await
         fetch('https://dev.trypetra.com/fakedata/connections/data', {
           method: 'POST',

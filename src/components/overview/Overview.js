@@ -9,6 +9,7 @@ import OverviewCard from '../modules/cards/OverviewCard';
 
 import { setAllButLast } from '../../helpers/layout';
 import { ToMonetaryStr } from '../../helpers/formatting';
+import { genUpdates } from '../../helpers/updates';
 
 class Overview extends React.Component {
 
@@ -17,17 +18,19 @@ class Overview extends React.Component {
     const creditList = this.props.creditList;
     const colorOptions = [
       '#E53935',
-      '#D32F2F',
       '#03A9F4',
+      '#D32F2F',
     ];
 
     const updatesCard = () => {
+      const updates = genUpdates(this.props.transactionsList);
+      const advice = updates[0];
       return (
         <Card
           borderRadius={5}
         >
           <Text style={s.recTitle}>RECOMMENDATIONS</Text>
-          <Text style={s.recText}>You only have $150.68 avaliable on your credit card. Consider paying your bill soon.</Text>
+          <Text style={s.recText}>{advice}</Text>
         </Card>
       );
     }

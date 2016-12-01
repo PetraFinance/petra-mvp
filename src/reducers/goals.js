@@ -5,40 +5,40 @@ import * as ActionType from '../actions/goals';
 // All values are strings to simplify the process for editing a goal
 // TEST DATA
 //
-const defaultState = Immutable.fromJS({
-  nextAvaliableId: 2,
-  goalsMap: {
-    0: {
-      name: 'Test',
-      date: 'Soon',
-      cost: '500.00',
-      saveAmount: '100.00',
-      currentSaved: '0',
-      completed: false,
-    },
-    1: {
-      name: 'Test',
-      date: 'Soon',
-      cost: '500.00',
-      saveAmount: '100.00',
-      currentSaved: '0',
-      completed: false,
-    },
-  },
-  goalName: '',
-  goalCost: '',
-  goalDate: '',
-  saveAmount: '',
-});
-
 // const defaultState = Immutable.fromJS({
-//   nextAvaliableId: 0,
-//   goalsMap: {},
+//   nextAvaliableId: 2,
+//   goalsMap: {
+//     0: {
+//       name: 'Test',
+//       date: 'Soon',
+//       cost: '500.00',
+//       saveAmount: '100.00',
+//       currentSaved: '0',
+//       completed: false,
+//     },
+//     1: {
+//       name: 'Test',
+//       date: 'Soon',
+//       cost: '500.00',
+//       saveAmount: '100.00',
+//       currentSaved: '0',
+//       completed: false,
+//     },
+//   },
 //   goalName: '',
 //   goalCost: '',
 //   goalDate: '',
 //   saveAmount: '',
 // });
+
+const defaultState = Immutable.fromJS({
+  nextAvaliableId: 0,
+  goalsMap: {},
+  goalName: '',
+  goalCost: '',
+  goalDate: '',
+  saveAmount: '',
+});
 
 export default function (state = defaultState, action) {
   let goal;

@@ -13,6 +13,11 @@ const monthMap = {
   '12': 'Dec',
 }
 
+const ignoreString = [
+  'ID',
+  'ATM',
+]
+
 export const formatDate = (date) => {
   const segments = date.split('-');
   const year = segments[0];
@@ -24,9 +29,42 @@ export const formatDate = (date) => {
   return `${month} ${day}, ${year}`;
 };
 
+export const formatTransaction = (transaction) => {
+  let clean = [];
+  const pieces = transaction.split(" ");
+  if (pieces.length < 2) {
+    return transaction;
+  }
+  for (let piece of pieces) {
+    if (ignoreString.includes(piece)) {
+      continue;
+    }
+    if (isLetter(piece[0])) {
+      piece = piece.toLowerCase();
+      piece = capitalizeFirstLetter(piece);
+    }
+    clean.push(piece);
+  }
+  return clean.join(' ');
+}
+
+const isLetter = (str) => {
+  return str.match(/[a-z]/i);
+}
+
+/*
+@value, any value
+Capitalizes the first letter heh.
+*/
+export const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 /*
 @value, string
 Converts a string to a monetary representation of the string.
+Take in a value "negation" which defaults to false on whether or not to
+reverse the sign of monetary values.
 e.g. "50032" => "$50,032"
 */
 export const ToMonetaryStr = (value, negation = false) => {
@@ -57,19 +95,10 @@ export const StripMonetaryStr = (value) => {
   return clean;
 };
 
-
 /*
 @value, any value
 Checks that a user has entered a numerical value.
 */
 export const isNumber = (value) => {
   return !isNaN(parseFloat(value)) && isFinite(value);
-};
-
-/*
-@value, any value
-Capitalizes the first letter heh.
-*/
-export const capitalizeFirstLetter = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
 };

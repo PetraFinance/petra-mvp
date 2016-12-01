@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Text, TextInput, Image, StatusBar } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, TextInput, TouchableHighlight, Image, StatusBar } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-import { ToMonetaryStr } from '../../helpers/formatting';
+import { ToMonetaryStr, formatTransaction } from '../../helpers/formatting';
 import SubView from '../layout/SubView';
 import SectionHeader from '../layout/SectionHeader';
 import TransactionCard from '../modules/cards/TransactionCard';
@@ -13,12 +13,14 @@ class TransactionList extends React.Component {
     super(props);
     this.state = {
       searchTerm: '',
+      showAmount: 15,
     }
   }
 
   render() {
 
     const searchTerm = this.state.searchTerm;
+    const showAmount = this.state.showAmount;
 
     let transactionsList = this.props.transactionsList;
     const account_id = this.props.account_id;
@@ -28,10 +30,12 @@ class TransactionList extends React.Component {
       transactionsList = transactionsList.filter( account => (account.name.toLowerCase().includes(check)));
     }
 
-    const transactions = transactionsList.map((item, i) => (
+    const displayedTransactions = transactionsList.slice(0, showAmount);
+
+    const transactions = displayedTransactions.map((item, i) => (
       <TransactionCard
         key={i}
-        name={item.name}
+        name={formatTransaction(item.name)}
         amount={ToMonetaryStr(item.amount, true)}
         date={item.date}
       />
@@ -47,8 +51,34 @@ class TransactionList extends React.Component {
       this.setState({searchTerm});
     }
 
-    const banner = require('../../../assets/searchIcon.png');
+    const genShowMore = () => {
+      const showAmount = this.state.showAmount;
+      if (showAmount >= transactionsList.length) {
+        return ( <View/> );
+      }
+      return (
+        <TouchableHighlight
+          underlayColor={'#F6F8F9'}
+          onPress={() => showMore()}
+          style={s.showMore}
+        >
+          <Text style={showMoreStyle}>Show More</Text>
+        </TouchableHighlight>
+      );
+    }
 
+    const showMore = () => {
+      let showAmount = this.state.showAmount;
+      showAmount = showAmount + 15;
+      this.setState({showAmount});
+    }
+
+    const showMoreStyle = {
+      color: this.props.bankColor,
+      fontFamily: 'Avenir-Heavy',
+    };
+
+    const banner = require('../../../assets/searchIcon.png');
     return (
       <SubView
         title={this.props.accountName}
@@ -79,6 +109,7 @@ class TransactionList extends React.Component {
             text={"Transactions"}
           />
           {transactions}
+          {genShowMore()}
         </ScrollView>
       </SubView>
     );
@@ -116,6 +147,12 @@ const s = StyleSheet.create({
     color: 'black',
     fontFamily: 'Avenir-Heavy',
     fontSize: 14,
+  },
+  showMore: {
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 16,
   },
 });
 
